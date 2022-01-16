@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from 'src/helpers/notification.service';
 import { bolme, hesab, madde, tipleri } from 'src/models/_muhasibat';
 import { Lang } from 'src/models/_carts';
 import { AyarlarService } from 'src/services/ayarlar.service';
+import { MdbTableDirective } from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-hesab',
@@ -20,15 +21,21 @@ export class HesabComponent implements OnInit {
   listmadde:madde[] = [];
   _madde: madde[];
   //------------------------------
+  @ViewChild(MdbTableDirective, {static: true}) mdbTable: MdbTableDirective;
+  @HostListener('input') oninput() {  this.searchItems();  }
+  elements: any = [];
+  headElements = [ 'Hesnom', 'Hesname', 'MaddeName','BolmeName','TipName']; 
+  searchText: string = '';  previous: string; 
+  //---------------------------------
   listhesab:hesab[] = [];
-  filteredhesab: hesab[];
+ // filteredhesab: hesab[];
   hesab:hesab=new hesab(); 
   _lang:Lang[]=[{lid: '1', lname: 'Az'},{lid: '2', lname: 'En'},{lid: '3', lname: 'Ru'} ];  _lan='';
   _hesab: hesab[];  _pid:'';  
   constructor( private _caSer: AyarlarService,private notificationService: NotificationService) {
      this.hesab.hesId="";
    }
-
+  
    ngOnInit(): void {
     this.hesabForm = new FormGroup({  
       bId: new FormControl(''), 
@@ -39,10 +46,12 @@ export class HesabComponent implements OnInit {
       tipId: new FormControl('')
     });      
     this._caSer._gethesab().subscribe(list=>
-      {         
+    {         
            this.listhesab=list; 
-           this.filteredhesab= this.listhesab; 
-          // console.log(this.listhesab)                        
+           this.elements= this.listhesab; 
+           this.mdbTable.setDataSource(this.elements);
+           this.previous = this.mdbTable.getDataSource();
+         // console.log(this.listhesab)                        
     }, error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
     this._caSer._gettip().subscribe(list=>
         {         
@@ -57,6 +66,19 @@ export class HesabComponent implements OnInit {
        {         
                  this.listbolme=list;                                     
     }, error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
+}
+searchItems() {
+  const prev = this.mdbTable.getDataSource();
+ // console.log(this.searchText) ; 
+  if (!this.searchText) {
+      this.mdbTable.setDataSource(this.previous);
+      this.elements = this.mdbTable.getDataSource();
+  }
+  if (this.searchText) {
+  // console.log('ggg11') ; 
+      this.elements = this.mdbTable.searchLocalDataBy(this.searchText);
+      this.mdbTable.setDataSource(prev);
+  }
 }
 //get TipId() { return this.tipForm.get('TipId'); }
 //get TipName() { return this.tipForm.get('TipName'); }

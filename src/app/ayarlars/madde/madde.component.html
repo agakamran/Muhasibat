@@ -2,10 +2,22 @@
   <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Add/Edit/Delete Maddeler</h3>
   <div class="card-body">
     <div id="table" class="table-editable">
-      <span class="table-add float-right mb-3 mr-2">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="md-form">        
+            <input  type="text" [(ngModel)]="searchText"  class="form-control" id="search"
+              mdbInput />
+            <label for="search">Search</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <span class="table-add float-right mb-3 mr-2">
         <button type="button" mdbBtn color="primary" class="btn btn-success btn-rounded btn-sm my-0"
         (click)="addmadde.show()" (click)="_addmadde()">Add <i class="fas fa-plus fa-2x" aria-hidden="true"></i></button>
         </span> 
+        </div>
+      </div>
+      
         
         <div mdbModal #addmadde="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -56,13 +68,15 @@
              </form>
             </div>
           </div>
-        </div>
-        <table class="table table-bordered table-responsive-md table-striped text-center"  *ngIf='listmadde && listmadde.length'>
+        </div><!-- *ngIf='listmadde && listmadde.length' -->
+        <table mdbTable  class="table table-bordered table-responsive-md table-striped text-center">
           <thead>
-            <tr>                
+
+            <tr>   
+                        
              <!-- <th class="text-center">Navid</th>-->
               <!-- <th class="text-center">genId</th>  -->
-              <th class="text-center">madde name</th>    
+              <th class="text-center"  scope="col">madde name</th>    
             <!--  <th class="text-center">Description</th>    
               <th class="text-center">firma_unvan</th>    
               <th class="text-center">firma_email</th>
@@ -71,7 +85,7 @@
               <th class="text-center">Actions</th>
             </tr>
           </thead>
-          <tbody *ngFor='let p of filteredmadde'>
+          <tbody *ngFor='let p of elements; let i = index'>
             <tr>
              <!--   <td class="pt-3-half" contenteditable="true">{{ p.navid }}</td>-->
               <!-- <td class="pt-3-half" contenteditable="true">{{ p.genId }}</td> -->

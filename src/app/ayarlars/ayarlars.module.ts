@@ -18,9 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { BolmeComponent } from './bolme/bolme.component';
 import { MaddeComponent } from './madde/madde.component';
 
-
 @NgModule({
-  declarations: [AyarListComponent, HesabComponent, AktivlerComponent, MushteriComponent, ShirketComponent, VergikodComponent, VahidComponent, ValyutaComponent, TiplerComponent, BolmeComponent, MaddeComponent],
+  declarations: [AyarListComponent, HesabComponent, AktivlerComponent,
+     MushteriComponent, ShirketComponent, VergikodComponent, VahidComponent,
+      ValyutaComponent, TiplerComponent, BolmeComponent, MaddeComponent],
   imports: [
     CommonModule,
     AyarlarsRoutingModule,
