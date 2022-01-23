@@ -21,7 +21,7 @@ const routes: Route[] = [
     
     { path: 'test', loadChildren:'./test/test.module#TestModule'},
     { path: 'ayarlars', loadChildren:'./ayarlars/ayarlars.module#AyarlarsModule'},
-
+    {path: 'emeliyyat',loadChildren:'./emeliyyat/emeliyyat.module#EmeliyyatModule'},
     { path: 'products', loadChildren:'./products/products.module#ProductsModule'}, 
     { path: 'admin', loadChildren:'./admin/admin.module#AdminModule', canActivate: [AuthGuard] } ,
     { path: 'manage', loadChildren:'./manage/manage.module#ManageModule',canActivate: [AuthGuard] }, 

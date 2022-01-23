@@ -26,7 +26,7 @@ export class VergikodComponent implements OnInit {
   @ViewChild(MdbTableDirective, {static: true}) mdbTable:MdbTableDirective;
    @HostListener('input') oninput() { this.searchItems();  }
    // elements: any = [];
-    headElements = ['vergiId','vergikodu', 'vergikodununadi', 'vId','Actions'];
+    headElements = ['Kodu', 'Kodununadi', 'Vahidi'];
     searchText: string = '';
     previous: string; 
 

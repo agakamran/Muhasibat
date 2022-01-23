@@ -19,26 +19,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { TestModule } from './test/test.module';
 import { authInterceptorProviders } from 'src/helpers/jwt.interceptor';
 import { AyarlarsModule } from './ayarlars/ayarlars.module';
-
-// import { MDBmaterialModule } from 'src/mdbmaterial/mdbmaterial.module';
-// import { MaterialModule } from 'src/material/material.module';
-// import { Map1Component } from './views/maps/map1/map1.component';
-// import { ModalsComponent } from './views/modals/modals.component';
-// import { BasicTableComponent } from './views/tables/basic-table/basic-table.component';
-// import { Profile1Component } from './views/profile/profile1/profile1.component';
-// import { NotFoundComponent } from './views/errors/not-found/not-found.component';
-// import { Dashboard1Component } from './views/dashboards/dashboard1/dashboard1.component';
-// import { RouterModule, Route } from '@angular/router';
-//import { SharedModule } from './shared/shared.module';
-//import { ErrorModule } from './views/errors/error.module';
-// main layout
-//import { NavigationModule } from './main-layout/navigation/navigation.module';
+import { EmeliyyatModule } from './emeliyyat/emeliyyat.module';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -57,7 +45,7 @@ import { AyarlarsModule } from './ayarlars/ayarlars.module';
     TestModule, 
     ManageModule,
     SettingModule,
-
+    EmeliyyatModule,
     StoreModule.forRoot(reducers, {
       runtimeChecks: {
         strictStateImmutability: true,

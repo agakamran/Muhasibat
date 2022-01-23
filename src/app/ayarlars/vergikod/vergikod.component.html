@@ -2,17 +2,20 @@
   <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Add/Edit/Delete Vergi kodlari</h3>
   <div class="card-body">
     <div id="table" class="table-editable">
-      <span class="table-add float-left mb-3 mr-2">
-        <div class="md-form">
-          <input type="text" [(ngModel)]="searchText"  class="form-control" id="search" mdbInput />
-          <label for="search">Search</label>
+      <div class="row">
+        <div class="col-md-12 mx-auto">
+          <div class="md-form">        
+            <input  type="text" [(ngModel)]="searchText"  class="form-control" id="search"
+              mdbInput />
+            <label for="search">Search</label>
+          </div>
         </div>
-      </span>
+      </div>
       <span class="table-add float-right mb-3 mr-2">
         <button type="button" mdbBtn color="primary" class="btn btn-success btn-rounded btn-sm my-0"
         (click)="addvergi.show()" (click)="_addvergi()">Add <i class="fas fa-plus fa-2x" aria-hidden="true"></i></button>
         </span> 
-        
+                
         <div mdbModal #addvergi="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -74,20 +77,17 @@
           </div>
         </div>
         <table class="table table-bordered table-responsive-md table-striped text-center"  *ngIf='listvergi && listvergi.length'>
-          <thead>
-            
-            <tr *ngFor="let head of headElements; let i = index"  scope="col">                
-             <!-- <th class="text-center">Navid</th>-->
-              <th class="text-center">{{ head.vergikodu }} </th> 
-              <th class="text-center">{{head.vergikodununadi}} </th>    
-              <th class="text-center">{{ head.vahidadi}} </th>    
-              <th class="text-center">{{ head.Actions}}</th>  
-           <!--   <th class="text-center">firma_unvan</th>    
-              <th class="text-center">firma_email</th>
-              <th class="text-center">voen</th>            
-              <th class="text-center">Sort</th>
-              <th class="text-center">Actions</th>--> 
-              
+          <thead>            
+            <tr>   
+              <th *ngFor="let head of headElements; let i = index" 
+                aria-controls="tableSortExample" scope="col" [mdbTableSort]="elements"
+                 [sortBy]="headElements[i]">{{ head | titlecase}}
+                  <mdb-icon fas icon="sort"></mdb-icon>
+                </th>  
+                <th class="text-center">Actions</th>             
+              <!-- <th class="text-center">vergikodu  </th> 
+              <th class="text-center">vergikodununadi </th>    
+              <th class="text-center">vahidadi </th>     -->            
             </tr>
           </thead>
           <tbody *ngFor='let p of filteredvergi'>

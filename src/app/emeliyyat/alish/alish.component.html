@@ -1,0 +1,343 @@
+<div class="container-fluid full-page-container">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-lg-12 col-sm-12 animated fadeIn">
+      <!-- Material form login -->
+      <mdb-card class="z-depth-4">
+        <div class="card">
+          <h5 class="card-header info-color white-text text-uppercase py-4">
+            <strong>Alış əməliyyatı</strong>
+          </h5>
+        </div>
+        <!--Card content-->
+        <mdb-card-body class="px-lg-5 pt-0">
+          <div *ngIf="error$ | async as error" class="alert alert-danger" role="alert">
+            {{ error }}
+          </div>
+          <!-- Form -->
+          <form [formGroup]="loginForm" class="text-uppercase" style="color: #757575;">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="md-form">1</div>
+              </div>
+              <div class="col-md-6">
+                <div  class="md-form form-group">
+                
+                  <input  mdbinput=""
+                    type="email" id="form19" name="email" class="form-control"><label 
+                    for="form19">Type your e-mail</label>
+                </div>
+                <div class="md-form">
+                  <label for="form41" class="float-left">Activler</label>
+                  <select [(ngModel)]="nav.nlan" name="_lan" formControlName="nlan"
+                    (change)="langu($event.target.value)" class="browser-default custom-select">
+                    <option [value]=""></option>
+                    <option *ngFor="let l of _lang" [value]="l.lname">{{l.lname}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="md-form">4</div>
+              </div>
+              <div class="col-md-3">
+                <div class="md-form">1</div>
+              </div>
+              <div class="col-md-3">
+                <div class="md-form">2</div>
+              </div>
+              <div class="col-md-3">
+                <div class="md-form">3</div>
+              </div>
+              <div class="col-md-3">
+                <div class="md-form">4</div>
+              </div>
+            </div>
+            <!-- Email -->
+            <div class="md-form">
+              <input mdbValidate [validateSuccess]="false" type="email" id="email" class="form-control"
+                formControlName="email" mdbInput>
+              <label for="email">E-mail</label>
+              <mdb-error *ngIf="email && email.invalid && (email.dirty || email.touched)">Email is required</mdb-error>
+            </div>
+
+
+            <!-- Password -->
+            <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
+            <div class="md-form">
+              <input mdbValidate [validateSuccess]="false" type="password" id="password" class="form-control"
+                formControlName="password" mdbInput>
+              <label for="password">Password</label>
+              <mdb-error *ngIf="password && password.invalid && (password.dirty || password.touched)">Password is
+                required</mdb-error>
+
+            </div>
+
+            <!-- Sign in button -->
+            <button mdbBtn color="primary" block="true" class="my-4 waves-effect z-depth-0" mdbWavesEffect type="submit"
+              (click)="onLogin()">Log in</button>
+
+            <!-- Register -->
+            <p>Not a member?
+              <a routerLink="/register">Register</a>
+            </p>
+            <!-- Social login -->
+            <p>or log in with:</p>
+            <a type="button" class="mr-4">
+              <!--(click)="onFacebookLogin('facebook')"-->
+              <mdb-icon fab icon="facebook-f"></mdb-icon>
+            </a>
+            <a type="button" class="mr-4">
+              <!--(click)="onTwitterLogin('twitter')"-->
+              <mdb-icon fab icon="twitter"></mdb-icon>
+            </a>
+            <a type="button">
+              <!--(click)="onGoogleLogin('google')"-->
+              <mdb-icon fab icon="google-plus-g"></mdb-icon>
+            </a>
+          </form>
+          <!-- Form -->
+
+        </mdb-card-body>
+
+      </mdb-card>
+      <!-- Material form login -->
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      <h4 class="text-center">Alış əməliyyatı</h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12 mx-auto">
+          <form novalidate="" class="ng-untouched ng-pristine ng-valid">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="md-form"></div>
+              </div>
+              <div class="col-md-2">
+                <div class="md-form"></div>
+              </div>
+              <div class="col-md-4">
+                <div class="md-form">
+                  <select [(ngModel)]="nav.nlan" name="_lan" formControlName="nlan"
+                    (change)="langu($event.target.value)" class="browser-default custom-select">
+                    <option [value]="">Activler</option>
+                    <option *ngFor="let l of _lang" [value]="l.lname">{{l.lname}}</option>
+                  </select>
+                  <label for="form41" class="float-left"></label>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="md-form"></div>
+              </div>
+              <div class="col-md-2">
+                <div class="md-form"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <div class="md-form"></div>
+              </div>
+              <div class="col-md-2">
+                <div class="md-form">
+                  <select [(ngModel)]="nav.nlan" name="_lan" formControlName="nlan"
+                    (change)="langu($event.target.value)" class="browser-default custom-select">
+                    <option [value]="">Debit hesabı</option>
+                    <option *ngFor="let l of _lang" [value]="l.lname">{{l.lname}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="md-form">
+                  <input mdbInput type="text" class="form-control" placeholder="First name" id="activler"
+                    placeholder="Debit hesabı" readonly>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="md-form"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <div class="md-form"></div>
+              </div>
+              <div class="col-md-2">
+                <div class="md-form">
+                  <select [(ngModel)]="nav.nlan" name="_lan" formControlName="nlan"
+                    (change)="langu($event.target.value)" class="browser-default custom-select">
+                    <option [value]="">Kredit hesabı</option>
+                    <option *ngFor="let l of _lang" [value]="l.lname">{{l.lname}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="md-form">
+                  <input mdbInput type="text" class="form-control" placeholder="First name" id="activler"
+                    placeholder="Debit hesabı" readonly>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="md-form"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <div class="md-form"></div>
+              </div>
+              <div class="col-md-2">
+                <div class="md-form"></div>
+              </div>
+              <div class="col-md-4">
+                <div class="md-form">
+                  <select [(ngModel)]="nav.nlan" name="_lan" formControlName="nlan"
+                    (change)="langu($event.target.value)" class="browser-default custom-select">
+                    <option [value]="">Müştərilər</option>
+                    <option *ngFor="let l of _lang" [value]="l.lname">{{l.lname}}</option>
+                  </select>
+                  <label for="form41" class="float-left"></label>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="md-form"></div>
+              </div>
+              <div class="col-md-2">
+                <div class="md-form"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <div class="md-form"></div>
+              </div>
+              <div class="col-md-8">
+                <div class="md-form">
+                  <select [(ngModel)]="nav.nlan" name="_lan" formControlName="nlan"
+                    (change)="langu($event.target.value)" class="browser-default custom-select">
+                    <option [value]="">Mal adı və kodları</option>
+                    <option *ngFor="let l of _lang" [value]="l.lname">{{l.lname}}</option>
+                  </select>
+                  <label for="form41" class="float-left"></label>
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <div class="md-form"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-1">
+                <div class="md-form"></div>
+              </div>
+              <div class="col-md-1">
+                <div class="md-form"></div>
+              </div>
+              <div class="col-md-1">
+                <div class="md-form">
+                  <label for="form51">Mal kodu</label>
+                  <input mdbInput type="text" class="form-control" id="activler" readonly>
+                </div>
+              </div>
+              <div class="col-md-1">
+                <div class="md-form">
+                  <input mdbValidate [validateSuccess]="false" type="text" id="vahid" class="form-control"
+                    formControlName="vahid" mdbInput>
+                  <label for="vahid">Vahidi</label>
+                  <mdb-error *ngIf="vahid && vahid.invalid && (vahid.dirty || vahid.touched)">vahid is required
+                  </mdb-error>
+                </div>
+                <!-- <div  class="md-form">
+                  <input mdbInput type="text" class="form-control" id="activler" 
+                  readonly><label  for="form61">Vahid adı</label>
+                </div> -->
+              </div>
+              <div class="col-md-1">
+                <div class="md-form">
+                  <select [(ngModel)]="nav.nlan" name="_lan" formControlName="nlan"
+                    (change)="langu($event.target.value)" class="browser-default custom-select">
+                    <option [value]="">Edv</option>
+                    <option *ngFor="let l of _lang" [value]="l.lname">{{l.lname}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="md-form">
+                  <input mdbinput="" type="text" placeholder="Edeveye cəlb edilən" id="activler" readonly=""
+                    class="form-control">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="md-form"><input mdbinput="" type="text" placeholder="Edeveye cəlb edilməyən" id="activler"
+                    readonly="" class="form-control"></div>
+              </div>
+
+              <div class="col-md-1">
+                <div class="md-form"></div>
+              </div>
+              <div class="col-md-1">
+                <div class="md-form"></div>
+              </div>
+              <div class="col-md-1">
+                <div class="md-form"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-1">
+                <div class="md-form"></div>
+              </div>
+              <div class="col-md-2">
+                <div class="md-form">
+                  <input mdbInput type="date" class="form-control" placeholder="First name" id="activler">
+                  <label for="formGroupLang">Əməliyyatın tarixi</label>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="md-form">
+                  <input mdbInput type="number" class="form-control" id="alish">
+                  <label for="alish">Alış qiyməti</label>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="md-form"> <input mdbInput type="number" class="form-control" id="activler">
+                  <label for="formGroupLang">Satış qiyməti</label>
+                </div>
+              </div>
+              <div class="col-md-1">
+                <div class="md-form"> <input mdbInput type="number" class="form-control" id="miqdar">
+                  <label for="formGroupLang">Miqdarı</label>
+                </div>
+              </div>
+              <div class="col-md-1">
+                <div class="md-form"> <input mdbInput type="number" class="form-control" id="qutuda">
+                  <label for="formGroupLang">Qutuda</label>
+                </div>
+              </div>
+              <div class="col-md-1">
+                <div class="md-form"><input mdbInput type="checkbox" class="form-control" id="activler" checked>
+                  <label for="formGroupLang">AZN</label>
+                </div>
+              </div>
+              <div class="col-md-1">
+                <div class="md-form"><input mdbInput type="checkbox" class="form-control" id="activler">
+                  <label for="formGroupLang">Valyuta $</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="modal-footer">
+                <button type="submit" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect (click)=onadd()
+                  (click)="addnav.hide()" [disabled]="!navForm.valid">Save changes</button>
+                <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close"
+                  (click)="addnav.hide()" mdbWavesEffect>Close</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+
+    </div>
+  </div>
+</div>
