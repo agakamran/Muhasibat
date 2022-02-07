@@ -15,6 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EmeliylistComponent } from './emeliylist/emeliylist.component';
 import { EmeliyyatRoutingModule } from './emeliyyat-routing.module';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+//import { MaterialModule } from 'src/material/material.module';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { EmeliyyatRoutingModule } from './emeliyyat-routing.module';
    // HttpClientModule,
     ReactiveFormsModule,   
     FormsModule,
-    RouterModule 
+    RouterModule ,
+    InfiniteScrollModule,
+   // MaterialModule
   ]
 })
 export class EmeliyyatModule { }

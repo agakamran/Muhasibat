@@ -35,7 +35,16 @@ export class hesab
      mId:string;
      tipId:string;
      activId:string;
-}    
+}  
+export class hesb
+{
+    hesId:string;
+    hesnom:string;
+    hesname:string;
+    bId:number;
+    mId:string;
+    tipId:string;
+}  
 export class shirket
 {        
     shId :string;        
@@ -93,12 +102,29 @@ export class verg
     VAHID:string;
     STATE:string;
 }
-export class hesb
+
+export class edeve{  eid :string; ename:string; }
+export class alish
 {
+    activId:string;
+    debId:string;
+    kredId:string;
+    mushId:string; 
+    vergikodu:string;
+    alqiym:number;
+    satqiym:number;
+    miqdar:number;
+    qutuda:number;
+    valyuta:string;
+    emdate:Date; 
+    vId:string;
+    edev:string;
+    edeveli:number;
+    edevesiz:number;  
+    qeyd:string;  
+}
+export class satish
+{
+    activId:string;
     hesId:string;
-    hesnom:string;
-    hesname:string;
-    bId:number;
-    mId:string;
-    tipId:string;
 }

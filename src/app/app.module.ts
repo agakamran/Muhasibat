@@ -20,6 +20,7 @@ import { TestModule } from './test/test.module';
 import { authInterceptorProviders } from 'src/helpers/jwt.interceptor';
 import { AyarlarsModule } from './ayarlars/ayarlars.module';
 import { EmeliyyatModule } from './emeliyyat/emeliyyat.module';
+import { MaterialModule } from 'src/material/material.module';
 
 
 
@@ -55,6 +56,7 @@ import { EmeliyyatModule } from './emeliyyat/emeliyyat.module';
     }),    
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
+    MaterialModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],

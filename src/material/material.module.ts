@@ -7,11 +7,15 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-/*import { CommonModule } from '@angular/common';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+/*import { MatSelectModule } from '@angular/material/select';
+import { MatSelectInfiniteScrollModule } from 'ng-mat-select-infinite-scroll';
+import { CommonModule } from '@angular/common';
 import { LayoutModule } from '@angular/cdk/layout';
 import {A11yModule} from '@angular/cdk/a11y';
 import {ClipboardModule} from '@angular/cdk/clipboard';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+
 import {PortalModule} from '@angular/cdk/portal';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CdkStepperModule} from '@angular/cdk/stepper';
@@ -36,7 +40,7 @@ import {MatInputModule} from '@angular/material/input';
 
 
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
-import {MatPaginatorModule} from '@angular/material/paginator';
+
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatRadioModule} from '@angular/material/radio';
@@ -64,14 +68,18 @@ import {OverlayModule} from '@angular/cdk/overlay';*/
     MatMenuModule,
     MatDialogModule,
     MatSnackBarModule,
-   /* CommonModule,
+    MatPaginatorModule, //porsyalarla goster
+    DragDropModule,
+   /* MatSelectModule,
+    MatSelectInfiniteScrollModule  
+    CommonModule,
     LayoutModule,
     A11yModule,
     ClipboardModule,
     CdkStepperModule,
     CdkTableModule,
     CdkTreeModule,
-    DragDropModule,
+    
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,    
@@ -88,12 +96,12 @@ import {OverlayModule} from '@angular/cdk/overlay';*/
     MatInputModule,    
     
     MatNativeDateModule,
-    MatPaginatorModule,
+    
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatRadioModule,
     MatRippleModule,
-    MatSelectModule,   
+   
     MatSliderModule,
     MatSlideToggleModule,
     
@@ -115,13 +123,17 @@ import {OverlayModule} from '@angular/cdk/overlay';*/
     MatMenuModule,
     MatDialogModule,
     MatSnackBarModule,
-   /* LayoutModule,
+    MatPaginatorModule,
+    DragDropModule,
+    /*MatSelectModule,
+    MatSelectInfiniteScrollModule  
+    LayoutModule,
     A11yModule,
     ClipboardModule,
     CdkStepperModule,
     CdkTableModule,
     CdkTreeModule,
-    DragDropModule,
+    
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
@@ -141,7 +153,7 @@ import {OverlayModule} from '@angular/cdk/overlay';*/
     
     
     MatNativeDateModule,
-    MatPaginatorModule,
+    
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatRadioModule,
