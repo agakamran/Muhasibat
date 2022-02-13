@@ -1,17 +1,17 @@
   <div class="card text-center">
     <div class="card-header">
-      <h4 class="text-center"></h4>
+      <h4 class="text-center">{{title}}</h4>
     </div>      
       <div class="row">        
         <div class="col-md-12 mx-auto">
-          <form [formGroup]="alishForm" class="normal-form">
+          <form [formGroup]="emelForm" class="normal-form">
             <div class="row">
               <div class="col-md-2">
               </div>
               <div class="col-md-2">
               </div>
               <div class="col-md-4"> Activler  
-                <select [(ngModel)]="alish.activId" formControlName="activId" (change)="selacti($event.target.value)"                       
+                <select [(ngModel)]="emel.aId" formControlName="aId" (change)="selacti($event.target.value)"                       
                 class="browser-default custom-select" >                                                     
                   <option *ngFor="let o of listactiv" [value]="o.activId" >{{ o.activName }}</option>                                 
                </select>
@@ -25,14 +25,14 @@
               <div class="col-md-2">             
               </div>
               <div class="col-md-2">Debit hesabı              
-                <select [(ngModel)]="alish.debId" formControlName="debId" (change)="seldebit($event.target.value)"                       
+                <select [(ngModel)]="emel.dhesId" formControlName="dhesId" (change)="seldebit($event.target.value)"                       
                 class="browser-default custom-select" >                                                   
                   <option *ngFor="let o of _debhesab" [value]="o.hesId" >{{ o.hesnom }}</option>                                 
                </select>               
               </div>
               <div class="col-md-6">  
                 <div class="md-form"></div>                              
-                   <input mdbInput type="text" class="form-control" value={{_debit}} id="debithesab"  readonly>
+                   <input mdbInput type="text" class="form-control" value={{_debit}}  readonly>
                 </div>
               <div class="col-md-2">
               </div>
@@ -42,14 +42,14 @@
                
               </div>
               <div class="col-md-2">Kredit hesabı                                  
-                <select [(ngModel)]="alish.kredId" formControlName="kredId" (change)="selkred($event.target.value)"                       
+                <select [(ngModel)]="emel.khesId" formControlName="khesId" (change)="selkred($event.target.value)"                       
                 class="browser-default custom-select" >                                                    
                   <option *ngFor="let o of _debhesab" [value]="o.hesId" >{{ o.hesnom }}</option>                                                   
                </select>                 
               </div>
               <div class="col-md-6">
                 <div class="md-form"></div> 
-                    <input mdbInput type="text" class="form-control" value={{_kredit}}  id="kredhesab"  readonly>
+                    <input mdbInput type="text" class="form-control" value={{_kredit}} readonly>
                </div>
               <div class="col-md-2">                
               </div>
@@ -73,11 +73,14 @@
             </div>
             <div class="row">
               <div class="col-md-1">             
-             </div>             
-              <div class="col-md-9"> Mal adı və kodları              
+             </div>  
+             <div class="col-md-2"> Mal kodu                 
+              <input [(ngModel)]="malkodu" formControlName="malkodu" mdbInput type="text" class="form-control" readonly>
+              </div>           
+              <div class="col-md-8"> Mal adı və kodları              
                  <select class="browser-default custom-select" infinite-scroll  
                  [scrollWindow]="false" (scrolled)="onScrollDown($event)" (scrolledUp)="onScrollUp($event)"
-                 [(ngModel)]="_ver" formControlName="vergikodu" (change)="selverg($event.target.value)"  >                  
+                 [(ngModel)]="_ver" formControlName="vergiId" (change)="selverg($event.target.value)"  >                  
                   <option >Vergi adı və kodları</option>                                    
                   <option *ngFor="let o of listvergi ; let i = index"  [value]="o.vergikodu" >{{ i }} | {{ o.vergikodununadi }}</option>                                 
                 </select>                                                         
@@ -85,16 +88,16 @@
               <div class="col-md-1">                
               </div>
             </div>
-              <div class="row">
+               <div class="row">
               <div class="col-md-1"> </div>
               <div class="col-md-1">AZN
-                <input formControlName="valyuta" name="valyuta" value="AZN" mdbInput type="radio" class="form-control"  checked>                
+                <input formControlName="valId" name="valId" value="AZN" checked="{{ch}}" mdbInput type="radio" (change)="selaz($event.target.value)"  class="form-control"  >                
               </div>
               <div class="col-md-1">Val$
-                <input formControlName="valyuta" name="valyuta"  value="Val$" mdbInput type="radio" class="form-control" >                
+                <input formControlName="valId" name="valId"  value="Val$" mdbInput type="radio" (change)="selval($event.target.value)" class="form-control" >                
               </div>   
-              <div class="col-md-2"> Mal kodu                 
-                <input [(ngModel)]="vergikodu" formControlName="vergikodu" mdbInput type="text" class="form-control" readonly>
+             <div class="col-md-1"> Kurs                 
+                <input [(ngModel)]="emel.kurs" formControlName="kurs" min="0" mdbInput type="number" class="form-control" readonly>
               </div>
                <div class="col-md-2">Vahidi
                  <select [(ngModel)]="_vah" formControlName="vId" (change)="selvahid($event.target.value)" 
@@ -103,37 +106,37 @@
               </select>
               </div> 
              <div class="col-md-2">Edve
-                   <select [(ngModel)]="_ede" formControlName="edev" (change)="seledeve($event.target.value)" 
+                   <select [(ngModel)]="_ede" formControlName="edv" (change)="seledeve($event.target.value)" 
                        class="browser-default custom-select" >                   
                     <option *ngFor="let l of _edeve" [value]="l.ename" disabled>{{l.ename}}</option>
                   </select> 
               </div>             
               <div class="col-md-1"> Edvli
-                  <input [(ngModel)]="alish.edeveli" mdbinput="" formControlName="edeveli" type="text" readonly class="form-control">               
+                  <input [(ngModel)]="emel.edvye_celbedilen" mdbinput="" formControlName="edvye_celbedilen" type="text" readonly class="form-control">               
               </div>              
               <div class="col-md-1"> Edvsiz
-                  <input [(ngModel)]="alish.edevesiz" mdbinput="" formControlName="edevesiz" type="text" readonly class="form-control">
+                  <input [(ngModel)]="emel.edvye_celbedilmeyen" mdbinput="" formControlName="edvye_celbedilmeyen" type="text" readonly class="form-control">
                </div> 
                         
               <div class="col-md-1"></div>             
-            </div> 
+            </div>  
             
             <div class="row">              
-              <div class="col-md-1"></div>
+              
               <div class="col-md-2">Alış qiyməti
-                  <input (change)="selhesab($event.target.value)" formControlName="alqiym" mdbInput type="number" class="form-control">               
+                  <input formControlName="vahidqiymeti_alish" min="1" (change)="selhesab($event.target.value)" mdbInput type="number" class="form-control">               
               </div>
               <div class="col-md-2">Satış qiyməti 
-                  <input formControlName="satqiym" value="{{ _sat }}" mdbInput type="number" class="form-control">                 
+                  <input formControlName="vahidqiymeti_satish" min="1" value="{{ _sat }}" mdbInput type="number" class="form-control">                 
               </div>
               <div class="col-md-2">Miqdarı
-                 <input [(ngModel)]="alish.miqdar" formControlName="miqdar"  mdbInput type="number" class="form-control">                 
+                 <input [(ngModel)]="emel.miqdar" min="1" formControlName="miqdar"  mdbInput type="number" class="form-control">                 
               </div>
               <div class="col-md-2"> Qutuda
-                <input [(ngModel)]="alish.qutuda" formControlName="qutuda" mdbInput type="number" class="form-control" >                
+                <input [(ngModel)]="emel.submiqdar" min="1" formControlName="submiqdar" mdbInput type="number" class="form-control" >                
               </div>
               <div class="col-md-3">Əməliyyatın tarixi
-                <input [(ngModel)]="alish.emdate" formControlName="emdate" mdbInput type="date" class="form-control" >                
+                <input [(ngModel)]="emel.emeltarixi" formControlName="emeltarixi" mdbInput type="date" class="form-control" >                
               </div>
               <div class="col-md-1"></div>
             </div> 
@@ -142,11 +145,11 @@
               <div class="col-md-1">                
               </div>
               <div class="col-md-6"> Qeyd
-                <input [(ngModel)]="alish.qeyd" formControlName="qeyd" aria-multiline="true" mdbInput type="text" class="form-control" > 
+                <input [(ngModel)]="emel.qeyd" formControlName="qeyd" aria-multiline="true" mdbInput type="text" class="form-control" > 
               </div>              
               <div class="col-md-3">  
                 <div class="md-form">
-                    <button type="submit" mdbBtn color="success" class="relative waves-light" mdbWavesEffect (click)=addalish()  [disabled]="!alishForm.valid">Save changes</button>
+                    <button type="submit" mdbBtn color="success" class="relative waves-light" mdbWavesEffect (click)=addemel()  [disabled]="!emelForm.valid">Save changes</button>
                 </div>              
               </div>
               <div class="col-md-2">                

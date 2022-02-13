@@ -7,11 +7,12 @@ import * as datqrup from '../_json/Muhasib/qrup.json';
 import * as datshirket from '../_json/Muhasib/shirket.json';
 import * as dattip from '../_json/Muhasib/tip.json';
 import * as datvahid from '../_json/Muhasib/vahid.json';
-import * as datvergi from '../_json/Muhasib/vergi.json';
+import * as datvergi from '../_json/Muhasib/eqm_mal_kodlari-v1.json';
+import * as datvergifeal from '../_json/Muhasib/fk-v1.json';
 //import * as datqrup from '../_json/Muhasib/malqrup.json';
 
 import { aktivi, bolme,  madde,hesab, mushteri, qrup, shirket, 
-  tipleri, vahid, valyuta, verg, vergi } from 'src/models/_muhasibat';
+  tipleri, vahid, valyuta, verg, vergi, fealsah, emel } from 'src/models/_muhasibat';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, of } from 'rxjs';
@@ -338,7 +339,48 @@ export class AyarlarService {
      return this.http.post(this.pathAPI + '_deletevalyuta',bo )
     .pipe( catchError((err) => {  console.error(err);  throw err; }))
   } 
-   //------------vergi-------- 
+  //------------fealiyyet sahesi--------
+  _jsonvergifeal(): Observable<fealsah[]> {  
+    //  console.log('uuuuu122')
+   return of((datvergifeal as any).default)   
+  }
+ _getvergifeal(): Observable<any>{      
+   //const body=JSON.stringify(pra);
+  // console.log('uuuuu')
+  // console.log(body.toString())   
+   return this.http.get<any>(this.pathAPI +'_getvergifeal')
+   .pipe(map((data)=>{
+     return data;
+   }),
+     catchError((err) => {
+       console.error(err);
+       throw err;
+     }
+   )); 
+ } 
+ _posvergifeal(bo:fealsah):Observable<any> {        
+   const body=JSON.stringify(bo);  
+  // console.log('11sd')
+  // console.log(this.pathAPI + 'postbeden', body)
+   return this.http.post<fealsah>(this.pathAPI + 'postvergifeal', body)
+      .pipe(
+         map((data) => {
+           //You can perform some transformation here
+          return data;
+        }),
+        catchError((err) => {
+          console.error(err);
+          throw err;
+        }
+      ))
+ }  
+ _delvergifeal(bo:fealsah) {   
+  // const bod:MenuItem= { pid: id,pagename:'' }
+   //console.log(id)
+    return this.http.post(this.pathAPI + 'delvergifeal',bo )
+   .pipe( catchError((err) => {  console.error(err);  throw err; }))
+ } 
+   //------------vergi eqaime-------- 
    _jsonvergi(): Observable<verg[]> {  
      //  console.log('uuuuu122')
     return of((datvergi as any).default)   
@@ -346,8 +388,9 @@ export class AyarlarService {
   _getvergi(): Observable<any>{      
     //const body=JSON.stringify(pra);
    // console.log('uuuuu')
-   // console.log(body.toString())   
-    return this.http.get<any>(this.pathAPI +'_getvergi')
+   // console.log(body.toString()) 
+   return this.http.get<any>(this.pathAPI +'_getvergi')  
+   // return this.http.get<any>(this.pathAPI +'_getvergi?emel='+emel)
     .pipe(map((data)=>{
       return data;
     }),
@@ -357,11 +400,28 @@ export class AyarlarService {
       }
     )); 
   } 
+  _posvergilist(bo:vergi[]):Observable<any> {        
+   // const body=JSON.stringify(bo);  
+   // console.log('11sd')
+   // console.log(this.pathAPI + 'postbeden', body)
+  // console.log(bo)
+    return this.http.post<any>(this.pathAPI + 'postvergilist', bo)
+       .pipe(
+          map((data) => {
+            //You can perform some transformation here
+           return data;
+         }),
+         catchError((err) => {
+           console.error(err);
+           throw err;
+         }
+       ))
+  }  
   _posvergi(bo:vergi):Observable<any> {        
     const body=JSON.stringify(bo);  
    // console.log('11sd')
    // console.log(this.pathAPI + 'postbeden', body)
-    return this.http.post<vahid>(this.pathAPI + 'postvergi', body)
+    return this.http.post<vergi>(this.pathAPI + 'postvergi', body)
        .pipe(
           map((data) => {
             //You can perform some transformation here
@@ -378,7 +438,7 @@ export class AyarlarService {
     //console.log(id)
      return this.http.post(this.pathAPI + 'delvergi',bo )
     .pipe( catchError((err) => {  console.error(err);  throw err; }))
-  } 
+  }   
   //------------Madde-------- 
   _jsonmadde(): Observable<hesab[]> {  
     //  console.log('uuuuu122')
@@ -458,5 +518,51 @@ export class AyarlarService {
      return this.http.post(this.pathAPI + 'delbolme',bo )
     .pipe( catchError((err) => {  console.error(err);  throw err; }))
   } 
+  //---------------Kutlevi daxil etme yeri---------------
+  _posUmumi(bo:string):Observable<any> {        
+    const body=JSON.stringify(bo);  
+   // console.log('11sd')
+   // console.log(this.pathAPI + 'postbeden', body)
+    return this.http.post<any>(this.pathAPI + 'posthazirla', body)
+       .pipe(
+          map((data) => {
+            //You can perform some transformation here
+           return data;
+         }),
+         catchError((err) => {
+           console.error(err);
+           throw err;
+         }
+       ))
+  }  
   //------Muhasibat son---------------
+  //---------------Emeliyyat---------------
+  _getemeliyat(id:any): Observable<any>{      
+      
+    return this.http.get<any>(this.pathAPI.replace('Ayarlar/','Emeliyyat/')  +'_getEmeliyyat?id='+id)
+    .pipe(map((data)=>{
+      return data;
+    }),
+      catchError((err) => {
+        console.error(err);
+        throw err;
+      }
+    )); 
+  } 
+  _posemeliyat(bo:emel):Observable<emel> {        
+    const body=JSON.stringify(bo);  
+   // console.log('11sd')
+    console.log(this.pathAPI.replace('Ayarlar/','Emeliyyat/')  + '_postEmeliyyat', body)
+    return this.http.post<emel>(this.pathAPI.replace('Ayarlar/','Emeliyyat/')  + '_postEmeliyyat', body)
+       .pipe(
+          map((data) => {
+            //You can perform some transformation here
+           return data;
+         }),
+         catchError((err) => {
+           console.error(err);
+           throw err;
+         }
+       ))
+  }  
 }

@@ -9,11 +9,11 @@ import { SettingsService } from 'src/services/settings.service';
 //import { AuthService } from 'src/services/auth.service';
 import { NotificationService } from 'src/helpers/notification.service';
 import { NavbarService } from 'src/services/navbar.service';
-import { aktivi, hesab, madde, mushteri, qrup, shirket, tipleri, vahid, verg, vergi } from 'src/models/_muhasibat';
+import { aktivi, hesab, madde, mushteri, parcha, qrup, shirket, tipleri, vahid, verg, vergi } from 'src/models/_muhasibat';
 import { AyarlarService } from 'src/services/ayarlar.service';
-import { forkJoin, interval } from 'rxjs';
+//import { forkJoin, interval } from 'rxjs';
 import { _ACTION_TYPE_UNIQUENESS_CHECK } from '@ngrx/store/src/tokens';
-
+//import { areAllEquivalent } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-hazirla',
   templateUrl: './hazirla.component.html',
@@ -71,8 +71,9 @@ export class HazirlaComponent implements OnInit {
   jsonlistvahid:vahid[] = [];
   listvergi: vergi[]=[];
   jsonlistvergi:verg[] = [];
-  // _vahid: vahid[]=[];
-  //jsonlistvahid:vahid[] = [];
+ 
+  _parcha:parcha[]=[{id: '1', name: 'vergi'},{id: '2', name: 'hesab'},
+  {id: '3', name: 'Mushteri'},{id: '4', name: 'shirket'} ,{id: '5', name: 'fealiyet'}];  _par='';
   //#endregion
   constructor(private _caSer: SettingsService,private _caSer1: NavbarService ,
     private _ayar:AyarlarService, 
@@ -105,7 +106,7 @@ export class HazirlaComponent implements OnInit {
                 this.jsonlistvergi=p;                                             
             })}, error => console.error(error + 'Siz sistemə daxil olmalısınız!'));
       */
-            //---------------vergi----
+         //---------------vergi----
           this._ayar._getvergi().subscribe(p=>
             { 
               this._gender=p; 
@@ -375,157 +376,195 @@ export class HazirlaComponent implements OnInit {
       }
     }
   }
+  selpar(pa:any){
+    this._par = pa; console.log( this._par )
+    this._ayar._posUmumi(this._par).subscribe();
+   }
   //---------------Muhasibat---------
-  
+  // addvahid(){
+  //   if(this.listvergi.length===0)  
+  //   {
+  //     //#region vahid
+  //     var filtered = new Set(this.jsonlistvergi.map(item => item.VAHID))
+  //     filtered.forEach(x=>{
+  //       var pp={
+  //         vId:'',          
+  //         vahidadi:x      
+  //         }
+  //        // console.log(pp)
+  //      this._ayar._postvahid(pp).subscribe(); 
+  //     });    
+  //      //#endregion  
+  //   }
+  // } 
+
   
   //------------Vergi--------------------
-  addvergi()
-  { 
-    if(this.listvergi.length===0)  
-    {
-      //#region vahid
-      var filtered = new Set(this.jsonlistvergi.map(item => item.VAHID))
-      filtered.forEach(x=>{
-        var pp={
-          vId:'',          
-          vahidadi:x      
-          }
-         // console.log(pp)
-       this._ayar._postvahid(pp).subscribe(); 
-      });    
-       //#endregion  
-      //#region vergi
-      this.jsonlistvergi.forEach(item => {
-        var p={
-          vergiId:'' ,
-          edv_tar:undefined, 
-          vId:item.VAHID, 
-          vergikodu:item.CODE, 
-          vergikodununadi:item.ADI,  
-          STATE:item.STATE    
-          }
-           console.log(p)
-         this._ayar._posvergi(p).subscribe();  
-      });  
-        //#endregion       
-    }   
-  }   
-  
+  // addvergi()
+  // { 
+  //   if(this.listvergi.length===0)  
+  //   {
+  //     //#region vahid
+  //     // var filtered = new Set(this.jsonlistvergi.map(item => item.VAHID))
+  //     // filtered.forEach(x=>{
+  //     //   var pp={
+  //     //     vId:'',          
+  //     //     vahidadi:x      
+  //     //     }
+  //     //    // console.log(pp)
+  //     //  this._ayar._postvahid(pp).subscribe(); 
+  //     // });    
+  //      //#endregion  
+  //     //#region vergi
+     
+      
+  //     let i=0;
+  //     this.jsonlistvergi.forEach((item)=> {
+  //       var p={
+  //         vergiId:'' ,
+  //         edv_tar:undefined, 
+  //         vId:item.VAHID, 
+  //         vergikodu:item.CODE, 
+  //         vergikodununadi:item.ADI,  
+  //         STATE:item.STATE    
+  //         }                
+          
+  //         // if(i ===1000 ){
+  //         //   const obs$=interval(1000);
+  //         //   obs$.subscribe((d)=>{ console.log(d); });
+  //         //   i=0;
+  //         // }  
+  //         this._ayar._posvergi(p).subscribe();
+  //         i++;  
+  //         console.log(i) ;
+  //       });  
+      
+  //   }
+  //     //console.log(this.listvergi)
+  //   // this._ayar._posvergilist(this.listvergi).subscribe();
+  //       //#endregion       
+  //  // }   
+  // }  
+  // vv:string ="vergi"; 
+  // addall(){
+  //   console.log(this.vv)
+  //   this._ayar._posUmumi(this.vv).subscribe();
+  // }
 
   //---------------hesab-----------------
-  atbm(){
-    var hes = this.jsonlisthesab;  
-    hes.forEach(item => { 
-      var p={           
-          hesId:'' ,  
-          bId:item.bId, 
-          mId:item.mId, 
-          hesnom:item.hesnom, 
-          hesname:item.hesname,      
-          tipId:item.tipId ,
-          activId:item.activId                
-         }
-          // console.log(p);
-         this._ayar._poshesab(p).subscribe(); 
-    });         
-  }
-   addhesablar()
-   {
-      if(this.listhesab.length===0){ 
-        var activ = new Set(this.jsonlisthesab.map(item => item.activId));
-        activ.forEach(k=>{
-         var p={ activId:'' , activName:k, description:'' }      
-          // console.log(p);
-           this._ayar._postaktiv(p).subscribe(); 
-        });         
-        var tip = new Set(this.jsonlisttip.map(item => item.tipName)) ; 
-       tip.forEach(k => {
-         var p={   tipId:'' , tipName:k  }
-          //console.log(p);
-          this._ayar._postip(p).subscribe(); 
-        });  
-        var bolme = new Set(this.jsonlisthesab.map(item => item.bId));
-        bolme.forEach(i => {
-          var p={ bId:'' , bolmeName:i }               
-              //console.log(p)
-           this._ayar._postbolme(p).subscribe();     
-        }); 
-        var madd = new Set(this.jsonlisthesab.map(y => y.mId));
-        madd.forEach(y => {
-          var p={  mId:'' , maddeName:y    } 
-          //console.log(p); 
-          this._ayar._posmadde(p).subscribe();
-         });      
+  // atbm(){
+  //   var hes = this.jsonlisthesab;  
+  //   hes.forEach(item => { 
+  //     var p={           
+  //         hesId:'' ,  
+  //         bId:item.bId, 
+  //         mId:item.mId, 
+  //         hesnom:item.hesnom, 
+  //         hesname:item.hesname,      
+  //         tipId:item.tipId ,
+  //         activId:item.activId                
+  //        }
+  //         // console.log(p);
+  //        this._ayar._poshesab(p).subscribe(); 
+  //   });         
+  // }
+  //  addhesablar()
+  //  {
+  //     if(this.listhesab.length===0){ 
+  //       var activ = new Set(this.jsonlisthesab.map(item => item.activId));
+  //       activ.forEach(k=>{
+  //        var p={ activId:'' , activName:k, description:'' }      
+  //         // console.log(p);
+  //          this._ayar._postaktiv(p).subscribe(); 
+  //       });         
+  //       var tip = new Set(this.jsonlisttip.map(item => item.tipName)) ; 
+  //      tip.forEach(k => {
+  //        var p={   tipId:'' , tipName:k  }
+  //         //console.log(p);
+  //         this._ayar._postip(p).subscribe(); 
+  //       });  
+  //       var bolme = new Set(this.jsonlisthesab.map(item => item.bId));
+  //       bolme.forEach(i => {
+  //         var p={ bId:'' , bolmeName:i }               
+  //             //console.log(p)
+  //          this._ayar._postbolme(p).subscribe();     
+  //       }); 
+  //       var madd = new Set(this.jsonlisthesab.map(y => y.mId));
+  //       madd.forEach(y => {
+  //         var p={  mId:'' , maddeName:y    } 
+  //         //console.log(p); 
+  //         this._ayar._posmadde(p).subscribe();
+  //        });      
         
-        forkJoin([tip,activ,madd, bolme]).subscribe(
-          function (x) {         
-            console.log('Next: %s', x[0]);
-           // console.log('Next: %s', x[1]);
-           // console.log('Next: %s', x[2]);           
-          },
-          function (err) { console.log('Error: %s', err);    },
-          function ()    {   console.log('Completed') } );   
-      }
-      if(this.listshirket.length===0){ this.addshirket();  }
-      if(this.listmushteri.length===0){  this.addmushteri();} 
-      const source = interval(10000); 
-      if(this.listhesab.length===0){ source.subscribe(_=> this.atbm());}
+  //       forkJoin([tip,activ,madd, bolme]).subscribe(
+  //         function (x) {         
+  //           console.log('Next: %s', x[0]);
+  //          // console.log('Next: %s', x[1]);
+  //          // console.log('Next: %s', x[2]);           
+  //         },
+  //         function (err) { console.log('Error: %s', err);    },
+  //         function ()    {   console.log('Completed') } );   
+  //     }
+  //     if(this.listshirket.length===0){ this.addshirket();  }
+  //     if(this.listmushteri.length===0){  this.addmushteri();} 
+  //     const source = interval(10000); 
+  //     if(this.listhesab.length===0){ source.subscribe(_=> this.atbm());}
         
-   }
+  //  }
   //---------------shirket-----------------
-  addshirket()
-  { 
-   // console.log(this.listshirket.length)
-    if(this.listshirket.length===0)  
-    {
-      this.jsonlistshirket.forEach(item => {
-        var p={  
+  // addshirket()
+  // { 
+  //  // console.log(this.listshirket.length)
+  //   if(this.listshirket.length===0)  
+  //   {
+  //     this.jsonlistshirket.forEach(item => {
+  //       var p={  
           
-           shId:'' ,  
-           bankadi:item.bankadi, 
-           bankvoen:item.bankvoen,        
-           swift:item.swift,        
-           muxbirhesab:item.muxbirhesab,
-           bankkodu:item.bankkodu,
-           aznhesab:item.aznhesab,        
-           shiricrachi :item.shiricrachi,
-           shirvoen :item.shirvoen,
-           cavabdehshexs:item.cavabdehshexs,
-           email:'',
-           unvan:item.unvan,
-           userId:'',
-           shirpercent:0               
-           }
-            // console.log(p)
-            // console.log('#####')
-          this._ayar._posshirket(p).subscribe(); 
-      });      
-    }   
-  }   
+  //          shId:'' ,  
+  //          bankadi:item.bankadi, 
+  //          bankvoen:item.bankvoen,        
+  //          swift:item.swift,        
+  //          muxbirhesab:item.muxbirhesab,
+  //          bankkodu:item.bankkodu,
+  //          aznhesab:item.aznhesab,        
+  //          shiricrachi :item.shiricrachi,
+  //          shirvoen :item.shirvoen,
+  //          cavabdehshexs:item.cavabdehshexs,
+  //          email:'',
+  //          unvan:item.unvan,
+  //          userId:'',
+  //          shirpercent:0               
+  //          }
+  //           // console.log(p)
+  //           // console.log('#####')
+  //         this._ayar._posshirket(p).subscribe(); 
+  //     });      
+  //   }   
+  // }   
   //---------------Mushteri-----------------
-  addmushteri()
-  { 
-   // console.log(this.listshirket.length)
-    if(this.listmushteri.length===0)  
-    {
-      this.jsonlistmushteri.forEach(item => {
-        var p={  
+  // addmushteri()
+  // { 
+  //  // console.log(this.listshirket.length)
+  //   if(this.listmushteri.length===0)  
+  //   {
+  //     this.jsonlistmushteri.forEach(item => {
+  //       var p={  
           
-          mushId:'' ,  
-          firma:item.firma, 
-          voen:item.voen,        
-          muqavilenom:item.muqavilenom,        
-          muqaviletar:undefined,
-          valyuta:item.valyuta,
-          odemesherti:item.odemesherti,        
-          temsilchi :item.temsilchi   
-          }
-           //  console.log(p)
-            // console.log('#####')
-          this._ayar._posmushteri(p).subscribe(); 
-      });      
-    }   
-  }      
+  //         mushId:'' ,  
+  //         firma:item.firma, 
+  //         voen:item.voen,        
+  //         muqavilenom:item.muqavilenom,        
+  //         muqaviletar:undefined,
+  //         valyuta:item.valyuta,
+  //         odemesherti:item.odemesherti,        
+  //         temsilchi :item.temsilchi   
+  //         }
+  //          //  console.log(p)
+  //           // console.log('#####')
+  //         this._ayar._posmushteri(p).subscribe(); 
+  //     });      
+  //   }   
+  // }      
   //----------Muhasib son-----------
   addcate()
   {

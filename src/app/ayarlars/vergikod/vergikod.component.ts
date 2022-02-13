@@ -43,15 +43,14 @@ export class VergikodComponent implements OnInit {
     }
   //--------------------------
   
-  ngOnInit(): void {    
-       
+  ngOnInit(): void {           
     this.vergiForm = new FormGroup({  
       vergiId: new FormControl(''),  
       vergikodununadi: new FormControl('', [Validators.required]),   
       vergikodu: new FormControl('', [Validators.required]),
       vId: new FormControl('', [Validators.required]),
       edv_tar: new FormControl('')  
-    });
+    });    
     this._quSer._getvergi().subscribe(list=>
       {         
            this.listvergi=list; 
