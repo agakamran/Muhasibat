@@ -72,8 +72,9 @@ export class HazirlaComponent implements OnInit {
   listvergi: vergi[]=[];
   jsonlistvergi:verg[] = [];
  
-  _parcha:parcha[]=[{id: '1', name: 'vergi'},{id: '2', name: 'hesab'},
-  {id: '3', name: 'Mushteri'},{id: '4', name: 'shirket'} ,{id: '5', name: 'fealiyet'}];  _par='';
+  _parcha:parcha[]=[{id: '1', name: 'aktiv'},{id: '2', name: 'tip'},
+  {id: '3', name: 'vergi'},{id: '4', name: 'hesab'},
+  {id: '5', name: 'Mushteri'},{id: '6', name: 'shirket'} ,{id: '7', name: 'fealiyet'}];  _par='';
   //#endregion
   constructor(private _caSer: SettingsService,private _caSer1: NavbarService ,
     private _ayar:AyarlarService, 

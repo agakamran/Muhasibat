@@ -11,7 +11,7 @@
                    <button type="button" class="close pull-right" aria-label="Close" (click)="addrole.hide()">
                      <span aria-hidden="true">×</span>
                    </button>
-                   <h4 class="modal-title w-100" id="myModalLabel"><span>New Role</span></h4>
+                   <h4 class="modal-title w-150" id="myModalLabel"><span>New Role</span></h4>
                  </div>
                  <form [formGroup]="addform" class="normal-form" (click)=onadd()>
                  <div class="modal-body">          
@@ -34,14 +34,13 @@
                 <button type="button" class="close pull-right" aria-label="Close" (click)="editrole.hide()">
                   <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title w-100" id="myModalLabel"><span>Add To {{ name }}</span></h4>
+                <h4 class="modal-title w-150" id="myModalLabel"><span>Add To {{ name }}</span></h4>
               </div>
               <form  class="normal-form" >
               <div class="modal-body">          
                  <select class="custom-select" multiple (click)="_ToAdd($event.target.value)">
                       <option class="alert alert-success"  *ngFor="let item of usrol.nonMembers"  [value]="item.id" > {{ item.email }}</option>
-                  </select>
-                                                
+                  </select>                                                
               <div class="card-header"> <span> Remove From {{ name }}</span></div>                
                   <select class="custom-select" multiple (click)="_ToDelete($event.target.value)">
                        <option class="alert alert-info" *ngFor="let item of usrol.members"  [value]="item.id" > {{ item.email }}</option>       
@@ -62,7 +61,7 @@
               <button type="button" class="close pull-right" aria-label="Close" (click)="editnav.hide()">
                 <span aria-hidden="true">×</span>
               </button>
-              <h4 class="modal-title w-100" id="myModalLabel"><span>Edit {{ name }}</span></h4>
+              <h4 class="modal-title w-150" id="myModalLabel"><span>Edit {{ name }}</span></h4>
             </div>
             <form  class="normal-form" >
             <div class="modal-body">          
@@ -97,7 +96,7 @@
               <button type="button" class="close pull-right" aria-label="Close" (click)="delrole.hide()">
                 <span aria-hidden="true">×</span>
               </button>
-              <h4 class="modal-title w-100" id="myModalLabel"><span>Del {{ name }}</span></h4>
+              <h4 class="modal-title w-150" id="myModalLabel"><span>Del {{ name }}</span></h4>
             </div>
             <form  class="normal-form">           
             <div class="modal-footer">
