@@ -95,13 +95,13 @@ export class vergi
     STATE:string;
 }
 
-export class verg
-{
-    CODE:string;
-    ADI:string;
-    VAHID:string;
-    STATE:string;
-}
+// export class verg
+// {
+//     CODE:string;
+//     ADI:string;
+//     VAHID:string;
+//     STATE:string;
+// }
 export class fealsah{
     fs_CODE:string;
     fsADI:string;

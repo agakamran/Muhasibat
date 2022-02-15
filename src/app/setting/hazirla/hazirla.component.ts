@@ -9,7 +9,7 @@ import { SettingsService } from 'src/services/settings.service';
 //import { AuthService } from 'src/services/auth.service';
 import { NotificationService } from 'src/helpers/notification.service';
 import { NavbarService } from 'src/services/navbar.service';
-import { aktivi, hesab, madde, mushteri, parcha, qrup, shirket, tipleri, vahid, verg, vergi } from 'src/models/_muhasibat';
+import { aktivi, hesab, madde, mushteri, parcha, qrup, shirket, tipleri, vahid,  vergi } from 'src/models/_muhasibat';
 import { AyarlarService } from 'src/services/ayarlar.service';
 //import { forkJoin, interval } from 'rxjs';
 import { _ACTION_TYPE_UNIQUENESS_CHECK } from '@ngrx/store/src/tokens';
@@ -70,7 +70,7 @@ export class HazirlaComponent implements OnInit {
   listvahid: vahid[]=[];
   jsonlistvahid:vahid[] = [];
   listvergi: vergi[]=[];
-  jsonlistvergi:verg[] = [];
+  
  
   _parcha:parcha[]=[{id: '1', name: 'aktiv'},{id: '2', name: 'tip'},
   {id: '3', name: 'vergi'},{id: '4', name: 'hesab'},
@@ -112,11 +112,12 @@ export class HazirlaComponent implements OnInit {
             { 
               this._gender=p; 
              // console.log(p)
-              this._ayar._jsonvergi().subscribe( p=>{     
-              this.jsonlistvergi=p;
-            //  console.log(p.length)
-             // this.addgender();                                 
-          })}, error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
+          //     this._ayar._jsonvergi().subscribe( p=>{     
+          //     this.jsonlistvergi=p;
+          //   //  console.log(p.length)
+          //    // this.addgender();                                 
+          // })
+        }, error => console.error(error + 'Siz sistemə daxil olmalısınız!') ); 
 
       //---------aktiv------------
       this._ayar._getaktiv().subscribe(p=>
@@ -124,61 +125,67 @@ export class HazirlaComponent implements OnInit {
             this.listaktiv =p;
             //console.log('uuuuu') 
             //console.log(p)
-            this._ayar._jsondataktiv().subscribe( p=>{     
-            this.jsonlistaktiv=p;
-           // console.log(p)
-           // this.addgender();                                 
-        })}, error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
+        //     this._ayar._jsondataktiv().subscribe( p=>{     
+        //     this.jsonlistaktiv=p;
+        //    // console.log(p)
+        //    // this.addgender();                                 
+        // })
+      }, error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
         //---------------hesah----
         this._ayar._gethesab().subscribe(p=>
         { 
             this.listhesab =p; 
            // console.log(p)
-            this._ayar._jsonhesab().subscribe( p=>{     
-            this.jsonlisthesab=p;
-           // console.log(p)
-           // this.addgender();                                 
-        })}, error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
+        //     this._ayar._jsonhesab().subscribe( p=>{     
+        //     this.jsonlisthesab=p;
+        //    // console.log(p)
+        //    // this.addgender();                                 
+        // })
+      }, error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
          //---------------mushteri----
          this._ayar._getmushteri().subscribe(p=>
           { 
               this.listmushteri  =p; 
              // console.log(p)
-              this._ayar._jsonmushteri().subscribe( p=>{     
-              this.jsonlistmushteri=p;
-             // console.log(p)
-             // this.addgender();                                 
-          })}, error => console.error(error + 'Siz sistemə daxil olmalısınız!'));
+          //     this._ayar._jsonmushteri().subscribe( p=>{     
+          //     this.jsonlistmushteri=p;
+          //    // console.log(p)
+          //    // this.addgender();                                 
+          // })
+        }, error => console.error(error + 'Siz sistemə daxil olmalısınız!'));
            //---------------qrup----
         this._ayar._getqrup().subscribe(p=>
           { 
               this.listqrup  =p; 
              // console.log(p)
-              this._ayar._jsonqrup().subscribe( p=>{     
-              this.jsonlistqrup=p;
-             // console.log(p)
-             // this.addgender();                                 
-          })}, error => console.error(error + 'Siz sistemə daxil olmalısınız!'));
+          //     this._ayar._jsonqrup().subscribe( p=>{     
+          //     this.jsonlistqrup=p;
+          //    // console.log(p)
+          //    // this.addgender();                                 
+          // })
+        }, error => console.error(error + 'Siz sistemə daxil olmalısınız!'));
            //---------------shirket----
         this._ayar._getshirket().subscribe(p=>
           { 
               this.listshirket =p; 
             //  console.log(p)
-              this._ayar._jsonshirket().subscribe( p=>{     
-              this.jsonlistshirket=p;
-             // console.log(p)
-             // this.addgender();                                 
-          })}, error => console.error(error + 'Siz sistemə daxil olmalısınız!'));
+          //     this._ayar._jsonshirket().subscribe( p=>{     
+          //     this.jsonlistshirket=p;
+          //    // console.log(p)
+          //    // this.addgender();                                 
+          // })
+        }, error => console.error(error + 'Siz sistemə daxil olmalısınız!'));
            //---------------tip----
         this._ayar._gettip().subscribe(p=>
           { 
               this.listtip =p; 
              // console.log('%%%%%%')
-              this._ayar._jsontip().subscribe( p=>{     
-              this.jsonlisttip=p;
-             // console.log(p)
-             // this.addgender();                                 
-          })}, error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
+          //     this._ayar._jsontip().subscribe( p=>{     
+          //     this.jsonlisttip=p;
+          //    // console.log(p)
+          //    // this.addgender();                                 
+          // })
+        }, error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
        
     }  //------------Muhasibat son
     if(!this._shomi)

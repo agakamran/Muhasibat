@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
 import { EmeliylistComponent } from './emeliylist/emeliylist.component';
 import { EmeliyyatRoutingModule } from './emeliyyat-routing.module';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ElqaimealishComponent } from './elqaimealish/elqaimealish.component';
 //import { MaterialModule } from 'src/material/material.module';
 
 
@@ -23,7 +24,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
   declarations: [AlishComponent, SatishComponent, 
     HesablashmaComponent,  VergiComponent, 
     OhdelikComponent, KapitalComponent,
-     GelirComponent, XercComponent, DvidentComponent, EmeliylistComponent],
+     GelirComponent, XercComponent, DvidentComponent, EmeliylistComponent, ElqaimealishComponent],
   imports: [
     CommonModule,
     EmeliyyatRoutingModule,

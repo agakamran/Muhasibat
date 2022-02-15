@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 
-import * as dataktiv from '../_json/Muhasib/aktiv.json';
-import * as dathesab from '../_json/Muhasib/hesablar.json';
-import * as datmushteri from '../_json/Muhasib/mushteri.json';
-import * as datqrup from '../_json/Muhasib/qrup.json';
-import * as datshirket from '../_json/Muhasib/shirket.json';
-import * as dattip from '../_json/Muhasib/tip.json';
-import * as datvahid from '../_json/Muhasib/vahid.json';
-import * as datvergi from '../_json/Muhasib/eqm_mal_kodlari-v1.json';
-import * as datvergifeal from '../_json/Muhasib/fk-v1.json';
+// import * as dataktiv from '../_json/Muhasib/aktiv.json';
+// import * as dathesab from '../_json/Muhasib/hesablar.json';
+// import * as datmushteri from '../_json/Muhasib/mushteri.json';
+// import * as datqrup from '../_json/Muhasib/qrup.json';
+// import * as datshirket from '../_json/Muhasib/shirket.json';
+// import * as dattip from '../_json/Muhasib/tip.json';
+// import * as datvahid from '../_json/Muhasib/vahid.json';
+// import * as datvergi from '../_json/Muhasib/eqm_mal_kodlari-v1.json';
+// import * as datvergifeal from '../_json/Muhasib/fk-v1.json';
 //import * as datqrup from '../_json/Muhasib/malqrup.json';
 
 import { aktivi, bolme,  madde,hesab, mushteri, qrup, shirket, 
-  tipleri, vahid, valyuta, verg, vergi, fealsah, emel } from 'src/models/_muhasibat';
+  tipleri, vahid, valyuta,  vergi, fealsah, emel } from 'src/models/_muhasibat';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable, of } from 'rxjs';
+import { Observable} from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
@@ -26,10 +26,10 @@ export class AyarlarService {
   constructor(private http: HttpClient) {  this.pathAPI=environment.apiUrl+'Ayarlar/';}
   //-------------MUHASIBAT-------
   //-------------activler--------
-  _jsondataktiv(): Observable<aktivi[]> { 
-     //console.log('uuuuu')   
-    return of((dataktiv as any).default)   
-   }
+  // _jsondataktiv(): Observable<aktivi[]> { 
+  //    //console.log('uuuuu')   
+  //   return of((dataktiv as any).default)   
+  //  }
   _getaktiv(): Observable<any>{      
   //  const body=JSON.stringify(pra);
   // console.log('uuuuu')
@@ -67,9 +67,9 @@ export class AyarlarService {
     .pipe( catchError((err) => {  console.error(err);  throw err; }))
   } 
   //-----------hesab--------
-  _jsonhesab(): Observable<hesab[]> {    
-    return of((dathesab as any).default)   
-   }
+  // _jsonhesab(): Observable<hesab[]> {    
+  //   return of((dathesab as any).default)   
+  //  }
   _gethesab(): Observable<any>{      
     //const body=JSON.stringify(pra);
    // console.log('uuuuu')
@@ -107,9 +107,9 @@ export class AyarlarService {
     .pipe( catchError((err) => {  console.error(err);  throw err; }))
   } 
   //------------qrup-------- 
-  _jsonqrup(): Observable<qrup[]> {    
-    return of((datqrup as any).default)   
-   }
+  // _jsonqrup(): Observable<qrup[]> {    
+  //   return of((datqrup as any).default)   
+  //  }
   _getqrup(): Observable<any>{      
     //const body=JSON.stringify(pra);
    // console.log('uuuuu')
@@ -147,9 +147,9 @@ export class AyarlarService {
     .pipe( catchError((err) => {  console.error(err);  throw err; }))
   } 
   //------------Mushteri---------------
-  _jsonmushteri(): Observable<any[]> {    
-    return of((datmushteri as any).default)   
-   }
+  // _jsonmushteri(): Observable<any[]> {    
+  //   return of((datmushteri as any).default)   
+  //  }
   _getmushteri(): Observable<any>{      
     //const body=JSON.stringify(pra);
    // console.log('uuuuu')
@@ -187,10 +187,10 @@ export class AyarlarService {
     .pipe( catchError((err) => {  console.error(err);  throw err; }))
   } 
   //------------qrup-------- 
-  _jsonshirket(): Observable<shirket[]> { 
-   // console.log('XXX')   
-    return of((datshirket as any).default)   
-   }
+  // _jsonshirket(): Observable<shirket[]> { 
+  //  // console.log('XXX')   
+  //   return of((datshirket as any).default)   
+  //  }
   _getshirket(): Observable<any>{      
     //const body=JSON.stringify(pra);
    // console.log('uuuuu')
@@ -228,9 +228,9 @@ export class AyarlarService {
     .pipe( catchError((err) => {  console.error(err);  throw err; }))
   } 
   //------------tip-------- 
-  _jsontip(): Observable<tipleri[]> {    
-    return of((dattip as any).default)   
-   }
+  // _jsontip(): Observable<tipleri[]> {    
+  //   return of((dattip as any).default)   
+  //  }
   _gettip(): Observable<any>{      
     //const body=JSON.stringify(pra);
    // console.log('uuuuu')
@@ -266,9 +266,9 @@ export class AyarlarService {
     .pipe( catchError((err) => {  console.error(err);  throw err; }))
   } 
   //------------vahid-------- 
-  _jsonvahid(): Observable<vahid[]> {    
-    return of((datvahid as any).default)   
-   }
+  // _jsonvahid(): Observable<vahid[]> {    
+  //   return of((datvahid as any).default)   
+  //  }
   _getvahid(): Observable<any>{      
      return this.http.get<any>(this.pathAPI +'_getvahid')
     .pipe(map((data)=>{
@@ -340,10 +340,10 @@ export class AyarlarService {
     .pipe( catchError((err) => {  console.error(err);  throw err; }))
   } 
   //------------fealiyyet sahesi--------
-  _jsonvergifeal(): Observable<fealsah[]> {  
-    //  console.log('uuuuu122')
-   return of((datvergifeal as any).default)   
-  }
+  // _jsonvergifeal(): Observable<fealsah[]> {  
+  //   //  console.log('uuuuu122')
+  //  return of((datvergifeal as any).default)   
+  // }
  _getvergifeal(): Observable<any>{      
    //const body=JSON.stringify(pra);
   // console.log('uuuuu')
@@ -381,10 +381,10 @@ export class AyarlarService {
    .pipe( catchError((err) => {  console.error(err);  throw err; }))
  } 
    //------------vergi eqaime-------- 
-   _jsonvergi(): Observable<verg[]> {  
-     //  console.log('uuuuu122')
-    return of((datvergi as any).default)   
-   }
+  //  _jsonvergi(): Observable<verg[]> {  
+  //    //  console.log('uuuuu122')
+  //   return of((datvergi as any).default)   
+  //  }
   _getvergi(): Observable<any>{      
     //const body=JSON.stringify(pra);
    // console.log('uuuuu')
@@ -440,10 +440,10 @@ export class AyarlarService {
     .pipe( catchError((err) => {  console.error(err);  throw err; }))
   }   
   //------------Madde-------- 
-  _jsonmadde(): Observable<hesab[]> {  
-    //  console.log('uuuuu122')
-   return of((dathesab as any).default)   
-  }
+  // _jsonmadde(): Observable<hesab[]> {  
+  //   //  console.log('uuuuu122')
+  //  return of((dathesab as any).default)   
+  // }
   _getmadde(): Observable<any>{      
     //const body=JSON.stringify(pra);
    // console.log('uuuuu')
@@ -478,10 +478,10 @@ export class AyarlarService {
     .pipe( catchError((err) => {  console.error(err);  throw err; }))
   } 
   //------------bolme-------- 
-  _jsonbolme(): Observable<hesab[]> {  
-    //  console.log('uuuuu122')
-   return of((dathesab as any).default)   
-  }
+  // _jsonbolme(): Observable<hesab[]> {  
+  //   //  console.log('uuuuu122')
+  //  return of((dathesab as any).default)   
+  // }
   _getbolme(): Observable<any>{      
     //const body=JSON.stringify(pra);
    // console.log('uuuuu')

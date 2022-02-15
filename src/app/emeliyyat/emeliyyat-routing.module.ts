@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AlishComponent } from './alish/alish.component';
 import { DvidentComponent } from './dvident/dvident.component';
+import { ElqaimealishComponent } from './elqaimealish/elqaimealish.component';
 import { EmeliylistComponent } from './emeliylist/emeliylist.component';
 import { GelirComponent } from './gelir/gelir.component';
 import { HesablashmaComponent } from './hesablashma/hesablashma.component';
@@ -22,7 +23,9 @@ const routes: Routes = [{
       { path: 'kapital', component: KapitalComponent }, 
       { path: 'gelir', component: GelirComponent },
       { path: 'xerc', component: XercComponent },
-      { path: 'dvident', component: DvidentComponent }
+      { path: 'dvident', component: DvidentComponent },
+      {path: 'eqaimealish',component:ElqaimealishComponent}
+
    ] 
 }];
 
