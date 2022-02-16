@@ -8,6 +8,55 @@
                 <div class="row">
                     <div class="col-md-2">
                     </div>
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-4"> Activler  
+                      <select [(ngModel)]="emel.aId" formControlName="aId" (change)="selacti($event.target.value)"                       
+                      class="browser-default custom-select" >                                                     
+                        <option *ngFor="let o of listactiv" [value]="o.activId" >{{ o.activName }}</option>                                 
+                     </select>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                  </div>   
+                  <div class="row">
+                    <div class="col-md-2">             
+                    </div>
+                    <div class="col-md-2">Debit hesabı              
+                      <select [(ngModel)]="emel.dhesId" formControlName="dhesId" (change)="seldebit($event.target.value)"                       
+                      class="browser-default custom-select" >                                                   
+                        <option *ngFor="let o of _debhesab" [value]="o.hesId" >{{ o.hesnom }}</option>                                 
+                     </select>               
+                    </div>
+                    <div class="col-md-6">  
+                      <div class="md-form"></div>                              
+                         <input mdbInput type="text" class="form-control" value={{_debit}}  readonly>
+                      </div>
+                    <div class="col-md-2">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-2">
+                     
+                    </div>
+                    <div class="col-md-2">Kredit hesabı                                  
+                      <select [(ngModel)]="emel.khesId" formControlName="khesId" (change)="selkred($event.target.value)"                       
+                      class="browser-default custom-select" >                                                    
+                        <option *ngFor="let o of _debhesab" [value]="o.hesId" >{{ o.hesnom }}</option>                                                   
+                     </select>                 
+                    </div>
+                    <div class="col-md-6">
+                      <div class="md-form"></div> 
+                          <input mdbInput type="text" class="form-control" value={{_kredit}} readonly>
+                     </div>
+                    <div class="col-md-2">                
+                    </div>
+                  </div>  
+                <div class="row">
+                    <div class="col-md-2">
+                    </div>
                     <div class="col-md-8">                                          
                         <img *ngFor="let url of urls; let i = index" [src]="url"  alt="" (click)="_delFiles(i)" class="img-fluid img-thumbnail">
                         <input type="file" [src]="imgsrc" formControlName="_file" accept=" /* " multiple (change)="_selectFiles($event)" />                   
