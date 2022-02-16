@@ -12,6 +12,7 @@ export class MymuhasibService {
   constructor(private http: HttpClient) {  this.pathAPI=environment.apiUrl+'Eqaime/';}
 
   upload(p:any,file: File) {   
+    //console.log(p)
     const formData: FormData = new FormData();   
     formData.append('aId', p.aId);
     formData.append('dhesId', p.dhesId); 
@@ -21,13 +22,8 @@ export class MymuhasibService {
     formData.append('ValId',p.ValId);
     formData.append('Kurs',p.Kurs);
     formData.append('file', file); 
-    //console.log('FFF') 
-    //console.log(p.firmaId)         
-    // formData.append('proId',p.proId);
-    // formData.append('firmaId',p.storId);
-    // formData.append('genId',p.genId);   
-    console.log(formData)
-   // console.log('SSSSSSSSS')
+      
+    //console.log(formData)
     return this.http.post(this.pathAPI+'postfile',formData).pipe(
       map((data) => {
         //You can perform some transformation here

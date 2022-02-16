@@ -99,8 +99,10 @@ _selectFiles(event:any)
   {
     let ValId="AZN";
     let Kurs="1";
-    var _p={ QId:"ALIŞ",aId:this._actname,dhesId:this.dhesId,khesId:this.khesId,pars:this.pars,ValId:ValId,Kurs:Kurs   } 
-     for (let i = 0; i < this.selectedFiles.length; i++)  {  
+    var _p={ QId:"ALIŞ",aId:this._actname,dhesId:this.dhesId,
+    khesId:this.khesId,pars:this.pars,ValId:ValId,Kurs:Kurs   } 
+    // console.log(_p)
+    for (let i = 0; i < this.selectedFiles.length; i++)  {  
      // QId:any,aId:any,dhesId:any,khesId:any,pars:any,ValId:any,Kurs:any,file: File) 
 
         await this._caSer.upload(_p,this.selectedFiles[i]).toPromise();
