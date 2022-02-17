@@ -11,6 +11,7 @@ import { MymuhasibService } from 'src/services/mymuhasib.service';
   styleUrls: ['./elqaimealish.component.scss']
 })
 export class ElqaimealishComponent implements OnInit {
+  qrup='ALIŞ'
   title='Electron qaimelerin daxili';
   selectedFiles: File[] = [];
   emel:emel=new emel();
@@ -44,7 +45,24 @@ export class ElqaimealishComponent implements OnInit {
   selacti(act:any){  this._actname=act; 
     this._kredit='';this._debit='';
      this._debhesab=this.listhesab.filter(k=>k.activId===this._actname);
-     this._kredhesab=this.listhesab.filter(k=>k.activId===this._actname);   
+
+     switch(this.listactiv.find(k=>k.activId===this._actname)?.activName)
+     {
+       //"UZUNMÜDDƏTLİ AKTİVLƏR","QISAMÜDDƏTLİ AKTİVLƏR","KAPİTAL","UZUNMÜDDƏTLİ ÖHDƏLİKLƏR",
+       //"QISAMÜDDƏTLİ ÖHDƏLİKLƏR","GƏLİRLƏR","XƏRCLƏR","MƏNFƏƏTLƏR (ZƏRƏRLƏR)","MƏNFƏƏT VERGİSİ",
+         case 'UZUNMÜDDƏTLİ AKTİVLƏR': //1
+         this._kredhesab=this.listhesab.filter(k=>k.activId===this.listactiv.find(k=>k.activName==='UZUNMÜDDƏTLİ ÖHDƏLİKLƏR')?.activId);
+         break;
+         case 'QISAMÜDDƏTLİ AKTİVLƏR': //2
+         this._kredhesab=this.listhesab.filter(k=>k.activId===this.listactiv.find(k=>k.activName==='QISAMÜDDƏTLİ ÖHDƏLİKLƏR')?.activId);
+         break;
+         case 'KAPİTAL': //3
+         this._kredhesab=this.listhesab.filter(k=>k.activId===this.listactiv.find(k=>k.activName==='XƏRCLƏR')?.activId);
+         break;
+         case 'MƏNFƏƏTLƏR (ZƏRƏRLƏR)': //4
+         this._kredhesab=this.listhesab.filter(k=>k.activId===this.listactiv.find(k=>k.activName==='MƏNFƏƏT VERGİSİ')?.activId);
+         break;
+     }       
    }
    seldebit(deb:any){ this.dhesId=deb;   
      this._debit = this.listhesab.find(kam=>kam.hesId=== this.dhesId)!.hesname; 
@@ -99,12 +117,10 @@ _selectFiles(event:any)
   {
     let ValId="AZN";
     let Kurs="1";
-    var _p={ QId:"ALIŞ",aId:this._actname,dhesId:this.dhesId,
+    var _p={ QId:this.qrup,aId:this._actname,dhesId:this.dhesId,
     khesId:this.khesId,pars:this.pars,ValId:ValId,Kurs:Kurs   } 
     // console.log(_p)
     for (let i = 0; i < this.selectedFiles.length; i++)  {  
-     // QId:any,aId:any,dhesId:any,khesId:any,pars:any,ValId:any,Kurs:any,file: File) 
-
         await this._caSer.upload(_p,this.selectedFiles[i]).toPromise();
         this.notif.success('::File Submitted successfully');
      }

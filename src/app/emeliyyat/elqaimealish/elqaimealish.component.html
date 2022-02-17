@@ -44,7 +44,7 @@
                     <div class="col-md-2">Kredit hesabı                                  
                       <select [(ngModel)]="emel.khesId" formControlName="khesId" (change)="selkred($event.target.value)"                       
                       class="browser-default custom-select" >                                                    
-                        <option *ngFor="let o of _debhesab" [value]="o.hesId" >{{ o.hesnom }}</option>                                                   
+                        <option *ngFor="let o of _kredhesab" [value]="o.hesId" >{{ o.hesnom }}</option>                                                   
                      </select>                 
                     </div>
                     <div class="col-md-6">
