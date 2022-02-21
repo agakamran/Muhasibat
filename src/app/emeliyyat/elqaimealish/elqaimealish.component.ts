@@ -1,8 +1,10 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from 'src/helpers/notification.service';
 import { aktivi, emel, hesab } from 'src/models/_muhasibat';
 import { AyarlarService } from 'src/services/ayarlar.service';
+//import { ConvertDateService } from 'src/services/convert-date.service';
 import { MymuhasibService } from 'src/services/mymuhasib.service';
 
 @Component({
@@ -24,14 +26,18 @@ export class ElqaimealishComponent implements OnInit {
   _kredhesab: hesab[]=[];
   _actname='';dhesId='';khesId='';_debit='';_kredit='';
   pars:number=20;
-  constructor(private _caSer: MymuhasibService, private _kaSer: AyarlarService ,private notif: NotificationService ) { }
+  constructor(private _caSer: MymuhasibService, private _kaSer: AyarlarService ,private notif: NotificationService ,
+   //private condate: ConvertDateService 
+   ) { }
 
   ngOnInit(): void {
     this.eqaimeForm = new FormGroup({
       aId: new FormControl('', [Validators.required]),   
       dhesId: new FormControl('', [Validators.required]),
       khesId: new FormControl('', [Validators.required]),
-      _file: new FormControl('', [Validators.required]) 
+      Serial: new FormControl('', [Validators.required]),
+      emeltarixi: new FormControl('', [Validators.required]),
+      _file: new FormControl('', [Validators.required])
      //#endregion      
     });
     this._kaSer._getaktiv().subscribe(list=> {
@@ -117,13 +123,21 @@ _selectFiles(event:any)
   {
     let ValId="AZN";
     let Kurs="1";
+   // console.log(this.eqaimeForm.value.emeltarixi)
+   // let tar=this.condate.getFormatedDate(this.eqaimeForm.value.emeltarixi,);
+  // let tar1=formatDate(new Date(),  'yyyy-MM-dd T HH:mm:ss', 'en-US');
+   let tar=formatDate(this.eqaimeForm.value.emeltarixi,  'yyyy-MM-dd T HH:mm:ss', 'en-US');
     var _p={ QId:this.qrup,aId:this._actname,dhesId:this.dhesId,
-    khesId:this.khesId,pars:this.pars,ValId:ValId,Kurs:Kurs   } 
-    // console.log(_p)
+    khesId:this.khesId,pars:this.pars,ValId:ValId,Kurs:Kurs,Serial:this.eqaimeForm.value.Serial,
+    emeltarixi:tar   } 
+     //console.log(_p)
     for (let i = 0; i < this.selectedFiles.length; i++)  {  
         await this._caSer.upload(_p,this.selectedFiles[i]).toPromise();
         this.notif.success('::File Submitted successfully');
      }
+     this.selacti('');
+    // this.seldebit('')
+    // this.selkred('')
      this.selectedFiles=[] ;
      this.urls=[];      
   }

@@ -133,7 +133,7 @@ export class emel
     
     edvye_celbedilen:number;   //Edvye_celbedilen
     edvye_celbedilmeyen:number;  //Edvye_celbedilmeyen
-    emeltarixi:Date;      //Emeltarixi
+    emeltarixi:string;      //Emeltarixi
     valId:string;   //ValId 
     qeyd:string;      //Qeyd
     kurs:number;

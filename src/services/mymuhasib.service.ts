@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class MymuhasibService {
   pathAPI='';
  // _jsonUrl ='src/api/categori.json';
-  constructor(private http: HttpClient) {  this.pathAPI=environment.apiUrl+'Eqaime/';}
+  constructor(private http: HttpClient) {  this.pathAPI=environment.apiUrl+'Operation/';}
 
   upload(p:any,file: File) {   
     //console.log(p)
@@ -21,9 +21,11 @@ export class MymuhasibService {
     formData.append('pars',p.pars);
     formData.append('ValId',p.ValId);
     formData.append('Kurs',p.Kurs);
+    formData.append('Serial',p.Serial);
+    formData.append('emeltarixi',p.emeltarixi);
     formData.append('file', file); 
       
-    //console.log(formData)
+   // console.log(formData)
     return this.http.post(this.pathAPI+'postfile',formData).pipe(
       map((data) => {
         //You can perform some transformation here
