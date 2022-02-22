@@ -94,22 +94,32 @@ export class vergi
     edv_tar?:Date;
     STATE:string;
 }
-
-// export class verg
-// {
-//     CODE:string;
-//     ADI:string;
-//     VAHID:string;
-//     STATE:string;
-// }
 export class fealsah{
     fs_CODE:string;
     fsADI:string;
 }
 export class edeve{  eid :string; ename:string; }
 export class parcha{  id :string; name:string; }
-
-
+ 
+export class Productmaster {
+     PmasId:string;
+     UserId:string;
+     Kimden_voen:string;
+     Serial:string;
+     MushId :string;
+     Vo :string;
+     ActivId:string;
+     DhesId :string;
+     KhesId :string;
+     ValId : string;
+     QrupId: string;
+     Kurs:number;
+     Kimden_sum:number;
+     Pay:boolean = false;
+     Emeltarixi?:Date;
+     t1?:Date ;
+     t2?:Date ;
+}
 
 export class emel
 {

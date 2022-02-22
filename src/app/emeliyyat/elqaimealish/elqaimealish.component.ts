@@ -13,7 +13,7 @@ import { MymuhasibService } from 'src/services/mymuhasib.service';
   styleUrls: ['./elqaimealish.component.scss']
 })
 export class ElqaimealishComponent implements OnInit {
-  qrup='ALIŞ'
+  qrup='Malların, işlərin və xidmətlərin təqdim edilməsi qaiməsi'
   title='Electron qaimelerin daxili';
   selectedFiles: File[] = [];
   emel:emel=new emel();

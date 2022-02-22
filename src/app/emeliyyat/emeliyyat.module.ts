@@ -17,6 +17,8 @@ import { EmeliylistComponent } from './emeliylist/emeliylist.component';
 import { EmeliyyatRoutingModule } from './emeliyyat-routing.module';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ElqaimealishComponent } from './elqaimealish/elqaimealish.component';
+import { QaimelersComponent } from './qaimelers/qaimelers.component';
+import { QaimedetalComponent } from './qaimedetal/qaimedetal.component';
 //import { MaterialModule } from 'src/material/material.module';
 
 
@@ -24,7 +26,7 @@ import { ElqaimealishComponent } from './elqaimealish/elqaimealish.component';
   declarations: [AlishComponent, SatishComponent, 
     HesablashmaComponent,  VergiComponent, 
     OhdelikComponent, KapitalComponent,
-     GelirComponent, XercComponent, DvidentComponent, EmeliylistComponent, ElqaimealishComponent],
+     GelirComponent, XercComponent, DvidentComponent, EmeliylistComponent, ElqaimealishComponent, QaimelersComponent, QaimedetalComponent],
   imports: [
     CommonModule,
     EmeliyyatRoutingModule,

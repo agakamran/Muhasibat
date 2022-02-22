@@ -1,0 +1,81 @@
+<div class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">{{title}}</h3>
+    <div class="card-body">
+      <div id="table" class="table-editable">
+        <div class="row">
+          <div class="col-md-12 mx-auto">
+            <div class="md-form">  
+                <form [formGroup]="qaimeForm" class="normal-form">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3">Bash tarixi
+                      <input [(ngModel)]="emel.t1" formControlName="t1" mdbInput type="date" class="form-control" >
+                    </div>
+                    <div class="col-md-3">Son tarixi
+                       <input [(ngModel)]="emel.t2" formControlName="t2" mdbInput type="date" class="form-control" >
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                  </div> 
+                  <div class="row">                   
+                    <div class="col-md-10">
+                        <input  type="text" [(ngModel)]="searchText"  class="form-control" id="search" mdbInput />
+                        <label for="search">Search</label>
+                     </div>
+                    <div class="col-md-2">
+                        <button type="button" mdbBtn color="primary" class="btn btn-success btn-rounded btn-sm my-0"
+                        (click)="_getqaime" [disabled]="!qaimeForm.valid">Get <i class="fas float-right fa-2x" aria-hidden="true"></i></button>
+                    </div>  
+                  </div>       
+                </form>
+            </div>
+          </div>
+        </div>
+        <span class="table-add float-right mb-3 mr-2">
+          
+          </span> 
+
+          <table class="table table-bordered table-responsive-md table-striped text-center"  *ngIf='listvergi && listvergi.length'>
+            <thead>            
+              <tr>   
+                <th *ngFor="let head of headElements; let i = index" 
+                  aria-controls="tableSortExample" scope="col" [mdbTableSort]="elements"
+                   [sortBy]="headElements[i]">{{ head | titlecase}}
+                    <mdb-icon fas icon="sort"></mdb-icon>
+                  </th>  
+                  <th class="text-center">Actions</th>             
+                <!-- <th class="text-center">vergikodu  </th> 
+                <th class="text-center">vergikodununadi </th>    
+                <th class="text-center">vahidadi </th>     -->            
+              </tr>
+            </thead>
+            <tbody *ngFor='let p of filteredvergi'>
+              <tr>
+               <!--   <td class="pt-3-half" contenteditable="true">{{ p.navid }}</td>-->
+                <!-- <td class="pt-3-half" contenteditable="true">{{ p.genId }}</td> -->
+                <td class="pt-3-half" contenteditable="true">{{ p.vergikodu }}</td>
+                <td class="pt-3-half" contenteditable="true">{{ p.vergikodununadi}}</td>    
+                <td class="pt-3-half" contenteditable="true">{{ p.vahidadi}}</td>
+               <!--  <td class="pt-3-half" contenteditable="true">{{ p.firma_email}}</td>  
+               <td class="pt-3-half" contenteditable="true">{{ p.voen}}</td>  -->
+              <!--  <td class="pt-3-half">
+                  <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
+                        aria-hidden="true"></i></a></span>
+                  <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
+                        aria-hidden="true"></i></a></span>
+                </td>-->
+                <td>
+                  <span class="table-remove">
+                    <button type="button" (click)="addvergi.show()" (click)="_editvergi(p)" class="btn btn-info btn-sm my-0">
+                      Edit<i class="fas fa-edit"></i></button>
+                    <button type="button" (click)="delvergi.show()" (click)="_editvergi(p)" class="btn btn-danger btn-rounded btn-sm my-0">
+                      Remove<i class="fas fa-trash-alt"></i></button>
+                  </span>
+                </td>
+              </tr>       
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+  

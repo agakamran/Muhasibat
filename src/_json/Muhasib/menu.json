@@ -17,14 +17,17 @@
     {"nid":"","pid":"Ayarlar","ntitle":"Şirkətimiz","npath":"ayarlars/shirketimiz","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":15,"nisparent":false},
 
     {"nid":"","pid":null,"ntitle":"Eməliyyat","npath":"emeliyyat/","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":16,"nisparent":true},
-    {"nid":"","pid":"Eməliyyat","ntitle":"Eqaime ile alish","npath":"emeliyyat/eqaimealish","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":17,"nisparent":false},
-    {"nid":"","pid":"Eməliyyat","ntitle":"Alış","npath":"emeliyyat/alish","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":18,"nisparent":false},
-    {"nid":"","pid":"Eməliyyat","ntitle":"Satış","npath":"emeliyyat/satish","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":19,"nisparent":false},
-    {"nid":"","pid":"Eməliyyat","ntitle":"Hesablaşma","npath":"emeliyyat/hesablashma","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":20,"nisparent":false},
-    {"nid":"","pid":"Eməliyyat","ntitle":"Vergi","npath":"emeliyyat/vergi","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":21,"nisparent":false},
-    {"nid":"","pid":"Eməliyyat","ntitle":"Öhdəlik","npath":"emeliyyat/ohdelik","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":22,"nisparent":false},
-    {"nid":"","pid":"Eməliyyat","ntitle":"Kapital","npath":"emeliyyat/kapital","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":23,"nisparent":false},
-    {"nid":"","pid":"Eməliyyat","ntitle":"Gəlir","npath":"emeliyyat/gelir","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":24,"nisparent":false},
-    {"nid":"","pid":"Eməliyyat","ntitle":"Xərc","npath":"emeliyyat/xerc","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":25,"nisparent":false},
-    {"nid":"","pid":"Eməliyyat","ntitle":"Divident","npath":"emeliyyat/dvident","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":26,"nisparent":false}
+    {"nid":"","pid":"Eməliyyat","ntitle":"Qaimə daxili","npath":"emeliyyat/eqaimealish","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":17,"nisparent":false},
+    {"nid":"","pid":"Eməliyyat","ntitle":"Qaimələr","npath":"emeliyyat/qaimeler","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":18,"nisparent":false},
+    {"nid":"","pid":"Eməliyyat","ntitle":"Qaimənin detalı","npath":"emeliyyat/qaimedet","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":19,"nisparent":false},
+
+    {"nid":"","pid":"Eməliyyat","ntitle":"Alış","npath":"emeliyyat/alish","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":20,"nisparent":false},
+    {"nid":"","pid":"Eməliyyat","ntitle":"Satış","npath":"emeliyyat/satish","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":21,"nisparent":false},
+    {"nid":"","pid":"Eməliyyat","ntitle":"Hesablaşma","npath":"emeliyyat/hesablashma","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":22,"nisparent":false},
+    {"nid":"","pid":"Eməliyyat","ntitle":"Vergi","npath":"emeliyyat/vergi","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":23,"nisparent":false},
+    {"nid":"","pid":"Eməliyyat","ntitle":"Öhdəlik","npath":"emeliyyat/ohdelik","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":24,"nisparent":false},
+    {"nid":"","pid":"Eməliyyat","ntitle":"Kapital","npath":"emeliyyat/kapital","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":25,"nisparent":false},
+    {"nid":"","pid":"Eməliyyat","ntitle":"Gəlir","npath":"emeliyyat/gelir","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":26,"nisparent":false},
+    {"nid":"","pid":"Eməliyyat","ntitle":"Xərc","npath":"emeliyyat/xerc","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":27,"nisparent":false},
+    {"nid":"","pid":"Eməliyyat","ntitle":"Divident","npath":"emeliyyat/dvident","nicon":null,"nlan":"Az","ncsay":"1","nrol":"Administrator","ink":28,"nisparent":false}
 ]

@@ -385,9 +385,18 @@ export class HazirlaComponent implements OnInit {
     }
   }
   selpar(pa:any){
-    this._par = pa; console.log( this._par )
+    this._par = pa; console.log( this._par )    
     this._ayar._posUmumi(this._par).subscribe();
+    // if(this.listmushteri.length>0)
+    // {
+    //   this.listmushteri.forEach(el => {
+    //        var fir=el.voen;
+    //        console.log(fir);
+    //    });       
+    // }
    }
+
+
   //---------------Muhasibat---------
   // addvahid(){
   //   if(this.listvergi.length===0)  

@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +38,17 @@ export class MymuhasibService {
        throw err;
      }
    ))  
-}
+  }
+  _getqaimeler(bo:any): Observable<any>{ 
+    const body=JSON.stringify(bo);        
+    return this.http.post<any>(this.pathAPI +'getqayimeler',body)
+   .pipe(map((data)=>{
+     return data;
+   }),
+     catchError((err) => {
+       console.error(err);
+       throw err;
+     }
+   )); 
+ } 
 }
