@@ -1,5 +1,5 @@
 <div class="card">
-    <h3 class="card-header text-center font-weight-bold text-uppercase py-4"> {{title + ': ' + listqaime.kimden_voen}}</h3>
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4"> {{title}}</h3>
     <div class="card-body">
       <div id="table" class="table-editable">
         <div class="row">
@@ -14,7 +14,13 @@
                         <label for="search">Search</label>
                      </div>
                     <div class="col-md-4"></div>  
-                  </div>               
+                  </div>  
+                  <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">Serya:{{ seryal }}</div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+                  </div>             
             </div>
           </div>
         </div>
@@ -34,26 +40,29 @@
             </thead>
             <tbody *ngFor='let p of listqaime'>
               <tr>              
-                <!-- <td class="pt-3-half" contenteditable="true">{{ p.qrupname }}</td> -->
+                <!-- <td class="pt-3-half" contenteditable="true">{{ p.qrupname }}</td> 
                 <td class="pt-3-half" contenteditable="true">
                   <a [routerLink]="['/emeliyyat/qaimedet/', p.pmasId]">
                     {{ p.kimden_voen}}
                 </a>
-                  </td>  
-                <td class="pt-3-half" contenteditable="true">{{ p.firma}}</td>     
+                  </td>  -->
+                <td class="pt-3-half " contenteditable="true">{{ p.kimden_voen}}</td>
+                <td class="pt-3-half text-left" contenteditable="true">{{ p.maladi}}</td>   
+                <td class="pt-3-half" contenteditable="true">{{ p.miqdar}}</td>    
+                <td class="pt-3-half" contenteditable="true">{{ p.alishqiy}}</td> 
                 <td class="pt-3-half" contenteditable="true">{{ p.serial}}</td>
-                <td class="pt-3-half" contenteditable="true">{{ p.kimden_sum}}</td>   
-                <td class="pt-3-half" contenteditable="true">{{ p.pay}}</td>  
-                <td class="pt-3-half" contenteditable="true">{{ p.emeltarixi}}</td>               
-                <td>
-                  <!-- <span class="table-remove">
+                <td class="pt-3-half" contenteditable="true">{{ p.edv}}</td>   
+                <td class="pt-3-half" contenteditable="true">{{ p.emeltarixi}}</td>  
+                <!-- <td class="pt-3-half" contenteditable="true">{{ p.vergikodununadi}}</td>                -->
+               <!-- <td>
+                   <span class="table-remove">
                     <button type="button" (click)="_selqaime(p.pmasId)"  class="btn btn-info btn-sm my-0">
                       Edit<i class="fas fa-edit"></i></button>
                     routerLink="/emeliyyat/qaimedet/{{p.pmasId}}"
                   <button type="button" (click)="delvergi.show()" (click)="_editvergi(p)" class="btn btn-danger btn-rounded btn-sm my-0">
                       Remove<i class="fas fa-trash-alt"></i></button>
-                  </span> -->
-                </td>
+                  </span> 
+                </td>-->
               </tr>       
             </tbody>
           </table> 

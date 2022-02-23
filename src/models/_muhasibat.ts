@@ -104,8 +104,8 @@ export class parcha{  id :string; name:string; }
 export class Productmaster {
      PmasId:string;
      UserId:string;
-     Kimden_voen:string;
-     Serial:string;
+     kimden_voen:string;
+     serial:string;
      MushId :string;
      Vo :string;
      ActivId:string;
