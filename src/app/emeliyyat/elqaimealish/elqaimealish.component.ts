@@ -26,6 +26,8 @@ export class ElqaimealishComponent implements OnInit {
   _kredhesab: hesab[]=[];
   _actname='';dhesId='';khesId='';_debit='';_kredit='';
   pars:number=20;
+
+  
   constructor(private _caSer: MymuhasibService, private _kaSer: AyarlarService ,private notif: NotificationService ,
    //private condate: ConvertDateService 
    ) { }

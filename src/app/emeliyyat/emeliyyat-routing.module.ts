@@ -28,7 +28,7 @@ const routes: Routes = [{
       { path: 'dvident', component: DvidentComponent },
       {path: 'eqaimealish',component:ElqaimealishComponent},      
       {path: 'qaimeler',component:QaimelersComponent},
-      {path: 'qaimedet',component:QaimedetalComponent},
+      {path: 'qaimedet/:id',component:QaimedetalComponent},
 
    ] 
 }];

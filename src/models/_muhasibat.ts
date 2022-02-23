@@ -117,8 +117,7 @@ export class Productmaster {
      Kimden_sum:number;
      Pay:boolean = false;
      Emeltarixi?:Date;
-     t1?:Date ;
-     t2?:Date ;
+    
 }
 
 export class emel

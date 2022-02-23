@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard1.component.scss']
 })
 export class Dashboard1Component implements OnInit {
-
+ 
   public map: any = { lat: 51.678418, lng: 7.809007 };
   public chart1Type:string = 'bar';
   public chart2Type:string = 'pie';
@@ -60,6 +60,8 @@ export class Dashboard1Component implements OnInit {
   }
 
   ngOnInit() {
+   // this.menudata$ = this.store.select(getMenuData); 
+   //  console.log('111111111')
   }
 
 }

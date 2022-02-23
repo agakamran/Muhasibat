@@ -6,6 +6,8 @@ import { User } from 'src/models/_users';
 import { getMenuData } from '../../store/menus.selectors';
 import * as actions from '../../store/menus.actions'; 
 import { AuthService } from 'src/services/auth.service';
+// import { AppState } from 'src/app/reducers';
+// import { Observable } from 'rxjs';
 //import { NavbarService } from 'src/services/navbar.service';
 //import { AuthService } from 'src/services/auth.service';
 @Component({
@@ -26,8 +28,8 @@ export class NavigationComponent implements OnInit {
   @Input() isAdmin: boolean;
   @Output() logout = new EventEmitter<User>();
   clicked: boolean;
-
-  constructor(private store$: Store,private _aut:AuthService //,private _nav:NavbarService//
+  //menudata$: Observable<MenuItem[]> 
+  constructor(private store$: Store,private _aut:AuthService ,//private store: Store<AppState>, ,private _nav:NavbarService//
     ) {
     this.clicked = this.clicked === undefined ? false : true;
   }
@@ -48,7 +50,7 @@ export class NavigationComponent implements OnInit {
       // })
       this.store$.select(getMenuData).subscribe(k=>{ 
         this._menu=k; 
-       // console.log(k) 
+        //console.log(k) 
         //console.log('211')
         this._childmenu=this._menu.filter(g=>!g.nisparent && g.pid!=null);
         //console.log('111') ;
@@ -57,7 +59,8 @@ export class NavigationComponent implements OnInit {
       // this._menu=p;        
       // this._childmenu=this._menu.filter(g=>!g.nisparent && g.pid!=null);                 
       // });
-      
+    //  this.menudata$ = this.store.select(getMenuData); 
+   // console.log(this.user.photoUrl)
      this._photoUrl=environment.apiUrl.replace('/api/','/')+this.user.photoUrl;
     }         
   }

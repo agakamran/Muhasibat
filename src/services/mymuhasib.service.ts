@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+//import { Productmaster } from 'src/models/_muhasibat';
 
 
 @Injectable({
@@ -39,9 +40,9 @@ export class MymuhasibService {
      }
    ))  
   }
-  _getqaimeler(bo:any): Observable<any>{ 
-    const body=JSON.stringify(bo);        
-    return this.http.post<any>(this.pathAPI +'getqayimeler',body)
+  _getqaimeler(bo:any): Observable<any>{     
+   // const body=JSON.stringify(bo);        
+    return this.http.get<any>(this.pathAPI +'getqayimeler?tar='+bo)
    .pipe(map((data)=>{
      return data;
    }),
@@ -51,4 +52,15 @@ export class MymuhasibService {
      }
    )); 
  } 
+ _getqaimedetal(bo:any): Observable<any>{     
+  // const body=JSON.stringify(bo);        
+   return this.http.get<any>(this.pathAPI +'getqayimedetal?PmasId='+bo)
+  .pipe(map((data)=>{
+    return data;
+  }),
+    catchError((err) => { console.error(err);
+      throw err;
+    }
+  )); 
+} 
 }

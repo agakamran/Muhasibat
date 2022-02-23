@@ -39,14 +39,13 @@ export class AppComponent implements OnInit {
 
     this.router.events.subscribe((route:any) => {
       this.currentUrl = route.url;
-
       this.specialPage = this.specialPages.indexOf(this.currentUrl) !== -1;
     });
 
   }
 
   ngOnInit(): void {
-    //console.log('111111111')
+   // console.log('111111111')
     this.user$ = this.store.select(getUser);    
     this.isLoggedIn$ = this.store.select(getIsLoggedIn);
     this.isLoading$ = this.store.select(getIsLoading);    
@@ -68,7 +67,6 @@ export class AppComponent implements OnInit {
     //console.log(this.st.getrole())
  }
  onLogout(user: User) {
-   // console.log('222222222')
     this.store.dispatch(new fromAuth.LogoutRequested( { user }));
  }
 
