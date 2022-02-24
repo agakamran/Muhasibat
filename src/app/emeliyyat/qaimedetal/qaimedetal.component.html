@@ -6,21 +6,48 @@
           <div class="col-md-12 mx-auto">
             <div class="md-form">                
                  <div class="row">    
-                  <div class="col-md-4"><a class='btn btn-default' (click)='onBack()' >
-                    <i class="fas float-right fa-2x" aria-hidden="true"></i> Back
-                </a></div>                
+                  <div class="col-md-4">
+                    
+              </div>                
                     <div class="col-md-4">
-                        <input  type="text" [(ngModel)]="searchText"  class="form-control" id="search" mdbInput />
-                        <label for="search">Search</label>
+                       
                      </div>
                     <div class="col-md-4"></div>  
                   </div>  
                   <div class="row">
+                    <div class="col-md-4">
+                      <a class='btn btn-default' (click)='onBack()' >
+                        <i class="fas float-right fa-2x" aria-hidden="true"></i> Back
+                      </a>
+                    </div>
+                    <div class="col-md-6">Serya:{{ seryal   }}</div>
+                    <div class="col-md-2"></div>
                     <div class="col-md-4"></div>
-                    <div class="col-md-4">Serya:{{ seryal }}</div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4"></div>
-                  </div>             
+                  </div> 
+                  <hr>
+                  <div class="row">
+                    
+                    <div class="col-md-10">
+                      Qaimənin növü:  {{_qrup}}
+                    </div>
+                    <div class="col-md-2"></div>
+                  </div>  
+                  <hr>
+                  <div class="row">
+                   
+                    <div class="col-md-10">
+                      Təqdim edən: {{ _fir }} 
+                    </div>
+                    <div class="col-md-2"></div>
+                  </div> 
+                  <hr> 
+                  <div class="row">
+                    <div class="col-md-10">
+                      Alıcı:  {{ _alici }}  
+                    </div>
+                    <div class="col-md-2"></div>
+                  </div> 
+                  <hr>         
             </div>
           </div>
         </div>
@@ -45,14 +72,15 @@
                   <a [routerLink]="['/emeliyyat/qaimedet/', p.pmasId]">
                     {{ p.kimden_voen}}
                 </a>
-                  </td>  -->
-                <td class="pt-3-half " contenteditable="true">{{ p.kimden_voen}}</td>
+                  </td> 
+                <td class="pt-3-half " contenteditable="true">{{ p.kimden_voen}}</td> -->
                 <td class="pt-3-half text-left" contenteditable="true">{{ p.maladi}}</td>   
                 <td class="pt-3-half" contenteditable="true">{{ p.miqdar}}</td>    
                 <td class="pt-3-half" contenteditable="true">{{ p.alishqiy}}</td> 
-                <td class="pt-3-half" contenteditable="true">{{ p.serial}}</td>
-                <td class="pt-3-half" contenteditable="true">{{ p.edv}}</td>   
-                <td class="pt-3-half" contenteditable="true">{{ p.emeltarixi}}</td>  
+                <td class="pt-3-half" contenteditable="true">{{ p.cemi}}</td>
+                 <td class="pt-3-half" contenteditable="true">{{ p.edv}}</td>   
+                <td class="pt-3-half" contenteditable="true">{{ p.yekunmeb}}</td>  
+
                 <!-- <td class="pt-3-half" contenteditable="true">{{ p.vergikodununadi}}</td>                -->
                <!-- <td>
                    <span class="table-remove">
@@ -63,8 +91,19 @@
                       Remove<i class="fas fa-trash-alt"></i></button>
                   </span> 
                 </td>-->
-              </tr>       
+              </tr>   
+               
             </tbody>
+            <tfoot>
+              <tr>
+                <td class="pt-3-half text-left" contenteditable="true">Yekunu</td>   
+                <td class="pt-3-half" contenteditable="true"></td>    
+                <td class="pt-3-half" contenteditable="true"></td> 
+                <td class="pt-3-half" contenteditable="true">{{ cemi1}}</td>
+                <td class="pt-3-half" contenteditable="true">{{ edv1}}</td>   
+                <td class="pt-3-half" contenteditable="true">{{ yekunmeb1}}</td>  
+              </tr>   
+          </tfoot>
           </table> 
         </div>
       </div>

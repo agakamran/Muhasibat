@@ -207,8 +207,8 @@ export class AyarlarService {
   } 
   _posshirket(bo:shirket):Observable<any> {        
     const body=JSON.stringify(bo);  
-    //console.log(body)
-   // console.log(this.pathAPI + 'postbeden', body)
+   // console.log(body)
+    console.log(this.pathAPI + '_postshirket', body)
     return this.http.post<shirket>(this.pathAPI + '_postshirket', body)
        .pipe(
           map((data) => {

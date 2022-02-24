@@ -37,6 +37,7 @@ export class ShirketComponent implements OnInit {
        email: new FormControl('',[Validators.required]),
        unvan: new FormControl('',[Validators.required]),
        userId: new FormControl('',[Validators.required]),
+       shirpercent: new FormControl(0),
     });  
     
       this._caSer._getshirket().subscribe(list=>

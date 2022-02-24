@@ -16,7 +16,7 @@ export class QaimelersComponent implements OnInit {
    @ViewChild(MdbTableDirective, {static: true}) mdbTable: MdbTableDirective;
    @HostListener('input') oninput() {  this.searchItems();  }
    elements: any = [];
-   headElements = [ 'Voen','Firma', 'Serial','Sum','Pay','Tarixi']; //'Qrupname', 
+   headElements = [ 'Voen','Firma', 'Serial','Sum','Edv','Pay','Tarixi']; //'Qrupname', 
    searchText: string = '';  previous: string; 
    //---------------------------------
    @Input()  pmasId: Productmaster[];
@@ -40,7 +40,7 @@ export class QaimelersComponent implements OnInit {
         this.elements= this.listqaime; 
        this.mdbTable.setDataSource(this.elements);
        this.previous = this.mdbTable.getDataSource();
-           console.log(this.listqaime)                        
+         //  console.log(this.listqaime)                        
        }, error => console.error(error + 'Melumat yoxdur!'));
       
   } 
