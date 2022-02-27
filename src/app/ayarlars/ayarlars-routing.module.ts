@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AktivlerComponent } from './aktivler/aktivler.component';
+import { AnbarComponent } from './anbar/anbar.component';
 import { AyarListComponent } from './ayar-list/ayar-list.component';
 import { BolmeComponent } from './bolme/bolme.component';
 import { HesabComponent } from './hesab/hesab.component';
 import { MaddeComponent } from './madde/madde.component';
 import { MushteriComponent } from './mushteri/mushteri.component';
+import { QrupComponent } from './qrup/qrup.component';
 import { ShirketComponent } from './shirket/shirket.component';
 import { TiplerComponent } from './tipler/tipler.component';
 import { VahidComponent } from './vahid/vahid.component';
@@ -26,6 +28,8 @@ const routes: Routes = [
         { path: 'tipler', component: TiplerComponent },
         { path: 'bolme', component: BolmeComponent },
         { path: 'madde', component: MaddeComponent },
+        { path: 'anbar', component: AnbarComponent },
+        { path: 'qrup', component: QrupComponent },
      ]
    },
 ];

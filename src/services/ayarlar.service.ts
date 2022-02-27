@@ -12,7 +12,7 @@ import { Injectable } from '@angular/core';
 //import * as datqrup from '../_json/Muhasib/malqrup.json';
 
 import { aktivi, bolme,  madde,hesab, mushteri, qrup, shirket, 
-  tipleri, vahid, valyuta,  vergi, fealsah, emel } from 'src/models/_muhasibat';
+  tipleri, vahid, valyuta,  vergi, fealsah, emel, anbar } from 'src/models/_muhasibat';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable} from 'rxjs';
@@ -66,6 +66,47 @@ export class AyarlarService {
      return this.http.post(this.pathAPI + 'delaktiv',bo )
     .pipe( catchError((err) => {  console.error(err);  throw err; }))
   } 
+  //-------------anbar--------
+  // _jsondataktiv(): Observable<aktivi[]> { 
+  //    //console.log('uuuuu')   
+  //   return of((dataktiv as any).default)   
+  //  }
+  _getanbar(): Observable<any>{      
+    //  const body=JSON.stringify(pra);
+    // console.log('uuuuu')
+    // console.log(body.toString())   
+      return this.http.get<any>(this.pathAPI +'getanbar')
+      .pipe(map((data)=>{
+        return data;
+      }),
+        catchError((err) => {
+          console.error(err);
+          throw err;
+        }
+      )); 
+    } 
+    _postanbar(bo:anbar):Observable<any> {        
+      const body=JSON.stringify(bo);  
+      console.log(body)
+     // console.log(this.pathAPI + 'postbeden', body)
+      return this.http.post<anbar>(this.pathAPI + '_postanbar', body)
+         .pipe(
+            map((data) => {
+              //You can perform some transformation here
+             return data;
+           }),
+           catchError((err) => {
+             console.error(err);
+             throw err;
+           }
+         ))
+    }  
+    _delanbar(bo:anbar) {   
+     // const bod:MenuItem= { pid: id,pagename:'' }
+      //console.log(id)
+       return this.http.post(this.pathAPI + 'delanbar',bo )
+      .pipe( catchError((err) => {  console.error(err);  throw err; }))
+    } 
   //-----------hesab--------
   // _jsonhesab(): Observable<hesab[]> {    
   //   return of((dathesab as any).default)   
@@ -128,7 +169,7 @@ export class AyarlarService {
     const body=JSON.stringify(bo);  
    // console.log('11sd')
    // console.log(this.pathAPI + 'postbeden', body)
-    return this.http.post<qrup>(this.pathAPI + 'postqrup', body)
+    return this.http.post<qrup>(this.pathAPI + '_postqrup', body)
        .pipe(
           map((data) => {
             //You can perform some transformation here

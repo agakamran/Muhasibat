@@ -2,7 +2,9 @@ export class qrup
 {
     qId:string;
     qrupname:string;
-    qeyd:string;       
+    dhesId:string;
+    khesId:string;
+       
 }
 
 export class tipleri
@@ -15,6 +17,11 @@ export class bolme
     bId:string;
     bolmeName:string;       
 } 
+export class anbar
+{
+    anbId:string;
+    anbarname:string;       
+}
 export class madde
 {
     mId:string;

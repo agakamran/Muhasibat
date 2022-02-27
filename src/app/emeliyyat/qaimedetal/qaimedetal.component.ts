@@ -15,8 +15,8 @@ export class QaimedetalComponent implements OnInit {
   // @ViewChild(MdbTableDirective, {static: true}) mdbTable: MdbTableDirective;
   // @HostListener('input') oninput() {  this.searchItems();  }
    elements: any = [];
-   headElements = [ 'Yola salınmış malların,görülmüş  işlərin və ya  göstərilmiş   xidmətlərin ad',
-                            'Miqdarı, həcmi' ,'Vahidinin buraxiliş qiyməti', 'ƏDV-yə cəlb edilən',
+   headElements = [ '№','Yola salınmış malların,görülmüş  işlərin və ya  göstərilmiş   xidmətlərin ad',
+                            'Miqdarı, həcmi' ,'Vahidinin buraxiliş qiyməti','Cəmi', 'ƏDV-yə cəlb edilən',
                             'Vergi tutulan əməliyyatlardan ödənilməli ƏDV',                    
    'Yekun məbləğ']; //,'Vergikodununadi'
    searchText: string = '';  previous: string; 
@@ -41,31 +41,23 @@ export class QaimedetalComponent implements OnInit {
    this._caSer._getqaimedetal(pmasId).subscribe(list=> {
     this.listqaime=list; 
     //console.log(this.listqaime)
-    
-    var qru = new Set(this.listqaime.map(item => item.qrupname));
-     qru.forEach(x => {  this._qrup=x.toString();  });
-     var fir = new Set(this.listqaime.map(item => item.firma));
-     fir.forEach(x => {  this._fir=x.toString();  });
+    this.listqaime.forEach(el => {
+      this.seryal=el.serial.toString();
+      this.seryal +=  '   ' +  el.emeltarixi.toString();
+      this._qrup=el.qrupname.toString();
+      this._fir=el.firma.toString();
+      this._alici=el.shirvoen.toString();
+      this._alici +=  '   ' + el.shiricrachi.toString();
+       //-------------footer-----------
+      this.cemi1 =this.cemi1  + Number.parseFloat(el.cemi);
+      this.edv1 =this.edv1  + Number.parseFloat(el.edv);
+      this.yekunmeb1 = this.yekunmeb1  + Number.parseFloat(el.yekunmeb); 
+     // this.yekunmeb1=this.yekunmeb1
+    });
 
-     var alic = new Set(this.listqaime.map(item => item.shirvoen));
-     alic.forEach(x => {  this._alici=x.toString();  });
-
-     var alicic = new Set(this.listqaime.map(item => item.shiricrachi));
-     alicic.forEach(x => {  this._alici +=  '   ' +x.toString();  });
-
-    var ser = new Set(this.listqaime.map(item => item.serial));
-    ser.forEach(x => {  this.seryal=x.toString();  });  
-    
-    var tar = new Set(this.listqaime.map(item => item.emeltarixi));
-    tar.forEach(x => {  this.seryal +=  '   ' +  x.toString();  });  
-    //---------------------footer------------------------------
-    var cem = new Set(this.listqaime.map(item => item.cemi));
-    cem.forEach(x => {  this.cemi1 =this.cemi1  + Number.parseFloat(x)   ;  });
-    var ed = new Set(this.listqaime.map(item => item.edv));
-    ed.forEach(x => {  this.edv1 =this.edv1  + Number.parseFloat(x)   ;  });
-    var yeku = new Set(this.listqaime.map(item => item.yekunmeb));
-    yeku.forEach(x => {  this.yekunmeb1 =this.yekunmeb1  + Number.parseFloat(x)   ;  });
-    //--------------------------------------------------------------                         
+    // var qru = new Set(this.listqaime.map(item => item.qrupname));
+    //  qru.forEach(x => {  this._qrup=x.toString();  });
+                           
    }, error => console.error(error + 'Melumat yoxdur!'));
    
    

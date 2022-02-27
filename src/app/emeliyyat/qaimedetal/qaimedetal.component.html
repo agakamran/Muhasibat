@@ -56,7 +56,7 @@
           </span> 
            <table class="table table-bordered table-responsive-md table-striped text-center"  *ngIf='listqaime && listqaime.length'>
             <thead>            
-              <tr>   
+              <tr >   
                 <th *ngFor="let head of headElements; let i = index" 
                   aria-controls="tableSortExample" scope="col" [mdbTableSort]="elements"
                    [sortBy]="headElements[i]">{{ head | titlecase}}
@@ -65,8 +65,9 @@
                   <!-- <th class="text-center">Actions</th>              -->
               </tr>
             </thead>
-            <tbody *ngFor='let p of listqaime'>
-              <tr>              
+            <tbody *ngFor='let p of listqaime; let i = index'>
+              <tr>    
+                <td class="pt-3-half" contenteditable="true" style="width: 20px;">{{ i + 1 }}</td>           
                 <!-- <td class="pt-3-half" contenteditable="true">{{ p.qrupname }}</td> 
                 <td class="pt-3-half" contenteditable="true">
                   <a [routerLink]="['/emeliyyat/qaimedet/', p.pmasId]">
@@ -74,34 +75,25 @@
                 </a>
                   </td> 
                 <td class="pt-3-half " contenteditable="true">{{ p.kimden_voen}}</td> -->
-                <td class="pt-3-half text-left" contenteditable="true">{{ p.maladi}}</td>   
-                <td class="pt-3-half" contenteditable="true">{{ p.miqdar}}</td>    
-                <td class="pt-3-half" contenteditable="true">{{ p.alishqiy}}</td> 
-                <td class="pt-3-half" contenteditable="true">{{ p.cemi}}</td>
-                 <td class="pt-3-half" contenteditable="true">{{ p.edv}}</td>   
-                <td class="pt-3-half" contenteditable="true">{{ p.yekunmeb}}</td>  
-
-                <!-- <td class="pt-3-half" contenteditable="true">{{ p.vergikodununadi}}</td>                -->
-               <!-- <td>
-                   <span class="table-remove">
-                    <button type="button" (click)="_selqaime(p.pmasId)"  class="btn btn-info btn-sm my-0">
-                      Edit<i class="fas fa-edit"></i></button>
-                    routerLink="/emeliyyat/qaimedet/{{p.pmasId}}"
-                  <button type="button" (click)="delvergi.show()" (click)="_editvergi(p)" class="btn btn-danger btn-rounded btn-sm my-0">
-                      Remove<i class="fas fa-trash-alt"></i></button>
-                  </span> 
-                </td>-->
-              </tr>   
-               
+                <td class="pt-3-half text-left" contenteditable="true" style="width: 400px;">{{ p.maladi}}</td>   
+                <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.miqdar}}</td>    
+                <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.alishqiy}}</td> 
+                <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.cemi}}</td>
+                <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.cemi}}</td>
+                 <td class="pt-3-half" contenteditable="true" style="width: 80px;">{{ p.edv }}</td>   
+                <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.yekunmeb}}</td>  
+              </tr>        
             </tbody>
-            <tfoot>
-              <tr>
+            <tfoot >
+              <tr >
+                <td class="pt-3-half" contenteditable="true"></td>
                 <td class="pt-3-half text-left" contenteditable="true">Yekunu</td>   
                 <td class="pt-3-half" contenteditable="true"></td>    
                 <td class="pt-3-half" contenteditable="true"></td> 
-                <td class="pt-3-half" contenteditable="true">{{ cemi1}}</td>
-                <td class="pt-3-half" contenteditable="true">{{ edv1}}</td>   
-                <td class="pt-3-half" contenteditable="true">{{ yekunmeb1}}</td>  
+                <td class="pt-3-half" contenteditable="true"></td> 
+                <td class="pt-3-half" contenteditable="true">{{ cemi1 | number : '1.2-2'}}</td>
+                <td class="pt-3-half" contenteditable="true">{{ edv1 | number : '1.2-2'}}</td>   
+                <td class="pt-3-half" contenteditable="true">{{ yekunmeb1 | number : '1.2-2'}}</td>  
               </tr>   
           </tfoot>
           </table> 
