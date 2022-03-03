@@ -17,9 +17,10 @@ export class MymuhasibService {
   upload(p:any,file: File) {   
     //console.log(p)
     const formData: FormData = new FormData();   
-    formData.append('aId', p.aId);
-    formData.append('dhesId', p.dhesId); 
-    formData.append('khesId', p.khesId);
+    // formData.append('aId', p.aId);
+    // formData.append('dhesId', p.dhesId); 
+    // formData.append('khesId', p.khesId);
+    formData.append('AnbId', p.AnbId);
     formData.append('QId', p.QId); 
     formData.append('pars',p.pars);
     formData.append('ValId',p.ValId);

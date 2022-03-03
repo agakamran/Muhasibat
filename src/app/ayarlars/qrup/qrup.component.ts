@@ -70,17 +70,16 @@ selkred(kred:any){ this.khesId=kred;
    }
    _editqrup(ca: qrup){ 
     // let tt=this.listhesab.find(kam=>kam.hesnom ===  ca.dhesId);
-     console.log(ca)
-    this._debit = this.listhesab.find(kam=>kam.hesnom ===  ca.dhesId)!.hesId;
-    this._kredit = this.listhesab.find(kam=>kam.hesnom  === ca.khesId)!.hesId; 
-    //console.log(this._debit)  
-    //this.seldebit( this._debit); 
-    // this.seldebit(this._kredit); 
+   
+   
        this.qrup.qId = ca.qId;
-       this.qrup.qrupname = ca.qrupname;
-       this.qrup.dhesId =  ca.dhesId;
-       this.qrup.khesId = ca.khesId;
-           
+       this.qrup.qrupname = ca.qrupname;    
+       this._debit = this.listhesab.find(kam=>kam.hesnom ===  ca.dhesId)!.hesId;
+      this._kredit = this.listhesab.find(kam=>kam.hesnom  === ca.khesId)!.hesId; 
+      this.qrup.dhesId=this._debit
+      this.seldebit(this._debit) 
+      this.qrup.khesId=this._kredit
+      this.selkred(this._kredit)  
      }
  onadd()
   { 
