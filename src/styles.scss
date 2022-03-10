@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
+
 body {
   background-color: #eee;
 }
@@ -108,3 +109,6 @@ snack-bar-containr.notification simple-snack-bar{
 .w-600{
   max-width: 580px
 }
+
+// @import "ag-grid-community/dist/styles/ag-grid.css";
+// @import "ag-grid-community/dist/styles/ag-theme-alpine.css";

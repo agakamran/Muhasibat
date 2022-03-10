@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AlishComponent } from './alish/alish.component';
+import { AxtarishComponent } from './axtarish/axtarish.component';
 import { DvidentComponent } from './dvident/dvident.component';
 import { ElqaimealishComponent } from './elqaimealish/elqaimealish.component';
 import { EmeliylistComponent } from './emeliylist/emeliylist.component';
@@ -22,14 +23,14 @@ const routes: Routes = [{
      { path: 'hesablashma', component: HesablashmaComponent },
      { path: 'vergi', component: VergiComponent },        
      { path: 'ohdelik', component: OhdelikComponent },
-      { path: 'kapital', component: KapitalComponent }, 
-      { path: 'gelir', component: GelirComponent },
-      { path: 'xerc', component: XercComponent },
-      { path: 'dvident', component: DvidentComponent },
-      {path: 'eqaimealish',component:ElqaimealishComponent},      
-      {path: 'qaimeler',component:QaimelersComponent},
-      {path: 'qaimedet/:id',component:QaimedetalComponent},
-
+     { path: 'kapital', component: KapitalComponent }, 
+     { path: 'gelir', component: GelirComponent },
+     { path: 'xerc', component: XercComponent },
+     { path: 'dvident', component: DvidentComponent },
+     {path: 'eqaimealish',component:ElqaimealishComponent},      
+     {path: 'qaimeler',component:QaimelersComponent},
+     {path: 'qaimedet/:id',component:QaimedetalComponent},
+     {path: 'axtarish',component:AxtarishComponent}
    ] 
 }];
 

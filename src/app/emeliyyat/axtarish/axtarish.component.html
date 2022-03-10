@@ -1,0 +1,82 @@
+<div class="card">
+    <h4 class="card-header text-center font-weight-bold text-uppercase py-4"> {{title}}</h4>
+    <div class="card-body">
+      <div class="container">
+         <div style="height: 100%; box-sizing: border-box;">
+            <ag-grid-angular
+              style="width: 100%; height: 100%;"
+              class="ag-theme-alpine"
+              [columnDefs]="columnDefs"
+              [defaultColDef]="defaultColDef"
+              [defaultColGroupDef]="defaultColGroupDef"
+              [columnTypes]="columnTypes"
+              [rowData]="rowData"
+              (gridReady)="onGridReady($event)"
+            ></ag-grid-angular>
+          </div>        
+      </div>
+      <!-- <div  class="col-md-12 mx-auto text-center mt-5">
+        <h4  class="text-center">Master Detail Table</h4>
+        <div  class="row">
+           <table  mdbtable="" striped="true" class="z-depth-1 table table-striped">
+              <thead >
+                 <tr >
+                    <th  scope="col"> ID </th>
+                    <th  scope="col"> First </th>
+                    <th  scope="col"> Last </th>
+                    <th  scope="col"> Handle </th>
+                   
+                 </tr>
+              </thead>
+              <tbody  mdbtablecol="">
+                 <tr >
+                    <td  scope="row">
+                       
+                       <button  type="button  " mdbbtn="" color="success" mdbwaveseffect="" class="master-button btn-success btn">
+                          <mdb-icon  fas="" icon="angle-right" class="fas"><i class="fa-angle-right fas"></i></mdb-icon>
+                       </button>
+                       <span  class="ml-1">1</span>
+                    </td>
+                    <td >Mark</td>
+                    <td >Otto</td>
+                    <td >@mdo</td>
+                 </tr>
+                
+              </tbody>
+              <tbody  mdbtablecol="">
+                 <tr >
+                    <td  scope="row">
+                     
+                       <button  type="button  " mdbbtn="" color="success" mdbwaveseffect="" class="master-button btn-success btn">
+                          <mdb-icon  fas="" icon="angle-right" class="fas"><i class="fa-angle-right fas"></i></mdb-icon>
+                       </button>
+                       <span  class="ml-1">2</span>
+                    </td>
+                    <td >Jacob</td>
+                    <td >Thornton</td>
+                    <td >@fat</td>
+                 </tr>
+              </tbody>
+              <tbody  mdbtablecol="">
+                 <tr >
+                    <td  scope="row">
+                      
+                       <button  type="button  " mdbbtn="" color="success" mdbwaveseffect="" class="master-button btn-success btn">
+                      <mdb-icon  fas="" icon="angle-right" class="fas"><i class="fa-angle-right fas"></i></mdb-icon>
+                       </button>
+                      <span  class="ml-1">3</span>
+                    </td>
+                    <td >Larry</td>
+                    <td >the Bird</td>
+                    <td >@twitter</td>
+                 </tr>
+              </tbody>
+           </table>
+        </div>
+     </div> -->
+     
+  </div>
+</div>
+<!-- <script src="https://unpkg.com/ag-grid-enterprise@27.0.1/dist/ag-grid-enterprise.min.js">
+</script> -->
+

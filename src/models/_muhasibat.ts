@@ -117,11 +117,13 @@ export class Productmaster {
      DhesId :string;
      KhesId :string;
      ValId : string;
-     QrupId: string;
+     QId: string;
      Kurs:number;
      Kimden_sum:number;
      Pay:boolean = false;
-     Emeltarixi?:Date;    
+     emeltarixi?:Date;
+     
+    
 }
 export class emel
 {

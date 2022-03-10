@@ -39,6 +39,7 @@ export class QrupComponent implements OnInit {
       }, error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
       this._caSer._gethesab().subscribe(list=> {         
         this.listhesab=list; 
+        //console.log(this.listhesab)  
         this._kredhesab=this.listhesab;
         this._debhesab=this.listhesab;
                            
@@ -65,13 +66,10 @@ selkred(kred:any){ this.khesId=kred;
       qrupname: new FormControl(''),
       dhesId: new FormControl(''),
       khesId: new FormControl('')
-      });
-     
+      });     
    }
    _editqrup(ca: qrup){ 
-    // let tt=this.listhesab.find(kam=>kam.hesnom ===  ca.dhesId);
-   
-   
+    // let tt=this.listhesab.find(kam=>kam.hesnom ===  ca.dhesId);   
        this.qrup.qId = ca.qId;
        this.qrup.qrupname = ca.qrupname;    
        this._debit = this.listhesab.find(kam=>kam.hesnom ===  ca.dhesId)!.hesId;

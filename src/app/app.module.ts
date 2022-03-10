@@ -21,6 +21,7 @@ import { authInterceptorProviders } from 'src/helpers/jwt.interceptor';
 import { AyarlarsModule } from './ayarlars/ayarlars.module';
 import { EmeliyyatModule } from './emeliyyat/emeliyyat.module';
 import { MaterialModule } from 'src/material/material.module';
+//import { AgGridModule } from '@ag-grid-community/angular/lib/ag-grid-angular.module';
 
 
 
@@ -55,7 +56,8 @@ import { MaterialModule } from 'src/material/material.module';
       metaReducers
     }),    
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([]),    
+    //AgGridModule.withComponents([]),
     MaterialModule
   ],
   providers: [authInterceptorProviders],

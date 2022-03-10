@@ -64,4 +64,15 @@ export class MymuhasibService {
     }
   )); 
 } 
+_getproddetal(): Observable<any>{     
+  // const body=JSON.stringify(bo);        
+   return this.http.get<any>(this.pathAPI +'proddetal')
+  .pipe(map((data)=>{
+    return data;
+  }),
+    catchError((err) => { console.error(err);
+      throw err;
+    }
+  )); 
+} 
 }

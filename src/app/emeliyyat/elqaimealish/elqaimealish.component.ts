@@ -85,9 +85,7 @@ export class ElqaimealishComponent implements OnInit {
   //        break;
   //    }       
   //  }
-   selanbar(anb:any){ this.anbId=anb;   
-    //this._debit = this.listhesab.find(kam=>kam.hesId=== this.anbId)!.hesname; 
-   }
+   selanbar(anb:any){ this.anbId=anb;  }
    selqrup(qru:any){this.qId=qru;}
   //  seldebit(deb:any){ this.dhesId=deb;   
   //    this._debit = this.listhesab.find(kam=>kam.hesId=== this.dhesId)!.hesname; 

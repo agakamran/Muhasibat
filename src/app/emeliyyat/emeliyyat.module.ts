@@ -19,24 +19,30 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ElqaimealishComponent } from './elqaimealish/elqaimealish.component';
 import { QaimelersComponent } from './qaimelers/qaimelers.component';
 import { QaimedetalComponent } from './qaimedetal/qaimedetal.component';
+import { AxtarishComponent } from './axtarish/axtarish.component';
+//import { AgGridModule } from '@ag-grid-community/angular';
 //import { MaterialModule } from 'src/material/material.module';
 
+import { AgGridModule } from 'ag-grid-angular';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AlishComponent, SatishComponent, 
     HesablashmaComponent,  VergiComponent, 
     OhdelikComponent, KapitalComponent,
-     GelirComponent, XercComponent, DvidentComponent, EmeliylistComponent, ElqaimealishComponent, QaimelersComponent, QaimedetalComponent],
+     GelirComponent, XercComponent, DvidentComponent, EmeliylistComponent, ElqaimealishComponent, QaimelersComponent, QaimedetalComponent, AxtarishComponent],
   imports: [
     CommonModule,
     EmeliyyatRoutingModule,
     MDBmaterialModule,
-   // HttpClientModule,
+    HttpClientModule,
     ReactiveFormsModule,   
     FormsModule,
     RouterModule ,
     InfiniteScrollModule,
    // MaterialModule
+   
+   AgGridModule.withComponents([])
   ]
 })
 export class EmeliyyatModule { }

@@ -1,0 +1,87 @@
+<div class="card">
+  <h4 class="card-header text-center font-weight-bold text-uppercase py-4"> {{title}}</h4>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+
+<div class="row">    
+  <div class="col-md-2"></div>                
+   <div class="col-md-8">Search
+      <input  type="text" [(ngModel)]="searchText"  class="form-control" id="search" mdbInput />
+       <label for="search"></label>
+    </div>
+   <div class="col-md-2"></div>  
+ </div> 
+ <!-- <form [formGroup]="eqaimeForm" class="normal-form">
+        <div class="row">
+            <div class="col-md-1"></div>
+          <div class="col-md-2">Voen:
+            <input [(ngModel)]="emel.kimden_voen" formControlName="kimden_voen"  mdbInput type="text" class="form-control"> 
+          </div>  
+          <div class="col-md-2">Novu:
+            <input [(ngModel)]="emel.qId" formControlName="qId"  mdbInput type="text" class="form-control">
+          </div>  
+          <div class="col-md-2">Serial:
+            <input [(ngModel)]="emel.serial" formControlName="serial" mdbInput type="text" class="form-control"> 
+          </div>  
+          <div class="col-md-3">Tarixi:
+            <input [(ngModel)]="emel.emeltarixi" formControlName="emeltarixi" placeholder="2022-02-19 14:34:11"  mdbInput type="datetime-local" class="form-control" >                
+          </div>
+          <div class="col-md-2">
+            <button type="submit" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect (click)="_Axtar()">Axtar</button>
+          </div>  
+        </div>
+       </form> -->
+      <table mdbTable class="table table-bordered table-responsive-md table-striped text-center"  *ngIf='elements && elements.length'>
+            <thead>            
+              <tr >   
+                <th *ngFor="let head of headElements; let i = index" 
+                  aria-controls="tableSortExample" scope="col" [mdbTableSort]="elements"
+                   [sortBy]="headElements[i]">{{ head | titlecase}}
+                    <mdb-icon fas icon="sort"></mdb-icon>
+                  </th>  
+                  <!-- <th class="text-center">Actions</th>              -->
+              </tr>
+            </thead>
+            <tbody *ngFor='let p of elements; let i = index'>
+              <tr>    
+                <td class="pt-3-half" contenteditable="true" style="width: 20px;">{{ i + 1 }}</td>           
+                <!-- <td class="pt-3-half" contenteditable="true">{{ p.qrupname }}</td> 
+                <td class="pt-3-half" contenteditable="true">
+                  <a [routerLink]="['/emeliyyat/qaimedet/', p.pmasId]">
+                    {{ p.kimden_voen}}
+                </a>
+                  </td> 
+                <td class="pt-3-half " contenteditable="true">{{ p.kimden_voen}}</td>
+                qrupname: "Malların, işlərin və xidmətlərin təqdim edilməsi qaiməsi" serial
+             -->
+             <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.qrupname}}</td>               
+               <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.serial}}</td>
+               <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.voen}}</td>
+                <td class="pt-3-half text-left" contenteditable="true" style="width: 200px;">{{ p.firma}}</td>   
+                <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.emeltarixi }}</td>
+                <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.miqdar}}</td>    
+                <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.alishqiy}}</td> 
+                <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.cemi}}</td>
+                <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.cemi}}</td>
+                 <td class="pt-3-half" contenteditable="true" style="width: 80px;">{{ p.edv }}</td>   
+                <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.yekunmeb}}</td>  
+              </tr>        
+            </tbody>
+            <tfoot >
+              <tr >
+                <td class="pt-3-half" contenteditable="true"></td>
+                <td class="pt-3-half text-left" contenteditable="true">Yekunu</td>   
+                <td class="pt-3-half" contenteditable="true"></td>    
+                <td class="pt-3-half" contenteditable="true"></td> 
+                <td class="pt-3-half" contenteditable="true"></td> 
+                <td class="pt-3-half" contenteditable="true">{{ cemi1 | number : '1.2-2'}}</td>
+                <td class="pt-3-half" contenteditable="true">{{ edv1 | number : '1.2-2'}}</td>   
+                <td class="pt-3-half" contenteditable="true">{{ yekunmeb1 | number : '1.2-2'}}</td>  
+              </tr>   
+          </tfoot>
+      </table> 
+
+
+    </div>
+  </div>
+</div>
