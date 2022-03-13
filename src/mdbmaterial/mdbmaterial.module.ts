@@ -17,7 +17,8 @@ import { CardsModule, DropdownModule, NavbarModule, ButtonsModule,
     ChartsModule,CheckboxModule,CollapseModule.forRoot(),DropdownModule.forRoot(),
     IconsModule,InputsModule.forRoot(),InputUtilitiesModule,ModalModule.forRoot(),
     NavbarModule,PopoverModule.forRoot(),TableModule,TooltipModule.forRoot(),
-    WavesModule.forRoot(),MDBBootstrapModule.forRoot()//,LayoutModule  
+    WavesModule.forRoot(),MDBBootstrapModule.forRoot(),
+    //,LayoutModule  
   ],
   exports: [
     CommonModule,

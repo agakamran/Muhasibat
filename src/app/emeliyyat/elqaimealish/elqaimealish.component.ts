@@ -7,6 +7,7 @@ import { AyarlarService } from 'src/services/ayarlar.service';
 //import { ConvertDateService } from 'src/services/convert-date.service';
 import { MymuhasibService } from 'src/services/mymuhasib.service';
 
+
 @Component({
   selector: 'app-elqaimealish',
   templateUrl: './elqaimealish.component.html',

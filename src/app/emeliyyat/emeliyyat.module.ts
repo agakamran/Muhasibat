@@ -40,6 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     RouterModule ,
     InfiniteScrollModule,
+    
    // MaterialModule
    
    AgGridModule.withComponents([])
