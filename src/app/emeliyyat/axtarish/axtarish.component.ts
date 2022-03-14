@@ -23,6 +23,9 @@ export class AxtarishComponent implements OnInit {
       });   
       console.log(this.rowData )  
   }
+//------------------------------
+
+//----------------------
  columnDefs: ColDef[] = [
   { field:  'age', minWidth: 150},
   { field: 'athlete'},
@@ -39,6 +42,7 @@ public defaultColDef: ColDef = {
   flex: 1,
   sortable: true,
   filter: true,
+  resizable: true
 };
 public autoGroupColumnDef: ColDef = {
   // to get 'athlete' showing in the leaf level in this column
