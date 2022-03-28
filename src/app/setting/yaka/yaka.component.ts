@@ -3,7 +3,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { yaka,  gender } from 'src/models/_settings';
 import { Lang } from 'src/models/_carts';
 import { SettingsService } from 'src/services/settings.service';
-import { NotificationService } from 'src/helpers/notification.service';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-yaka',
@@ -20,7 +20,7 @@ export class YakaComponent implements OnInit {
   //_page: item_categoriy[];_cat; catname: string;
   _gender: gender[];_gen:any; gender:any;
   constructor( private _caSer: SettingsService,
-     private notificationService: NotificationService) {
+     private noti: NotificationService) {
      this.yak.yakaId="";
    }   
    ngOnInit(): void {
@@ -91,12 +91,12 @@ selgen(sel:any){ this._gen=sel;}
        this._caSer._posyaka(p).subscribe();       
        this._addyak(); 
        this._cline();   
-       this.notificationService.success('::Submitted successfully');             
+       this.noti.success('::Submitted successfully');             
     }   
   } 
   ondel()
   {
-        this.notificationService.warn('!Deleted successfully');     
+        this.noti.warn('!Deleted successfully');     
         this._caSer._delyaka(this.yak).subscribe();  
        // this._yenile();
   } 

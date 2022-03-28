@@ -21,32 +21,32 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <label for="firma" class=""><i class="fas fa-tag prefix grey-text"></i>mushteriin adi</label>
-                    <input type="text" [(ngModel)]="mushteri.firma" name="firma" placeholder="firma yazin" class="form-control" formControlName="firma" mdbInput>   
+                    <input type="text" [(ngModel)]="mushteri.Firma" name="firma" placeholder="firma yazin" class="form-control" formControlName="Firma" mdbInput>   
                   </div>  
                   <div class="col-sm-6">
                       <label for="voen" class=""><i class="fas fa-tag prefix grey-text"></i>voen</label>
-                    <input type="number" [(ngModel)]="mushteri.voen" name="voen" placeholder="voen yazin" class="form-control" formControlName="voen" mdbInput>   
+                    <input type="number" [(ngModel)]="mushteri.Voen" name="voen" placeholder="voen yazin" class="form-control" formControlName="Voen" mdbInput>   
                   </div> 
                   <div class="col-sm-6">
                     <label for="muqavilenom" class=""><i class="fas fa-tag prefix grey-text"></i>muqavilenom</label>
-                  <input type="text" [(ngModel)]="mushteri.muqavilenom" name="muqavilenom" placeholder="muqavilenom yazin" class="form-control" formControlName="muqavilenom" mdbInput>   
+                  <input type="text" [(ngModel)]="mushteri.Muqavilenom" name="muqavilenom" placeholder="muqavilenom yazin" class="form-control" formControlName="Muqavilenom" mdbInput>   
                   </div>  
                   <div class="col-sm-6">
                   <label for="muqaviletar" class=""><i class="fas fa-tag prefix grey-text"></i>muqaviletar</label>
-                  <input type="date" [(ngModel)]="mushteri.muqaviletar" name="muqaviletar" placeholder="muqaviletar yazin" class="form-control" formControlName="muqaviletar" mdbInput> 
+                  <input type="date" [(ngModel)]="mushteri.Muqaviletar" name="muqaviletar" placeholder="muqaviletar yazin" class="form-control" formControlName="Muqaviletar" mdbInput> 
                   </div>
                   <div class="col-sm-6">
                   <label for="valyuta" class=""><i class="fas fa-tag prefix grey-text"></i>valyuta</label>
-                   <input type="text" [(ngModel)]="mushteri.valyuta" name="valyuta" placeholder="valyuta yazin" class="form-control" formControlName="valyuta" mdbInput>   
+                   <input type="text" [(ngModel)]="mushteri.Valyuta" name="valyuta" placeholder="valyuta yazin" class="form-control" formControlName="Valyuta" mdbInput>   
                   </div>
                   <div class="col-sm-6">
                   <label for="odemesherti" class=""><i class="fas fa-tag prefix grey-text"></i>odemesherti</label>
-                  <input type="text" [(ngModel)]="mushteri.odemesherti" name="odemesherti" placeholder="odemesherti yazin" class="form-control" formControlName="odemesherti" mdbInput>     
+                  <input type="text" [(ngModel)]="mushteri.Odemesherti" name="odemesherti" placeholder="odemesherti yazin" class="form-control" formControlName="Odemesherti" mdbInput>     
                   </div>     
                   <div class="col-sm-12">
                     <label for="temsilchi" class=""><i class="fas fa-tag prefix grey-text"></i>temsilchi</label>
-                  <input type="text" [(ngModel)]="mushteri.temsilchi" name="temsilchi" placeholder="temsilchi yazin" class="form-control" formControlName="temsilchi" mdbInput>     
-                  </div>          
+                  <input type="text" [(ngModel)]="mushteri.Temsilchi" name="temsilchi" placeholder="temsilchi yazin" class="form-control" formControlName="Temsilchi" mdbInput>     
+                  </div>           
                 </div>     
                 </div>
               <div class="modal-footer">
@@ -65,7 +65,7 @@
                 <button type="button" class="close pull-right" aria-label="Close" (click)="delmushteri.hide()">
                   <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title w-150" id="myModalLabel"><span>Del {{ mushteri.mushteriName }}</span></h4>
+                <h4 class="modal-title w-150" id="myModalLabel"><span>Del {{ mushteri.MushteriName }}</span></h4>
               </div>
               <form  class="normal-form">           
               <div class="modal-footer">
@@ -94,13 +94,13 @@
           <tbody *ngFor='let p of filteredmushteri'>
             <tr>
             
-              <td class="pt-3-half" contenteditable="true">{{ p.firma }}</td>
-              <td class="pt-3-half" contenteditable="true">{{ p.voen}}</td>
-              <td class="pt-3-half" contenteditable="true">{{ p.muqavilenom}}</td>  
-              <td class="pt-3-half" contenteditable="true">{{ p.muqaviletar}}</td> 
-              <td class="pt-3-half" contenteditable="true">{{ p.temsilchi}}</td>
-              <td class="pt-3-half" contenteditable="true">{{ p.odemesherti}}</td>
-              <td class="pt-3-half" contenteditable="true">{{ p.valyuta}}</td>
+              <td class="pt-3-half" contenteditable="true">{{ p.Firma }}</td>
+              <td class="pt-3-half" contenteditable="true">{{ p.Voen}}</td>
+              <td class="pt-3-half" contenteditable="true">{{ p.Muqavilenom}}</td>  
+              <td class="pt-3-half" contenteditable="true">{{ p.Muqaviletar}}</td> 
+              <td class="pt-3-half" contenteditable="true">{{ p.Temsilchi}}</td>
+              <td class="pt-3-half" contenteditable="true">{{ p.Odemesherti}}</td>
+              <td class="pt-3-half" contenteditable="true">{{ p.Valyuta}}</td>
               <td class="pt-3-half">
                 <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
                       aria-hidden="true"></i></a></span>

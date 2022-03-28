@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { NotificationService } from 'src/helpers/notification.service';
 import { Lang } from 'src/models/_carts';
 import { MenuItem } from 'src/models/_menu';
 import { IRole } from 'src/models/_role';
-//import { AuthService } from 'src/services/auth.service';
 import { NavbarService } from 'src/services/navbar.service';
+import { NotificationService } from 'src/util/notification.service';
 
 
 
@@ -26,7 +25,7 @@ export class NavbarComponent implements OnInit {
   _page: any[]; _pid:'';  ppnav:any=''
   _role:IRole[]; _rol:any; 
   constructor( private _caSer: NavbarService,
-     private notificationService: NotificationService) {
+     private noti: NotificationService) {
      this.nav.nid="";
    }
 
@@ -71,7 +70,7 @@ _yenile()
     });  
  }
 
-get navid() { return this.navForm.get('nid'); }
+//get navid() { return this.navForm.get('nid'); }
 //get parentid() { return this.navForm.get('pid'); }
 // get ntitle() { return this.navForm.get('ntitle'); }
 // get npath() { return this.navForm.get('npath'); }
@@ -126,10 +125,10 @@ selrol(sel:any){ this._rol=sel;}
   { 
     if(this.navForm.valid)  
     {
-       console.log(this._page.find(x=>x.npid==this._pid ))
+      // console.log(this._page.find(x=>x.npid==this._pid ))
       // console.log(this.navForm.value.npid)
-       console.log(this._rol)
-       console.log(this._pid)     
+      //  console.log(this._rol)
+      //  console.log(this._pid)     
       var kn;
       if(this.navForm.value.npid===undefined){kn=''}
       else{
@@ -159,13 +158,13 @@ selrol(sel:any){ this._rol=sel;}
        this._yenile(); 
        this._addnav(); 
        this._cline();   
-       this.notificationService.success('::Submitted successfully');                
+       this.noti.success('::Submitted successfully');                
                      
     }   
   } 
   ondel()
   {
-        this.notificationService.warn('!Deleted successfully');     
+        this.noti.warn('!Deleted successfully');     
         this._caSer._delmenu(this.nav).subscribe();  
         this._yenile();
   } 
@@ -198,7 +197,7 @@ selrol(sel:any){ this._rol=sel;}
       {
         if(item.pid===''){kn=''}
         else{
-          kn=this.listnav.find(x=>x.ntitle===item.pid )!.nid;
+          kn=this.listnav.find(x=>x.ntitle===item.pid )?.nid;
        //   console.log('111')
          // console.log(kn)
         }
@@ -213,7 +212,7 @@ selrol(sel:any){ this._rol=sel;}
           ncsay:item.ncsay,
           nicon:item.nicon
         }
-          console.log(pp)
+         // console.log(pp)
          this._caSer._posmenu(pp).subscribe();  
       
       }

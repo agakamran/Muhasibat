@@ -1,10 +1,10 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NotificationService } from 'src/helpers/notification.service';
 import { bolme, hesab, madde, tipleri } from 'src/models/_muhasibat';
 import { Lang } from 'src/models/_carts';
 import { AyarlarService } from 'src/services/ayarlar.service';
 import { MdbTableDirective } from 'angular-bootstrap-md';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-hesab',
@@ -32,18 +32,18 @@ export class HesabComponent implements OnInit {
   hesab:hesab=new hesab(); 
   _lang:Lang[]=[{lid: '1', lname: 'Az'},{lid: '2', lname: 'En'},{lid: '3', lname: 'Ru'} ];  _lan='';
   _hesab: hesab[];  _pid:'';  
-  constructor( private _caSer: AyarlarService,private notificationService: NotificationService) {
-     this.hesab.hesId="";
+  constructor( private _caSer: AyarlarService,private noti: NotificationService) {
+    this.hesab.HesId="";
    }
   
    ngOnInit(): void {
     this.hesabForm = new FormGroup({  
-      bId: new FormControl(''), 
-      hesId: new FormControl(''),   
-      hesname: new FormControl('', [Validators.required,Validators.maxLength(50)]),
-      hesnom: new FormControl('', [Validators.required,Validators.maxLength(50)]),
-      mId: new FormControl('', [Validators.required]),
-      tipId: new FormControl('')
+      BId: new FormControl(''), 
+      HesId: new FormControl(''),   
+      Hesname: new FormControl('', [Validators.required,Validators.maxLength(50)]),
+      Hesnom: new FormControl('', [Validators.required,Validators.maxLength(50)]),
+      MId: new FormControl('', [Validators.required]),
+      TipId: new FormControl('')
     });      
     this._caSer._gethesab().subscribe(list=>
     {         
@@ -85,60 +85,61 @@ searchItems() {
 langu(lan:any){  this._lan=lan; }
   _addhesab()
   {
-    this.hesab.bId='';   
-    this.hesab.hesId='';  
-    this.hesab.hesname='';  
-    this.hesab.hesnom=''; 
-    this.hesab.mId='';    
-    this.hesab.tipId=''; 
-    this.hesab.activId='';          
+    this.hesab.BId='';   
+    this.hesab.HesId='';  
+    this.hesab.Hesname='';  
+    this.hesab.Hesnom=''; 
+    this.hesab.MId='';    
+    this.hesab.TipId=''; 
+    this.hesab.ActivId='';          
   }
   _cline(){ 
     this.hesabForm = new FormGroup({  
        
       bId: new FormControl(''),
-      hesId: new FormControl(''),
-      hesname: new FormControl(''),
-      hesnom: new FormControl(''),
-      mId: new FormControl(''),
-      tipId: new FormControl(''),
-      activId: new FormControl(''),
+      HesId: new FormControl(''),
+      Hesname: new FormControl(''),
+      Hesnom: new FormControl(''),
+      MId: new FormControl(''),
+      TipId: new FormControl(''),
+      ActivId: new FormControl(''),
       });
      
    }
-   _edithesab(ca:hesab){   
-      this.hesab.bId =this.listbolme.find(x=>x.bId==ca.bId)!.bolmeName; 
-      this.hesab.hesId = ca.hesId;
-      this.hesab.hesname= ca.hesname;
-      this.hesab.hesnom = ca.hesnom;
-      this.hesab.mId =this.listmadde.find(x=>x.mId==ca.mId)!.maddeName;
-      this.hesab.tipId =this.listtip.find(x=>x.tipId==ca.tipId)!.tipName;
-     // console.log(ca)       
+   _edithesab(ca:hesab){  
+    // console.log(ca) 
+      this.hesab.BId =this.listbolme.find(x=>x.bId==ca.BId)!.bolmeName; 
+     this.hesab.HesId = ca.HesId;
+     this.hesab.Hesname = ca.Hesname;
+     this.hesab.Hesnom = ca.Hesnom;
+      this.hesab.MId =this.listmadde.find(x=>x.MId==ca.MId)!.MaddeName;
+      this.hesab.TipId =this.listtip.find(x=>x.TipId==ca.TipId)!.TipName;
+     //console.log(this.hesab)    
      }
  onadd()
   { 
     if(this.hesabForm.valid)  
     {
        var p={
-        bId:this.hesab.bId  ,
-        hesId:this.hesabForm.value.hesId,
-        hesname:this.hesabForm.value.hesname,
-        hesnom:this.hesabForm.value.hesnom,
-        mId:this.hesabForm.value.mId,
-        tipId:this.hesabForm.value.tipId,
-        activId:this.hesabForm.value.activId
+        BId:this.hesab.BId  ,
+         HesId: this.hesabForm.value.HesId,
+         Hesname: this.hesabForm.value.Hesname,
+         Hesnom: this.hesabForm.value.Hesnom,
+        MId:this.hesabForm.value.MId,
+        TipId:this.hesabForm.value.TipId,
+        ActivId:this.hesabForm.value.ActivId
       }
       //  console.log(p)
        this._caSer._poshesab(p).subscribe();   
 
        this._addhesab(); 
        this._cline();   
-       this.notificationService.success('::Submitted successfully');                 
+       this.noti.success('::Submitted successfully');                 
     }   
   } 
   ondel()
   {
-        this.notificationService.warn('!Deleted successfully');     
+        this.noti.warn('!Deleted successfully');     
         this._caSer._delhesab(this.hesab).subscribe();         
   } 
 

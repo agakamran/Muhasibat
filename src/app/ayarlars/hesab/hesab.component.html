@@ -29,16 +29,16 @@
                 <div class="modal-body" > 
                   <div class="row">
                     <div class="col-sm-12">
-                      <label for="hesnom" class=""><i class="fas fa-tag prefix grey-text"></i>hesab nöm</label>
-                    <input type="text" [(ngModel)]="hesab.hesnom" name="hesnom" placeholder="hesnom yazin" class="form-control" formControlName="hesnom" mdbInput>   
+                      <label for="Hesnom" class=""><i class="fas fa-tag prefix grey-text"></i>Hesab nöm</label>
+                    <input type="text" [(ngModel)]="hesab.Hesnom" name="Hesnom" placeholder="Hesnom yazin" class="form-control" formControlName="Hesnom" mdbInput>   
                     </div>  
                    <div class="col-sm-12">
-                        <label for="hesname" class=""><i class="fas fa-tag prefix grey-text"></i>Hesab adi</label>
-                      <input type="text" [(ngModel)]="hesab.hesname" name="hesname" placeholder="hesname yazin" class="form-control" formControlName="hesname" mdbInput>   
+                        <label for="Hesname" class=""><i class="fas fa-tag prefix grey-text"></i>Hesab adi</label>
+                      <input type="text" [(ngModel)]="hesab.Hesname" name="Hesname" placeholder="Hesname yazin" class="form-control" formControlName="Hesname" mdbInput>   
                    </div>       
                    <div class="col-sm-4">
                     <label for="formGroupExampleInput">Bölmə adi</label>
-                    <select [(ngModel)]="hesab.bId"  name="_bolme" formControlName="bId" (change)="selrol($event.target.value)"                       
+                    <select [(ngModel)]="hesab.BId"  name="_bolme" formControlName="BId" (change)="selrol($event.target.value)"                       
                     class="browser-default custom-select" >
                       <option >Choose page</option>                                    
                       <option *ngFor="let o of listbolme" [value]="o.bolmeName" >{{o.bolmeName}}</option>                                 
@@ -48,20 +48,20 @@
                   </div>            
                   <div class="col-sm-4">
                     <label for="formGroupExampleInput">Tipler</label>
-                    <select [(ngModel)]="hesab.tipId"  name="_tip" formControlName="tipId" (change)="selrol($event.target.value)"                       
+                    <select [(ngModel)]="hesab.TipId"  name="_tip" formControlName="TipId" (change)="selrol($event.target.value)"                       
                          class="browser-default custom-select" >
                            <option >Choose page</option>                                    
-                     <option *ngFor="let o of listtip" [value]="o.tipName" >{{o.tipName}}</option>                                 
+                     <option *ngFor="let o of listtip" [value]="o.TipName" >{{o.TipName}}</option>                                 
                    </select>
                   <!--  <label for="tipId" class=""><i class="fas fa-tag prefix grey-text"></i>tipId adi</label>
                   <input type="text" [(ngModel)]="hesab.tipId" name="tipId" placeholder="tipId yazin" class="form-control" formControlName="tipId" mdbInput>   -->
                 </div>   
                 <div class="col-sm-4">
                   <label for="formGroupExampleInput">Madde</label>
-                  <select [(ngModel)]="hesab.mId"  name="_madde" formControlName="mId" (change)="selrol($event.target.value)"                       
+                  <select [(ngModel)]="hesab.MId"  name="_madde" formControlName="MId" (change)="selrol($event.target.value)"                       
                      class="browser-default custom-select" >
                     <option >Choose page</option>                                    
-                    <option *ngFor="let o of listmadde" [value]="o.maddeName" >{{o.maddeName}}</option>                                 
+                    <option *ngFor="let o of listmadde" [value]="o.MaddeName" >{{o.MaddeName}}</option>                                 
                   </select>
                  </div>   
                 </div>       
@@ -82,7 +82,7 @@
                   <button type="button" class="close pull-right" aria-label="Close" (click)="delhesab.hide()">
                     <span aria-hidden="true">×</span>
                   </button>
-                  <h4 class="modal-title w-150" id="myModalLabel"><span>Del {{ hesab.hesname }}</span></h4>
+                  <h4 class="modal-title w-150" id="myModalLabel"><span>Del {{ hesab.Hesname }}</span></h4>
                 </div>
                 <form  class="normal-form">           
                 <div class="modal-footer">
@@ -116,11 +116,11 @@
               <tr>
                <!--   <td class="pt-3-half" contenteditable="true">{{ p.navid }}</td>-->
                <!-- <td class="pt-3-half" contenteditable="true">{{ p.genId }}</td> -->
-                <td scope="row" class="pt-3-half" contenteditable="true">{{ p.hesnom }}</td>
-                <td class="pt-3-half" contenteditable="true">{{ p.hesname}}</td>    
-               <td  class="pt-3-half" contenteditable="true">{{ p.maddeName}}</td>
-                <td class="pt-3-half" contenteditable="true">{{ p.bolmeName}}</td>  
-                <td class="pt-3-half" contenteditable="true">{{ p.tipName}}</td> 
+                <td scope="row" class="pt-3-half" contenteditable="true">{{ p.Hesnom }}</td>
+                <td class="pt-3-half" contenteditable="true">{{ p.Hesname}}</td>    
+               <td  class="pt-3-half" contenteditable="true">{{ p.MaddeName}}</td>
+                <td class="pt-3-half" contenteditable="true">{{ p.BolmeName}}</td>  
+                <td class="pt-3-half" contenteditable="true">{{ p.TipName}}</td> 
                
                 <td>
                   <span class="table-remove">

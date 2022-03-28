@@ -10,7 +10,7 @@ import { ColDef,  // ColGroupDef,    GridReadyEvent,
   styleUrls: ['./axtarish.component.scss']
 })
 export class AxtarishComponent implements OnInit { 
-
+  
   //https://www.ag-grid.com/angular-data-grid/column-definitions/
 
   public rowData: any[];
@@ -23,12 +23,9 @@ export class AxtarishComponent implements OnInit {
       });   
       console.log(this.rowData )  
   }
-//------------------------------
-
-//----------------------
  columnDefs: ColDef[] = [
-  { field:  'age', minWidth: 150},
-  { field: 'athlete'},
+  { field:  'age', },//minWidth: 150
+  { field: 'athlete'},//rowGroup: true
   { field: 'bronze' },
   { field: 'country'  },
   { field: 'date'},
@@ -42,7 +39,6 @@ public defaultColDef: ColDef = {
   flex: 1,
   sortable: true,
   filter: true,
-  resizable: true
 };
 public autoGroupColumnDef: ColDef = {
   // to get 'athlete' showing in the leaf level in this column

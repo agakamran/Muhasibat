@@ -1,11 +1,11 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NotificationService } from 'src/helpers/notification.service';
 import { aktivi, anbar, emel, hesab, qrup } from 'src/models/_muhasibat';
 import { AyarlarService } from 'src/services/ayarlar.service';
 //import { ConvertDateService } from 'src/services/convert-date.service';
 import { MymuhasibService } from 'src/services/mymuhasib.service';
+import { NotificationService } from 'src/util/notification.service';
 
 
 @Component({
@@ -42,10 +42,10 @@ export class ElqaimealishComponent implements OnInit {
       // aId: new FormControl('', [Validators.required]),   
       // dhesId: new FormControl('', [Validators.required]),
       // khesId: new FormControl('', [Validators.required]),
-      qId: new FormControl('', [Validators.required]), 
-      anbId: new FormControl('', [Validators.required]), 
+      QId: new FormControl('', [Validators.required]), 
+      AnbId: new FormControl('', [Validators.required]), 
       Serial: new FormControl('', [Validators.required]),
-      emeltarixi: new FormControl('', [Validators.required]),
+      Emeltarixi: new FormControl('', [Validators.required]),
       _file: new FormControl('', [Validators.required])
      //#endregion      
     });
@@ -53,7 +53,8 @@ export class ElqaimealishComponent implements OnInit {
     //   this.listactiv=list;     // console.log(this.listactiv)                        
     //  }, error => console.error(error + 'Siz sistemə daxil olmalısınız!'));
      this._kaSer._getqrup().subscribe(list=> {
-      this.listqrup=list;     // console.log(this.listactiv)                        
+      this.listqrup=list; 
+       console.log(this.listqrup)                        
      }, error => console.error(error + 'Siz sistemə daxil olmalısınız!'));
     // this._kaSer._gethesab().subscribe(list=> {         
     //           this.listhesab=list; 
@@ -61,7 +62,7 @@ export class ElqaimealishComponent implements OnInit {
     //  }, error => console.error(error + 'Siz sistemə daxil olmalısınız!'));
     this._kaSer._getanbar().subscribe(list=> {         
       this.listanbar=list; 
-     //console.log(this.listhesab)                        
+      console.log(this.listanbar)                        
      }, error => console.error(error + 'Siz sistemə daxil olmalısınız!'));
   }
   // selacti(act:any){  this._actname=act; 
@@ -144,11 +145,11 @@ _selectFiles(event:any)
    // console.log(this.eqaimeForm.value.emeltarixi)
    // let tar=this.condate.getFormatedDate(this.eqaimeForm.value.emeltarixi,);
   // let tar1=formatDate(new Date(),  'yyyy-MM-dd T HH:mm:ss', 'en-US');
-   let tar=formatDate(this.eqaimeForm.value.emeltarixi,  'yyyy-MM-dd T HH:mm:ss', 'en-US');
+   let tar = formatDate(this.eqaimeForm.value.Emeltarixi,  'yyyy-MM-dd T HH:mm:ss', 'en-US');
     var _p={ QId:this.qId,AnbId:this.anbId,
       //aId:this._actname,dhesId:this.dhesId, khesId:this.khesId,
       pars:this.pars,ValId:ValId,Kurs:Kurs,Serial:this.eqaimeForm.value.Serial, emeltarixi:tar } 
-     //console.log(_p)
+     console.log(_p)
     for (let i = 0; i < this.selectedFiles.length; i++)  {  
         await this._caSer.upload(_p,this.selectedFiles[i]).toPromise();
         this.notif.success('::File Submitted successfully');

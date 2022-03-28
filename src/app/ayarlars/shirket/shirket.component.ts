@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NotificationService } from 'src/helpers/notification.service';
 import { shirket } from 'src/models/_muhasibat';
 import { Lang } from 'src/models/_carts';
 import { AyarlarService } from 'src/services/ayarlar.service';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-shirket',
@@ -18,33 +18,33 @@ export class ShirketComponent implements OnInit {
   shirket:shirket=new shirket(); 
   _lang:Lang[]=[{lid: '1', lname: 'Az'},{lid: '2', lname: 'En'},{lid: '3', lname: 'Ru'} ];  _lan='';
   _shirket: shirket[];  _pid:'';  
-  constructor( private _caSer: AyarlarService,private notificationService: NotificationService) {
-     this.shirket.shId="";
+  constructor( private _caSer: AyarlarService,private noti: NotificationService) {
+     this.shirket.ShId="";
    }
 
    ngOnInit(): void {
     this.shirketForm = new FormGroup({  
-       shId: new FormControl(''),   
-       bankadi: new FormControl('', [Validators.required,Validators.maxLength(50)]),
-       bankvoen: new FormControl('',[Validators.required]),
-       swift: new FormControl('',[Validators.required]),
-       muxbirhesab: new FormControl('',[Validators.required]),
-       bankkodu: new FormControl('',[Validators.required]),
-       aznhesab: new FormControl('',[Validators.required]),
-       shiricrachi: new FormControl('',[Validators.required]),
-       shirvoen: new FormControl('',[Validators.required]),
-       cavabdehshexs: new FormControl('',[Validators.required]),
-       email: new FormControl('',[Validators.required]),
-       unvan: new FormControl('',[Validators.required]),
-       userId: new FormControl('',[Validators.required]),
-       shirpercent: new FormControl(0),
+       ShId: new FormControl(''),   
+       Bankadi: new FormControl('', [Validators.required]),
+       Bankvoen: new FormControl('',[Validators.required]),
+       Swift: new FormControl('',[Validators.required]),
+       Muxbirhesab: new FormControl('',[Validators.required]),
+       Bankkodu: new FormControl('',[Validators.required]),
+       Aznhesab: new FormControl('',[Validators.required]),
+       Shiricrachi: new FormControl('',[Validators.required]),
+       Shirvoen: new FormControl('',[Validators.required]),
+       Cavabdehshexs: new FormControl('',[Validators.required]),
+       Email: new FormControl('',[Validators.required]),
+       Unvan: new FormControl('',[Validators.required]),
+       UserId: new FormControl(''),
+       Shirpercent: new FormControl(0),
     });  
     
       this._caSer._getshirket().subscribe(list=>
       {         
            this.listshirket=list; 
            this.filteredshirket= this.listshirket; 
-           console.log(this.listshirket)                        
+          // console.log(this.listshirket)                        
       }, error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
        
 }
@@ -53,59 +53,59 @@ export class ShirketComponent implements OnInit {
 langu(lan:any){  this._lan=lan; }
   _addshirket()
   {
-    this.shirket.shId='';   
-    this.shirket.bankadi='';  
-    this.shirket.bankvoen=''; 
-    this.shirket.swift='';  
-    this.shirket.muxbirhesab=''; 
-    this.shirket.bankkodu='';  
-    this.shirket.aznhesab='';  
-    this.shirket.shiricrachi=''; 
-    this.shirket.shirvoen=''; 
-    this.shirket.cavabdehshexs='';  
-    this.shirket.email='';  
-    this.shirket.unvan=''; 
-    this.shirket.userId=''; 
-    this.shirket.shirpercent=0;   
+    this.shirket.ShId='';   
+    this.shirket.Bankadi='';  
+    this.shirket.Bankvoen=''; 
+    this.shirket.Swift='';  
+    this.shirket.Muxbirhesab=''; 
+    this.shirket.Bankkodu='';  
+    this.shirket.Aznhesab='';  
+    this.shirket.Shiricrachi=''; 
+    this.shirket.Shirvoen=''; 
+    this.shirket.Cavabdehshexs='';  
+    this.shirket.Email='';  
+    this.shirket.Unvan=''; 
+    this.shirket.UserId=''; 
+    this.shirket.Shirpercent=0;   
   }
   _cline(){ 
     this.shirketForm = new FormGroup({       
-      shId: new FormControl(''),  
-    bankadi: new FormControl(''), 
-    bankvoen: new FormControl(''),
-    swift: new FormControl(''), 
-    muxbirhesab: new FormControl(''),
-    bankkodu: new FormControl(''), 
-    aznhesab: new FormControl(''), 
+      ShId: new FormControl(''),  
+    Bankadi: new FormControl(''), 
+    Bankvoen: new FormControl(''),
+    Swift: new FormControl(''), 
+    Muxbirhesab: new FormControl(''),
+    Bankkodu: new FormControl(''), 
+    Aznhesab: new FormControl(''), 
 
-    shiricrachi: new FormControl(''),
-    shirvoen: new FormControl(''),
-    cavabdehshexs: new FormControl(''), 
+    Shiricrachi: new FormControl(''),
+    Shirvoen: new FormControl(''),
+    Cavabdehshexs: new FormControl(''), 
 
-    email: new FormControl(''), 
-    unvan: new FormControl(''),
-    userId: new FormControl(''),
-    shirpercent: new FormControl(0)
+    Email: new FormControl(''), 
+    Unvan: new FormControl(''),
+    UserId: new FormControl(''),
+    Shirpercent: new FormControl(0)
       });
      
    }
    _editshirket(ca:shirket){       
-       this.shirket.shId = ca.shId;
-       this.shirket.bankadi= ca.bankadi;
-       this.shirket.bankvoen = ca.bankvoen;
-       this.shirket.swift = ca.swift;
-       this.shirket.muxbirhesab = ca.muxbirhesab;
-       this.shirket.bankkodu = ca.bankkodu;
-       this.shirket.aznhesab = ca.aznhesab;
+       this.shirket.ShId = ca.ShId;
+       this.shirket.Bankadi= ca.Bankadi;
+       this.shirket.Bankvoen = ca.Bankvoen;
+       this.shirket.Swift = ca.Swift;
+       this.shirket.Muxbirhesab = ca.Muxbirhesab;
+       this.shirket.Bankkodu = ca.Bankkodu;
+       this.shirket.Aznhesab = ca.Aznhesab;
 
-       this.shirket.shiricrachi = ca.shiricrachi;
-       this.shirket.shirvoen = ca.shirvoen;
-       this.shirket.cavabdehshexs = ca.cavabdehshexs;
+       this.shirket.Shiricrachi = ca.Shiricrachi;
+       this.shirket.Shirvoen = ca.Shirvoen;
+       this.shirket.Cavabdehshexs = ca.Cavabdehshexs;
 
-       this.shirket.email = ca.email;
-       this.shirket.unvan = ca.unvan;
-       this.shirket.userId = ca.userId;
-       this.shirket.shirpercent = ca.shirpercent;
+       this.shirket.Email = ca.Email;
+       this.shirket.Unvan = ca.Unvan;
+       this.shirket.UserId = ca.UserId;
+       this.shirket.Shirpercent = ca.Shirpercent;
      // console.log(ca)       
      }
  onadd()
@@ -113,33 +113,33 @@ langu(lan:any){  this._lan=lan; }
     if(this.shirketForm.valid)  
     {
        var p={
-        shId:this.shirket.shId  ,
-        bankadi:this.shirketForm.value.bankadi,
-        bankvoen:this.shirketForm.value.bankvoen,
-        swift:this.shirketForm.value.swift,
-        muxbirhesab:this.shirketForm.value.muxbirhesab,
-        bankkodu:this.shirketForm.value.bankkodu,
-        aznhesab:this.shirketForm.value.aznhesab,
+        ShId:this.shirket.ShId  ,
+        Bankadi:this.shirketForm.value.Bankadi,
+        Bankvoen:this.shirketForm.value.Bankvoen,
+        Swift:this.shirketForm.value.Swift,
+        Muxbirhesab:this.shirketForm.value.Muxbirhesab,
+        Bankkodu:this.shirketForm.value.Bankkodu,
+        Aznhesab:this.shirketForm.value.Aznhesab,
 
-        shiricrachi:this.shirketForm.value.shiricrachi,
-        shirvoen:this.shirketForm.value.shirvoen,
-        cavabdehshexs:this.shirketForm.value.cavabdehshexs,
+        Shiricrachi:this.shirketForm.value.Shiricrachi,
+        Shirvoen:this.shirketForm.value.Shirvoen,
+        Cavabdehshexs:this.shirketForm.value.Cavabdehshexs,
 
-        email:this.shirketForm.value.email,
-        unvan:this.shirketForm.value.unvan,
-        userId:this.shirketForm.value.userId,
-        shirpercent:this.shirketForm.value.shirpercent
+        Email:this.shirketForm.value.Email,
+        Unvan:this.shirketForm.value.Unvan,
+        UserId:this.shirketForm.value.UserId,
+        Shirpercent:this.shirketForm.value.Shirpercent
       }
       //  console.log(p)
        this._caSer._posshirket(p).subscribe();        
        this._addshirket(); 
        this._cline();   
-       this.notificationService.success('::Submitted successfully');                 
+       this.noti.success('::Submitted successfully');                 
     }   
   } 
   ondel()
   {
-        this.notificationService.warn('!Deleted successfully');     
+        this.noti.warn('!Deleted successfully');     
         this._caSer._delshirket(this.shirket).subscribe();         
   } 
 }

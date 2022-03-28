@@ -10,12 +10,12 @@ import { KapitalComponent } from './kapital/kapital.component';
 import { GelirComponent } from './gelir/gelir.component';
 import { XercComponent } from './xerc/xerc.component';
 import { DvidentComponent } from './dvident/dvident.component';
-import { MDBmaterialModule } from 'src/mdbmaterial/mdbmaterial.module';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EmeliylistComponent } from './emeliylist/emeliylist.component';
 import { EmeliyyatRoutingModule } from './emeliyyat-routing.module';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+//import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ElqaimealishComponent } from './elqaimealish/elqaimealish.component';
 import { QaimelersComponent } from './qaimelers/qaimelers.component';
 import { QaimedetalComponent } from './qaimedetal/qaimedetal.component';
@@ -25,25 +25,26 @@ import { AxtarishComponent } from './axtarish/axtarish.component';
 
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { MdbModule } from '../imports/mdb.module';
 
 @NgModule({
-  declarations: [AlishComponent, SatishComponent, 
-    HesablashmaComponent,  VergiComponent, 
+  declarations: [AlishComponent, SatishComponent,
+    HesablashmaComponent, VergiComponent,
     OhdelikComponent, KapitalComponent,
-     GelirComponent, XercComponent, DvidentComponent, EmeliylistComponent, ElqaimealishComponent, QaimelersComponent, QaimedetalComponent, AxtarishComponent],
+    GelirComponent, XercComponent, DvidentComponent, EmeliylistComponent, ElqaimealishComponent, QaimelersComponent, QaimedetalComponent, AxtarishComponent],
   imports: [
     CommonModule,
     EmeliyyatRoutingModule,
-    MDBmaterialModule,
+    MdbModule,
     HttpClientModule,
-    ReactiveFormsModule,   
+    ReactiveFormsModule,
     FormsModule,
-    RouterModule ,
-    InfiniteScrollModule,
-    
-   // MaterialModule
-   
-   AgGridModule.withComponents([])
+    RouterModule,
+   // InfiniteScrollModule,
+    // MdbTreeModule  ,
+    // MaterialModule
+
+    AgGridModule.withComponents([])
   ]
 })
 export class EmeliyyatModule { }

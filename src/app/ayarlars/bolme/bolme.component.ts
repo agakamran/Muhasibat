@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NotificationService } from 'src/helpers/notification.service';
 import { bolme } from 'src/models/_muhasibat';
 import { Lang } from 'src/models/_carts';
 import { AyarlarService } from 'src/services/ayarlar.service';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-bolme',
@@ -18,13 +18,13 @@ export class BolmeComponent implements OnInit {
   bolme: bolme=new  bolme(); 
   _lang:Lang[]=[{lid: '1', lname: 'Az'},{lid: '2', lname: 'En'},{lid: '3', lname: 'Ru'} ];  _lan='';
   _bolme:  bolme[];  _pid:'';  
-  constructor( private _caSer: AyarlarService,private notificationService: NotificationService) {
+  constructor( private _caSer: AyarlarService,private noti: NotificationService) {
      this.bolme.bId="";
    }
 
    ngOnInit(): void {
     this.bolmeForm = new FormGroup({  
-       bolmeId: new FormControl(''),   
+       bId: new FormControl(''),   
        bolmeName: new FormControl('', [Validators.required,Validators.maxLength(50)])
       // description: new FormControl('')
     });  
@@ -34,7 +34,7 @@ export class BolmeComponent implements OnInit {
            this.listbolme=list; 
            this.filteredbolme= this.listbolme; 
          //  console.log('ZZZZ')
-           console.log(this.listbolme)                        
+         //  console.log(this.listbolme)                        
       }, error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
        
 }
@@ -50,7 +50,7 @@ langu(lan:any){  this._lan=lan; }
   _cline(){ 
     this.bolmeForm = new FormGroup({  
        
-      bolmeId: new FormControl(''),
+      bId: new FormControl(''),
       bolmeName: new FormControl(''),
      // description: new FormControl('')
       });
@@ -60,7 +60,7 @@ langu(lan:any){  this._lan=lan; }
        this.bolme.bId = ca.bId;
        this.bolme.bolmeName = ca.bolmeName;
       // this.bolme.description = ca.description;
-     // console.log(ca)       
+    //  console.log(ca)       
      }
  onadd()
   { 
@@ -75,12 +75,12 @@ langu(lan:any){  this._lan=lan; }
        this._caSer._postbolme(p).subscribe();        
        this._addbolme(); 
        this._cline();   
-       this.notificationService.success('::Submitted successfully');                 
+       this.noti.success('::Submitted successfully');                 
     }   
   } 
   ondel()
   {
-        this.notificationService.warn('!Deleted successfully');     
+        this.noti.warn('!Deleted successfully');     
         this._caSer._delbolme(this.bolme).subscribe();         
   } 
 

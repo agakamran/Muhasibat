@@ -2,9 +2,9 @@ import { Component, HostListener,  ViewChild,
   OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MdbTableDirective } from 'angular-bootstrap-md';
-import { NotificationService } from 'src/helpers/notification.service';
 import { vahid, vergi } from 'src/models/_muhasibat';
 import { AyarlarService } from 'src/services/ayarlar.service';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-vergikod',
@@ -45,11 +45,11 @@ export class VergikodComponent implements OnInit {
   
   ngOnInit(): void {           
     this.vergiForm = new FormGroup({  
-      vergiId: new FormControl(''),  
-      vergikodununadi: new FormControl('', [Validators.required]),   
-      vergikodu: new FormControl('', [Validators.required]),
-      vId: new FormControl('', [Validators.required]),
-      edv_tar: new FormControl('')  
+      VergiId: new FormControl(''),  
+      Vergikodununadi: new FormControl('', [Validators.required]),   
+      Vergikodu: new FormControl('', [Validators.required]),
+      VId: new FormControl('', [Validators.required]),
+      Edv_tar: new FormControl('')  
     });    
     this._quSer._getvergi().subscribe(list=>
       {         
@@ -67,27 +67,27 @@ export class VergikodComponent implements OnInit {
   _addvergi()
   {
    // this.nav.nid='';
-    this.vergi.vergiId='';
-    this.vergi.vergikodu='';
-    this.vergi.vergikodununadi='';
-    this.vergi.vId='';
-    this.vergi.edv_tar;   
+    this.vergi.VergiId='';
+    this.vergi.Vergikodu='';
+    this.vergi.Vergikodununadi='';
+    this.vergi.VId='';
+    this.vergi.Edv_tar;   
   }
   _cline(){ 
     this.vergiForm = new FormGroup({  
-      vergiId: new FormControl(''),  
-      vergikodununadi: new FormControl(''),   
-      vergikodu: new FormControl(''),
-      vId: new FormControl('')  
+      VergiId: new FormControl(''),  
+      Vergikodununadi: new FormControl(''),   
+      Vergikodu: new FormControl(''),
+      VId: new FormControl('')  
     });
      
    }
    _editvergi(ve:vergi){       
-    this.vergi.vergiId=ve.vergiId;
-    this.vergi.vergikodu=ve.vergikodu;
-    this.vergi.vergikodununadi=ve.vergikodununadi;
-    this.vergi.vId=this.listvahid.find(x=>x.vId==ve.vId)!.vahidadi;
-    this.vergi.edv_tar=ve.edv_tar;
+    this.vergi.VergiId=ve.VergiId;
+    this.vergi.Vergikodu=ve.Vergikodu;
+    this.vergi.Vergikodununadi=ve.Vergikodununadi;
+    this.vergi.VId=this.listvahid.find(x=>x.VId==ve.VId)!.Vahidadi;
+    this.vergi.Edv_tar=ve.Edv_tar;
   // console.log(ca)       
   } 
 
@@ -97,11 +97,11 @@ export class VergikodComponent implements OnInit {
     // console.log(this.vergiForm.value.vergiId)
     // console.log(this.ver.vergiId)
        var p={          
-        vergiId :this.vergi.vergiId, 
-        vergikodu:this.vergiForm.value.vergikodu,
-        vergikodununadi:this.vergiForm.value.vergikodununadi,
-        vId:this.vergiForm.value.vId,
-        edv_tar:this.vergiForm.value.edv_tar,
+        VergiId :this.vergi.VergiId, 
+        Vergikodu:this.vergiForm.value.Vergikodu,
+        Vergikodununadi:this.vergiForm.value.Vergikodununadi,
+        VId:this.vergiForm.value.vVId,
+        Edv_tar:this.vergiForm.value.Edv_tar,
         STATE: ''       
       }
       // console.log(p)
@@ -113,9 +113,6 @@ export class VergikodComponent implements OnInit {
   }  
   ondel(){
     this.noti.warn('!Deleted successfully');     
-    this._quSer._delvergi(this.vergi).subscribe();  
-    
+    this._quSer._delvergi(this.vergi).subscribe(); 
   }
-   
-  
 }

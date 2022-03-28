@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { NotificationService } from 'src/helpers/notification.service';
 import { Lang } from 'src/models/_carts';
 import { _color } from 'src/models/_settings';
 import { SettingsService } from 'src/services/settings.service';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-colors',
@@ -20,7 +20,7 @@ export class ColorsComponent implements OnInit {
   _col: _color[];  _pid:'';
   
   constructor( private _caSer: SettingsService,
-     private notificationService: NotificationService) {
+     private noti: NotificationService) {
      this.col.colId="";
    }
 
@@ -100,12 +100,12 @@ langu(lan:any){  this._lan=lan; }
        //this._yenile(); 
        this._addcol(); 
        this._cline();   
-       this.notificationService.success('::Submitted successfully');                 
+       this.noti.success('::Submitted successfully');                 
     }   
   } 
   ondel()
   {
-        this.notificationService.warn('!Deleted successfully');     
+        this.noti.warn('!Deleted successfully');     
         this._caSer._delcolor(this.col).subscribe();  
        // this._yenile();
   } 

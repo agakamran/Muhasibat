@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { NotificationService } from 'src/helpers/notification.service';
 import { SettingsService } from 'src/services/settings.service';
 import { kullanimAlani } from 'src/models/_settings';
 import { Lang } from 'src/models/_carts';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-kullanimalani',
@@ -19,7 +19,7 @@ export class KullanimalaniComponent implements OnInit {
   _kul: kullanimAlani[];  _pid:'';
   
   constructor( private _caSer: SettingsService,
-     private notificationService: NotificationService) {
+     private noti: NotificationService) {
      this.kul.kulalanId="";
    }
 
@@ -78,12 +78,12 @@ langu(lan:any){  this._lan=lan; }
        //this._yenile(); 
        this._addkul(); 
        this._cline();   
-       this.notificationService.success('::Submitted successfully');             
+       this.noti.success('::Submitted successfully');             
     }   
   } 
   ondel()
   {
-        this.notificationService.warn('!Deleted successfully');     
+        this.noti.warn('!Deleted successfully');     
         this._caSer._delkullanimAlani(this.kul).subscribe();  
        // this._yenile();
   } 

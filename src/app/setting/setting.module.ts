@@ -21,7 +21,7 @@ import { QelipComponent } from './qelip/qelip.component';
 import { QoltipiComponent } from './qoltipi/qoltipi.component';
 import { YakaComponent } from './yaka/yaka.component';
 import { HazirlaComponent } from './hazirla/hazirla.component';
-import { MDBmaterialModule } from 'src/mdbmaterial/mdbmaterial.module';
+import { MdbModule } from '../imports/mdb.module';
 
 
 @NgModule({
@@ -33,7 +33,7 @@ import { MDBmaterialModule } from 'src/mdbmaterial/mdbmaterial.module';
   imports: [
     CommonModule,
     SettingRoutingModule,
-    MDBmaterialModule,
+    MdbModule,
     HttpClientModule,
     ReactiveFormsModule,   
     FormsModule,

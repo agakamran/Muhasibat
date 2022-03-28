@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { NotificationService } from 'src/helpers/notification.service';
 import { Lang } from 'src/models/_carts';
 import { gender } from 'src/models/_settings';
 import { SettingsService } from 'src/services/settings.service';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-gender',
@@ -20,7 +20,7 @@ export class GenderComponent implements OnInit {
   _page: gender[];  _pid:'';
   
   constructor(private _caSer: SettingsService,
-     private notificationService: NotificationService) {
+     private noti: NotificationService) {
      this.gen.genId="";
    }
 
@@ -68,13 +68,13 @@ langu(lan:any){  this._lan=lan; }
        //this._yenile(); 
        this._addgen(); 
        this._cline();   
-       this.notificationService.success('::Submitted successfully');         
+       this.noti.success('::Submitted successfully');         
                      
     }   
   } 
   ondel()
   {
-        this.notificationService.warn('!Deleted successfully');     
+        this.noti.warn('!Deleted successfully');     
         this._caSer._delgender(this.gen).subscribe(); 
        
   } 

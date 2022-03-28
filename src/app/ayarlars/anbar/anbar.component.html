@@ -20,7 +20,7 @@
                 <div class="modal-body" > 
                   <div class="row">                  
                     <div class="col-sm-12">
-                      <input type="text" [(ngModel)]="anbar.anbarname" name="anbarname"  placeholder="anbarname yazin" class="form-control" formControlName="anbarname" mdbInput>
+                      <input type="text" [(ngModel)]="anbar.Anbarname" name="anbarname"  placeholder="anbarname yazin" class="form-control" formControlName="anbarname" mdbInput>
                       <label for="anbarname">anbarname</label>  
                     </div>                    
                                 
@@ -36,6 +36,7 @@
             </div>
           </div> 
           <!------------------------------------------------------------->
+          
          <div mdbModal #delanbar="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -43,7 +44,7 @@
                   <button type="button" class="close pull-right" aria-label="Close" (click)="delanbar.hide()">
                     <span aria-hidden="true">×</span>
                   </button>
-                  <h4 class="modal-title w-150" id="myModalLabel"><span>Del {{ anbar.anbarname }}</span></h4>
+                  <h4 class="modal-title w-150" id="myModalLabel"><span>Del {{ anbar.Anbarname }}</span></h4>
                 </div>
                 <form  class="normal-form">           
                 <div class="modal-footer">
@@ -83,18 +84,18 @@
                 <tr>
                  <!--   <td class="pt-3-half" contenteditable="true">{{ p.navid }}</td>-->
                   <!-- <td class="pt-3-half" contenteditable="true">{{ p.genId }}</td> -->
-                  <td class="pt-3-half" contenteditable="true">{{ p.anbarname }}</td>
+                  <td class="text-center" contenteditable="true">{{ p.Anbarname }}</td>
                  <!-- <td class="pt-3-half" contenteditable="true">{{ p.description}}</td>    
                   <td class="pt-3-half" contenteditable="true">{{ p.firma_unvan}}</td>
                   <td class="pt-3-half" contenteditable="true">{{ p.firma_email}}</td>  
                   <td class="pt-3-half" contenteditable="true">{{ p.voen}}</td>  -->
-                  <td class="pt-3-half">
+                  <td class="text-center">
                     <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
                           aria-hidden="true"></i></a></span>
                     <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
                           aria-hidden="true"></i></a></span>
                   </td>
-                  <td>
+                  <td class="text-center">
                     <span class="table-remove">
                       <button type="button" (click)="addanbar.show()" (click)="_editanbar(p)" class="btn btn-info btn-sm my-0">
                         Edit<i class="fas fa-edit"></i></button>

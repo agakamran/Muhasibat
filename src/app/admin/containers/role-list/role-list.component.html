@@ -2,8 +2,7 @@
 <div class="card">
   <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Add/Edit/Delete Role</h3>
   <div class="card-body">
-    <div id="table" class="table-editable">
-              
+    <div id="table" class="table-editable">              
         <div mdbModal #addrole="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                <div class="modal-content">
@@ -34,16 +33,16 @@
                 <button type="button" class="close pull-right" aria-label="Close" (click)="editrole.hide()">
                   <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title w-150" id="myModalLabel"><span>Add To {{ name }}</span></h4>
+                <h4 class="modal-title w-150" id="myModalLabel"><span>Add To {{ Name }}</span></h4>
               </div>
               <form  class="normal-form" >
               <div class="modal-body">          
                  <select class="custom-select" multiple (click)="_ToAdd($event.target.value)">
-                      <option class="alert alert-success"  *ngFor="let item of usrol.nonMembers"  [value]="item.id" > {{ item.email }}</option>
+                      <option class="alert alert-success"  *ngFor="let item of usrol.NonMembers"  [value]="item.Id" > {{ item.Email }}</option>
                   </select>                                                
-              <div class="card-header"> <span> Remove From {{ name }}</span></div>                
+              <div class="card-header"> <span> Remove From {{ Name }}</span></div>                
                   <select class="custom-select" multiple (click)="_ToDelete($event.target.value)">
-                       <option class="alert alert-info" *ngFor="let item of usrol.members"  [value]="item.id" > {{ item.email }}</option>       
+                       <option class="alert alert-info" *ngFor="let item of usrol.Members"  [value]="item.Id" > {{ item.Email }}</option>       
                   </select>                                  
               </div>  
               <div class="modal-footer">
@@ -132,9 +131,9 @@
         </thead>
         <tbody *ngFor='let roles of filteredrole'>
           <tr>
-            <td class="pt-3-half" contenteditable="true">{{ roles.id }}</td>
-            <td class="pt-3-half" contenteditable="true">{{ roles.name}}</td>    
-            <td class="pt-3-half" contenteditable="true">{{ roles.name}}</td>      
+            <td class="pt-3-half" contenteditable="true">{{ roles.Id }}</td>
+            <td class="pt-3-half" contenteditable="true">{{ roles.Name}}</td>    
+            <td class="pt-3-half" contenteditable="true">{{ roles.Name}}</td>      
             <td class="pt-3-half">
               <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
                     aria-hidden="true"></i></a></span>

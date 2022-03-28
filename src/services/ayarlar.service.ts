@@ -103,8 +103,8 @@ export class AyarlarService {
     }  
     _delanbar(bo:anbar) {   
      // const bod:MenuItem= { pid: id,pagename:'' }
-      //console.log(id)
-       return this.http.post(this.pathAPI + 'delanbar',bo )
+      console.log(this.pathAPI + 'delanbar/?id='+bo.AnbId)
+       return this.http.delete(this.pathAPI + '_delanbar/?id='+bo.AnbId )
       .pipe( catchError((err) => {  console.error(err);  throw err; }))
     } 
   //-----------hesab--------

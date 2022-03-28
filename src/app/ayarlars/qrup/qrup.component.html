@@ -20,15 +20,15 @@
                 <div class="modal-body" > 
                   <div class="row">                  
                     <div class="col-sm-12">
-                      <input type="text" [(ngModel)]="qrup.qrupname" name="qrupname"  placeholder="qrupname yazin" class="form-control" formControlName="qrupname" mdbInput>
-                      <label for="qrupname">qrupname</label>  
+                      <input type="text" [(ngModel)]="qrup.Qrupname" name="Qrupname"  placeholder="Qrupname yazin" class="form-control" formControlName="Qrupname" mdbInput>
+                      <label for="Qrupname">Qrupname</label>  
                     </div>                     
                   </div> 
                    <div class="row">                  
                     <div class="col-md-4">Debit hesabı              
                       <select [(ngModel)]="qrup.dhesId" formControlName="dhesId" (change)="seldebit($event.target.value)"                       
                       class="browser-default custom-select" >                                                   
-                        <option *ngFor="let o of _debhesab" [value]="o.hesId" >{{ o.hesnom }}</option>                                 
+                        <option *ngFor="let o of _debhesab" [value]="o.HesId" >{{ o.Hesnom }}</option>                                 
                      </select>               
                     </div>
                     <div class="col-md-8">  
@@ -40,7 +40,7 @@
                     <div class="col-md-4">Kredit hesabı                                  
                       <select [(ngModel)]="qrup.khesId" formControlName="khesId" (change)="selkred($event.target.value)"                       
                       class="browser-default custom-select" >                                                    
-                        <option *ngFor="let o of _kredhesab" [value]="o.hesId" >{{ o.hesnom }}</option>                                                   
+                        <option *ngFor="let o of _kredhesab" [value]="o.HesId" >{{ o.Hesnom }}</option>                                                   
                      </select>                 
                     </div>
                     <div class="col-md-8">
@@ -65,7 +65,7 @@
                   <button type="button" class="close pull-right" aria-label="Close" (click)="delqrup.hide()">
                     <span aria-hidden="true">×</span>
                   </button>
-                  <h4 class="modal-title w-150" id="myModalLabel"><span>Del {{ qrup.qrupname }}</span></h4>
+                  <h4 class="modal-title w-150" id="myModalLabel"><span>Del {{ qrup.Qrupname }}</span></h4>
                 </div>
                 <form  class="normal-form">           
                 <div class="modal-footer">
@@ -93,7 +93,7 @@
                  
                 <!-- <th class="text-center">qrupgiId</th> 
                   <th class="text-center" >BId</th>    -->
-                  <th class="text-center">qrupname</th>    
+                  <th class="text-center">Qrupname</th>    
                   <th class="text-center">Debit</th>
                   <th class="text-center">Kredit</th>   
                   <th class="text-center">Sort</th>
@@ -106,7 +106,7 @@
                 <tr>
                  <!--   <td class="pt-3-half" contenteditable="true">{{ p.navid }}</td>-->
                   <!-- <td class="pt-3-half" contenteditable="true">{{ p.genId }}</td> -->
-                  <td class="pt-3-half" contenteditable="true">{{ p.qrupname }}</td>
+                  <td class="pt-3-half" contenteditable="true">{{ p.Qrupname }}</td>
                   <td class="pt-3-half" contenteditable="true">{{ p.dhesId}}</td>    
                   <td class="pt-3-half" contenteditable="true">{{ p.khesId}}</td>
                 <!--  <td class="pt-3-half" contenteditable="true">{{ p.firma_email}}</td>  

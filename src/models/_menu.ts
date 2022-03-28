@@ -1,5 +1,5 @@
 export class MenuItem {
-    nid:string;
+    nid?:string;
     pid?:string;
     ntitle: string;
     npath: string;    

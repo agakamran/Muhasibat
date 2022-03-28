@@ -11,7 +11,6 @@ import { VergikodComponent } from './vergikod/vergikod.component';
 import { VahidComponent } from './vahid/vahid.component';
 import { ValyutaComponent } from './valyuta/valyuta.component';
 import { TiplerComponent } from './tipler/tipler.component';
-import { MDBmaterialModule } from 'src/mdbmaterial/mdbmaterial.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,6 +18,7 @@ import { BolmeComponent } from './bolme/bolme.component';
 import { MaddeComponent } from './madde/madde.component';
 import { AnbarComponent } from './anbar/anbar.component';
 import { QrupComponent } from './qrup/qrup.component';
+import { MdbModule } from '../imports/mdb.module';
 
 @NgModule({
   declarations: [AyarListComponent, HesabComponent, AktivlerComponent,
@@ -27,7 +27,7 @@ import { QrupComponent } from './qrup/qrup.component';
   imports: [
     CommonModule,
     AyarlarsRoutingModule,
-    MDBmaterialModule,
+    MdbModule,
     HttpClientModule,
     ReactiveFormsModule,   
     FormsModule,

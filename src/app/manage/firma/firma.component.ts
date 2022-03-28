@@ -6,7 +6,7 @@ import { Lang } from 'src/models/_carts';
 import { firma } from 'src/models/_settings';
 import { AppState } from 'src/app/reducers';
 import { SettingsService } from 'src/services/settings.service';
-import { NotificationService } from 'src/helpers/notification.service';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-firma',
@@ -23,7 +23,7 @@ export class FirmaComponent implements OnInit {
   _page: firma[];  _pid:'';
   
   constructor(private store: Store<AppState>, private _caSer: SettingsService,
-     private notificationService: NotificationService) {
+     private noti: NotificationService) {
     
      this.fir.storId="";
      this.store.select(getemail).subscribe(k=>{ this._email=k; })
@@ -120,13 +120,13 @@ langu(lan:any){  this._lan=lan; }
        //this._yenile(); 
        this._addfir(); 
        this._cline();   
-       this.notificationService.success('::Submitted successfully');                
+       this.noti.success('::Submitted successfully');                
                      
     }   
   } 
   ondel()
   {
-        this.notificationService.warn('!Deleted successfully');     
+        this.noti.warn('!Deleted successfully');     
         this._caSer._delfirma(this.fir).subscribe();  
        // this._yenile();
   } 

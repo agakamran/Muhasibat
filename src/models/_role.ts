@@ -5,8 +5,8 @@ export class IRole {
 }
 export class IRoleEdit { 
     Role: string;
-    members: string[] = [];
-    nonMembers:string[] = [];
+    Members: string[] = [];
+    NonMembers:string[] = [];
 }
 export class IRoleModifi {
     RoleId:string; 

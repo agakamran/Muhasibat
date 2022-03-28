@@ -13,8 +13,7 @@ import { UserComponent } from './components/user/user.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { RoleListComponent } from './containers/role-list/role-list.component';
 import { NavbarComponent } from './containers/navbar/navbar.component';
-//import { SharedModule } from 'src/app/views/shared/shared.module';
-import { MDBmaterialModule } from 'src/mdbmaterial/mdbmaterial.module';
+import { MdbModule } from '../imports/mdb.module';
 
 // import { CartListComponent } from './containers/cart-list/cart-list.component';
 // import { AddPageComponent } from './containers/add-page/add-page.component';
@@ -35,7 +34,7 @@ import { MDBmaterialModule } from 'src/mdbmaterial/mdbmaterial.module';
   imports: [
     CommonModule,     
     AdminRoutingModule,
-    MDBmaterialModule,
+    MdbModule,
     HttpClientModule ,
     RouterModule,
     //SharedModule,

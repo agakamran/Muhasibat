@@ -21,11 +21,11 @@
                   <div class="row">
                     <div class="col-sm-12">
                       <label for="valname" class=""><i class="fas fa-tag prefix grey-text"></i>Valyuta adi</label>
-                    <input type="text" [(ngModel)]="valyuta.valname" name="valname" placeholder="valname yazin" class="form-control" formControlName="valname" mdbInput>   
+                    <input type="text" [(ngModel)]="valyuta.Valname" name="valname" placeholder="valname yazin" class="form-control" formControlName="Valname" mdbInput>   
                     </div>  
                    <div class="col-sm-12">
                         <label for="valnominal" class=""><i class="fas fa-tag prefix grey-text"></i>Val nominal</label>
-                      <input type="number" [(ngModel)]="valyuta.valnominal" name="valnominal" placeholder="valnominal yazin" class="form-control" formControlName="valnominal" mdbInput>   
+                      <input type="number" [(ngModel)]="valyuta.Valnominal" name="valnominal" placeholder="valnominal yazin" class="form-control" formControlName="Valnominal" mdbInput>   
                     </div>             
                   </div>        
                            
@@ -46,7 +46,7 @@
                   <button type="button" class="close pull-right" aria-label="Close" (click)="delvalyuta.hide()">
                     <span aria-hidden="true">×</span>
                   </button>
-                  <h4 class="modal-title w-150" id="myModalLabel"><span>Del {{ valyuta.valname }}</span></h4>
+                  <h4 class="modal-title w-150" id="myModalLabel"><span>Del {{ valyuta.Valname }}</span></h4>
                 </div>
                 <form  class="normal-form">           
                 <div class="modal-footer">
@@ -75,8 +75,8 @@
               <tr>
                <!--   <td class="pt-3-half" contenteditable="true">{{ p.navid }}</td>-->
                 <!-- <td class="pt-3-half" contenteditable="true">{{ p.genId }}</td> -->
-                <td class="pt-3-half" contenteditable="true">{{ p.valname }}</td>
-                <td class="pt-3-half" contenteditable="true">{{ p.valnominal}}</td>    
+                <td class="pt-3-half" contenteditable="true">{{ p.Valname }}</td>
+                <td class="pt-3-half" contenteditable="true">{{ p.Valnominal}}</td>    
                <!-- <td class="pt-3-half" contenteditable="true">{{ p.firma_unvan}}</td>
                 <td class="pt-3-half" contenteditable="true">{{ p.firma_email}}</td>  
                 <td class="pt-3-half" contenteditable="true">{{ p.voen}}</td>  -->

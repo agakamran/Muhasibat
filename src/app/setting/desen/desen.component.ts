@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { NotificationService } from 'src/helpers/notification.service';
 import { Lang } from 'src/models/_carts';
 import { _desen } from 'src/models/_settings';
 import { SettingsService } from 'src/services/settings.service';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-desen',
@@ -19,7 +19,7 @@ export class DesenComponent implements OnInit {
   _des: _desen[];  _pid:'';
   
   constructor(private _caSer: SettingsService,
-     private notificationService: NotificationService) {
+     private noti: NotificationService) {
      this.des.desId="";
    }
 
@@ -89,13 +89,13 @@ langu(lan:any){  this._lan=lan; }
        //this._yenile(); 
        this._adddes(); 
        this._cline();   
-       this.notificationService.success('::Submitted successfully');                
+       this.noti.success('::Submitted successfully');                
                      
     }   
   } 
   ondel()
   {
-        this.notificationService.warn('!Deleted successfully');     
+        this.noti.warn('!Deleted successfully');     
         this._caSer._delitemdesen(this.des).subscribe();  
        // this._yenile();
   } 

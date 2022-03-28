@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
-import {MatListModule} from '@angular/material/list';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatIconModule} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 /*import { MatSelectModule } from '@angular/material/select';
 import { MatSelectInfiniteScrollModule } from 'ng-mat-select-infinite-scroll';
 import { CommonModule } from '@angular/common';
@@ -70,49 +70,49 @@ import {OverlayModule} from '@angular/cdk/overlay';*/
     MatSnackBarModule,
     MatPaginatorModule, //porsyalarla goster
     DragDropModule,
-   /* MatSelectModule,
-    MatSelectInfiniteScrollModule  
-    CommonModule,
-    LayoutModule,
-    A11yModule,
-    ClipboardModule,
-    CdkStepperModule,
-    CdkTableModule,
-    CdkTreeModule,
+    /* MatSelectModule,
+     MatSelectInfiniteScrollModule  
+     CommonModule,
+     LayoutModule,
+     A11yModule,
+     ClipboardModule,
+     CdkStepperModule,
+     CdkTableModule,
+     CdkTreeModule,
+     
+     MatAutocompleteModule,
+     MatBadgeModule,
+     MatBottomSheetModule,    
+     MatButtonToggleModule,
+     MatCardModule,
+     MatCheckboxModule,
+     MatChipsModule,
+     MatStepperModule,
+     MatDatepickerModule,
+     
+     MatDividerModule,
+     MatExpansionModule,
+     MatGridListModule,    
+     MatInputModule,    
+     
+     MatNativeDateModule,
+     
+     MatProgressBarModule,
+     MatProgressSpinnerModule,
+     MatRadioModule,
+     MatRippleModule,
     
-    MatAutocompleteModule,
-    MatBadgeModule,
-    MatBottomSheetModule,    
-    MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatStepperModule,
-    MatDatepickerModule,
-    
-    MatDividerModule,
-    MatExpansionModule,
-    MatGridListModule,    
-    MatInputModule,    
-    
-    MatNativeDateModule,
-    
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-   
-    MatSliderModule,
-    MatSlideToggleModule,
-    
-    MatSortModule,
-    MatTableModule,
-    MatTabsModule,   
-    MatTooltipModule,
-    MatTreeModule,
-    OverlayModule,
-    PortalModule,
-    ScrollingModule,*/
+     MatSliderModule,
+     MatSlideToggleModule,
+     
+     MatSortModule,
+     MatTableModule,
+     MatTabsModule,   
+     MatTooltipModule,
+     MatTreeModule,
+     OverlayModule,
+     PortalModule,
+     ScrollingModule,*/
   ],
   exports: [
     MatSidenavModule,
@@ -175,3 +175,4 @@ import {OverlayModule} from '@angular/cdk/overlay';*/
   ]
 })
 export class MaterialModule { }
+

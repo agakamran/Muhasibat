@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { min } from 'rxjs/operators';
-import { NotificationService } from 'src/helpers/notification.service';
 import { aktivi, edeve, emel, hesab, mushteri, vahid, valyuta } from 'src/models/_muhasibat';
 import { AyarlarService } from 'src/services/ayarlar.service';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-satish',
@@ -87,12 +87,12 @@ export class SatishComponent implements OnInit {
  } 
  _cline(){
   this.emelForm = new FormGroup({  
-    aId: new FormControl('', [Validators.required]),   
-    dhesId: new FormControl('', [Validators.required]),
-    khesId: new FormControl('', [Validators.required]),
-    mushId: new FormControl('', [Validators.required]),
-    miqdar: new FormControl(0, [Validators.required]),
-    submiqdar: new FormControl(1, [Validators.required]),
+    AId: new FormControl('', [Validators.required]),   
+    DhesId: new FormControl('', [Validators.required]),
+    KhesId: new FormControl('', [Validators.required]),
+    MushId: new FormControl('', [Validators.required]),
+    Miqdar: new FormControl(0, [Validators.required]),
+    Mubmiqdar: new FormControl(1, [Validators.required]),
 
     vahidqiymeti_alish: new FormControl(0, [Validators.required]),
     vahidqiymeti_satish: new FormControl(0, [Validators.required]),   
@@ -116,35 +116,35 @@ export class SatishComponent implements OnInit {
  
  selacti(act:any){  this._actname=act; 
   this._kredit='';this._debit='';
-   this._debhesab=this.listhesab.filter(k=>k.activId===this._actname);
-   this._kredhesab=this.listhesab.filter(k=>k.activId===this._actname);   
+   this._debhesab=this.listhesab.filter(k=>k.ActivId===this._actname);
+   this._kredhesab=this.listhesab.filter(k=>k.ActivId===this._actname);   
  }
  seldebit(deb:any){ this.hesId=deb;   
-   this._debit = this.listhesab.find(kam=>kam.hesId=== this.hesId)!.hesname; 
+   this._debit = this.listhesab.find(kam => kam.HesId === this.hesId)!.Hesname; 
   }
  selkred(kred:any){ this.hesId=kred;
-   this._kredit = this.listhesab.find(kam=>kam.hesId=== this.hesId)!.hesname;   
+   this._kredit = this.listhesab.find(kam => kam.HesId === this.hesId)!.Hesname;   
  }
  selmush(mush:any){ this._mush=mush; //console.log(mush)
   }
  selverg(ver:any){ this._eme= ver;   
   //console.log(this._eme)
-  var vve=this.listemel.find(k=>k.emdetId===this._eme);   
-   this.malkodu = vve!.vergikodu!.toString();
-  this.emel.aId = vve!.aId;
-  this.selacti(this.emel.aId);
-  this.emel.edv=vve!.edv;
-  this.seledeve(this.emel.edv);
-  console.log(vve!.dhesId)
-  this.emel.dhesId=vve!.dhesId;
-  this.seldebit(this.emel.dhesId);
-  console.log(vve!.khesId)
-  this.emel.khesId=vve!.khesId;
-  this.selkred(this.emel.khesId);
+  var vve=this.listemel.find(k=>k.EmdetId===this._eme);   
+   this.malkodu = vve!.Vergikodu!.toString();
+  this.emel.AId = vve!.AId;
+  this.selacti(this.emel.AId);
+  this.emel.Edv=vve!.Edv;
+  this.seledeve(this.emel.Edv);
+  console.log(vve!.DhesId)
+  this.emel.DhesId=vve!.DhesId;
+  this.seldebit(this.emel.DhesId);
+  console.log(vve!.KhesId)
+  this.emel.KhesId=vve!.KhesId;
+  this.selkred(this.emel.KhesId);
 
-  this.emel.vId=this.listvahid.find(k=>k.vId=== vve?.vId)!.vId;
+  this.emel.VId=this.listvahid.find(k=>k.VId=== vve?.VId)!.VId;
   //  this._vah=this.emel.VId;
-    this.selvahid(this.emel.vId);
+    this.selvahid(this.emel.VId);
     // if(vve?.edv_tar===null){this.seledeve("0,18%");}
     // else{this.seledeve("0");}    
     //console.log(vve) 
@@ -152,23 +152,23 @@ export class SatishComponent implements OnInit {
    selvahid(va:any){
     // console.log(va)
     this._vah=va;
-     let x=this.listvahid.find(k=>k.vId=== va);
-     if(x!=null){  this.emel.submiqdar=1;  }
+     let x=this.listvahid.find(k=>k.VId=== va);
+     if(x!=null){  this.emel.Submiqdar=1;  }
      //console.log(this.emel.qutuda)
    }
  seledeve(ede:any){ this._ede=ede; 
-   if(this._ede== "0,18%"){ this.emel.edvye_celbedilen=1;this.emel.edvye_celbedilmeyen=0;}
-   else{this.emel.edvye_celbedilen=0;this.emel.edvye_celbedilmeyen=1;}     //console.log(ede) 
+   if(this._ede== "0,18%"){ this.emel.Edvye_celbedilen=1;this.emel.Edvye_celbedilmeyen=0;}
+   else{this.emel.Edvye_celbedilen=0;this.emel.Edvye_celbedilmeyen=1;}     //console.log(ede) 
  }
- selaz(val:any){this.emel.valId=val; 
+ selaz(val:any){this.emel.ValId=val; 
   // console.log(val)
-   this.emel.kurs=1;
+   this.emel.Kurs=1;
  }
- selval(val:any){this.emel.valId=val;
+ selval(val:any){this.emel.ValId=val;
   // console.log(val)
-   var _v=this.listvalyuta.filter(k=>k.valname===this.emel.valId && min(k.tarix?.getUTCDate));
+   var _v=this.listvalyuta.filter(k=>k.Valname===this.emel.ValId && min(k.Tarix?.getUTCDate));
    _v.forEach(element => {
-     this.emel.kurs=element.valnominal;
+     this.emel.Kurs=element.Valnominal;
     // console.log(this.emel.Kurs)
    });
  }
@@ -187,7 +187,7 @@ export class SatishComponent implements OnInit {
       submiqdar:this.emelForm.value.submiqdar,
       vahidqiymeti_alish:this.emelForm.value.vahidqiymeti_alish,
       vahidqiymeti_satish:this._sat,
-      vergiId:this.listemel.find(k=>k.emdetId===this._eme)!.vergiId,
+      vergiId:this.listemel.find(k=>k.EmdetId===this._eme)!.VergiId,
       vId:this.emelForm.value.VId,
       edv:this._ede,
       edvye_celbedilen:this.emelForm.value.edvye_celbedilen ,

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NotificationService } from 'src/helpers/notification.service';
 import { anbar } from 'src/models/_muhasibat';
 import { AyarlarService } from 'src/services/ayarlar.service';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-anbar',
@@ -33,7 +33,7 @@ export class AnbarComponent implements OnInit {
            this.listanbar=list; 
            this.filteredanbar= this.listanbar; 
          //  console.log('ZZZZ')
-           console.log(this.listanbar)                        
+         //  console.log(this.listanbar)                        
       }, error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
        
 }
@@ -42,8 +42,8 @@ export class AnbarComponent implements OnInit {
 
   _addanbar()
   {
-    this.anbar.anbId='';   
-    this.anbar.anbarname='';  
+    this.anbar.AnbId='';   
+    this.anbar.Anbarname='';  
    // this.anbar.description='';      
   }
   _cline(){ 
@@ -56,8 +56,8 @@ export class AnbarComponent implements OnInit {
      
    }
    _editanbar(ca: anbar){       
-       this.anbar.anbId = ca.anbId;
-       this.anbar.anbarname = ca.anbarname;
+       this.anbar.AnbId = ca.AnbId;
+       this.anbar.Anbarname = ca.Anbarname;
       // this.anbar.description = ca.description;
      // console.log(ca)       
      }
@@ -66,8 +66,8 @@ export class AnbarComponent implements OnInit {
     if(this.anbarForm.valid)  
     {
        var p={
-        anbId:this.anbar.anbId  ,
-        anbarname:this.anbarForm.value.anbarname
+        AnbId:this.anbar.AnbId  ,
+        Anbarname:this.anbarForm.value.anbarname
       //  description:this.anbarForm.value.description
       }
       //  console.log(p)
@@ -79,8 +79,10 @@ export class AnbarComponent implements OnInit {
   } 
   ondel()
   {
-        this.notif.warn('!Deleted successfully');     
-        this._caSer._delanbar(this.anbar).subscribe();         
+    console.log(this.anbar)
+             
+        this._caSer._delanbar(this.anbar).subscribe();  
+        this.notif.warn('!Deleted successfully');       
   } 
 
 

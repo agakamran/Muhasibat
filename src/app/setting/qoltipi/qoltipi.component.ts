@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { qoltipi,  gender } from 'src/models/_settings';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NotificationService } from 'src/helpers/notification.service';
 import { SettingsService } from 'src/services/settings.service';
 import { Lang } from 'src/models/_carts';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-qoltipi',
@@ -20,7 +20,7 @@ export class QoltipiComponent implements OnInit {
  // _cate: item_categoriy[];_cat; catname: string;
  _gender: gender[];_gen:string; gender:string;
   constructor( private _caSer: SettingsService,
-     private notificationService: NotificationService) {
+     private noti: NotificationService) {
      this.qol.qolId="";
    }   
    ngOnInit(): void {
@@ -84,12 +84,12 @@ selgen(sel:any){ this._gen=sel;}
        this._caSer._posqoltipi(p).subscribe();       
        this._addqol(); 
        this._cline();   
-       this.notificationService.success('::Submitted successfully');             
+       this.noti.success('::Submitted successfully');             
     }   
   } 
   ondel()
   {
-        this.notificationService.warn('!Deleted successfully');     
+        this.noti.warn('!Deleted successfully');     
         this._caSer._delqoltipi(this.qol).subscribe();  
        // this._yenile();
   } 

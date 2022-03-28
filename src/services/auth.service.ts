@@ -7,9 +7,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { ChangePassword, ForgotPassword, IndexViewModel, IRegister, 
   ITwoFactor, ResetPassword, User } from '../models/_users';
 import { Store } from '@ngrx/store';
-import { NotificationService } from '../helpers/notification.service';
 import { AppState } from 'src/app/reducers';
 import { getToken, getUser } from 'src/app/auth/store/auth.selectors';
+import { NotificationService } from 'src/util/notification.service';
 
 
 //const EXPIRES_KEY = 'expires-token';

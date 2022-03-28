@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NotificationService } from 'src/helpers/notification.service';
 import { tipleri } from 'src/models/_muhasibat';
 import { AyarlarService } from 'src/services/ayarlar.service';
 import { Lang } from 'src/models/_carts';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-tipler',
@@ -20,14 +20,14 @@ export class TiplerComponent implements OnInit {
   _tip: tipleri[];  _pid:'';
   
   constructor( private _caSer: AyarlarService,
-     private notificationService: NotificationService) {
-     this.tip.tipId="";
+     private noti: NotificationService) {
+     this.tip.TipId="";
    }
 
    ngOnInit(): void {
     this.tipForm = new FormGroup({  
-       tipId: new FormControl('', [Validators.required,Validators.maxLength(36)]),   
-       tipName: new FormControl('', [Validators.required,Validators.maxLength(50)])
+       TipId: new FormControl('', [Validators.required,Validators.maxLength(36)]),   
+       TipName: new FormControl('', [Validators.required,Validators.maxLength(50)])
         
     });  
      
@@ -44,8 +44,8 @@ export class TiplerComponent implements OnInit {
 langu(lan:any){  this._lan=lan; }
   _addtip()
   {
-    this.tip.tipId='';   
-    this.tip.tipName='';        
+    this.tip.TipId='';   
+    this.tip.TipName='';        
   }
   _cline(){ 
     this.tipForm = new FormGroup({  
@@ -56,8 +56,8 @@ langu(lan:any){  this._lan=lan; }
      
    }
    _edittip(ca:tipleri){       
-       this.tip.tipId = ca.tipId;
-       this.tip.tipName = ca.tipName;
+       this.tip.TipId = ca.TipId;
+       this.tip.TipName = ca.TipName;
      // console.log(ca)       
      }
  onadd()
@@ -65,20 +65,20 @@ langu(lan:any){  this._lan=lan; }
     if(this.tipForm.valid)  
     {
        var p={
-        tipId:this.tip.tipId  ,
-        tipName:this.tipForm.value.tipName
+        TipId:this.tip.TipId  ,
+        TipName:this.tipForm.value.TipName
       
       }
       //  console.log(p)
        this._caSer._postip(p).subscribe();        
        this._addtip(); 
        this._cline();   
-       this.notificationService.success('::Submitted successfully');                 
+       this.noti.success('::Submitted successfully');                 
     }   
   } 
   ondel()
   {
-        this.notificationService.warn('!Deleted successfully');     
+        this.noti.warn('!Deleted successfully');     
         this._caSer._deltip(this.tip).subscribe();         
   } 
  

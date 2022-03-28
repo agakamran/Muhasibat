@@ -4,13 +4,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { forkJoin, Observable } from 'rxjs';
 import { getemail, getId} from 'src/app/auth/store/auth.selectors';
-import { NotificationService } from 'src/helpers/notification.service';
 import { Lang } from 'src/models/_carts';
 import { beden, firma, gender, product, prodphoto, _categoriy, _color, _desen, _marka, 
   _materal, _stil, kullanimAlani, kumashtipi, qelip, qoltipi, yaka } from 'src/models/_settings';
 import { AppState } from 'src/app/reducers';
 import { SettingsService } from 'src/services/settings.service';
 import { environment } from 'src/environments/environment';
+import { NotificationService } from 'src/util/notification.service';
 
 //import { UploadFilesService } from 'src/app/services/upload-files-service.service';
 //import { flatMap } from 'rxjs/operators';
@@ -72,7 +72,7 @@ export class AdditemComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   constructor(private _store: Store<AppState>, private _caSer: SettingsService,
-               private notificationService: NotificationService){     }  
+               private noti: NotificationService){     }  
                
   get email() { return this.firstFormGroup.get('email'); }
   get password() { return this.secondFormGroup.get('password'); }
@@ -349,7 +349,7 @@ selkumas(sel:any){ this._kum=sel;}
    for (let item of phot) {  await this._caSer._delitemsphoto(item).toPromise(); }
    this.item.ModifiedDate=formatDate(new Date(),  'yyyy-MM-dd T HH:mm:ss', 'en-US');
    await this._caSer._delitemdetail(this.item).toPromise()
-    this.notificationService.warn('!Deleted successfully');
+    this.noti.warn('!Deleted successfully');
     this._getit();    
   } 
   async _additem()
@@ -560,7 +560,7 @@ _selectFiles(event:any)
     this._additem(); 
     this._getit();    
     this._cline();   
-    this.notificationService.success('::Submitted successfully'); 
+    this.noti.success('::Submitted successfully'); 
   }    
 _getit(){
     this._caSer._getitemdetail(this._Id).subscribe(list=>

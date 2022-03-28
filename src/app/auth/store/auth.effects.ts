@@ -7,7 +7,7 @@ import * as auth from './auth.actions';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthService } from 'src/services/auth.service';
 import { User } from 'src/models/_users';
-import { NotificationService } from 'src/helpers/notification.service';
+import { NotificationService } from 'src/util/notification.service';
 //import { GravatarService } from 'src/manage/shared/services/gravatar.service';
 //import { environment } from 'src/environments/environment';
 @Injectable()

@@ -30,18 +30,18 @@
                 <div class="row">                  
                   <div class="col-sm-12">
                     <label for="vergikodununadi" class=""><i class="fas fa-tag prefix grey-text"></i>Vergiin adi</label>
-                  <input type="text" [(ngModel)]="vergi.vergikodununadi" name="vergikodununadi" placeholder="vergikodununadi yazin" class="form-control" formControlName="vergikodununadi" mdbInput>   
+                  <input type="text" [(ngModel)]="vergi.Vergikodununadi" name="vergikodununadi" placeholder="vergikodununadi yazin" class="form-control" formControlName="Vergikodununadi" mdbInput>   
                   </div>  
                   <div class="col-sm-6">
                     <label for="vergikodu" class=""><i class="fas fa-tag prefix grey-text"></i>Vergiin Kodu</label>
-                  <input type="text" [(ngModel)]="vergi.vergikodu" name="vergikodu" placeholder="vergikodu yazin" class="form-control" formControlName="vergikodu" mdbInput>   
+                  <input type="text" [(ngModel)]="vergi.Vergikodu" name="vergikodu" placeholder="vergikodu yazin" class="form-control" formControlName="Vergikodu" mdbInput>   
                   </div> 
                   <div class="col-sm-6">
                     <label for="formGroupExampleInput">Vahid</label>
-                  <select [(ngModel)]="vergi.vId"  name="_vahid" formControlName="vId" (change)="selrol($event.target.value)"                       
+                  <select [(ngModel)]="vergi.VId"  name="_vahid" formControlName="VId" (change)="selrol($event.target.value)"                       
                      class="browser-default custom-select" >
                     <option >Choose page</option>                                    
-                    <option *ngFor="let o of listvahid" [value]="o.vahidadi" >{{o.vahidadi}}</option>                                 
+                    <option *ngFor="let o of listvahid" [value]="o.Vahidadi" >{{o.Vahidadi}}</option>                                 
                   </select>
                       <!-- <label for="vId" class=""><i class="fas fa-tag prefix grey-text"></i>vId</label>
                     <input type="text" [(ngModel)]="vergi.vId" name="vId" placeholder="vId yazin" class="form-control" formControlName="vId" mdbInput>    -->
@@ -65,7 +65,7 @@
                 <button type="button" class="close pull-right" aria-label="Close" (click)="delvergi.hide()">
                   <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title w-150" id="myModalLabel"><span>Del {{ vergi.vergikodununadi }}</span></h4>
+                <h4 class="modal-title w-150" id="myModalLabel"><span>Del {{ vergi.Vergikodununadi }}</span></h4>
               </div>
               <form  class="normal-form">           
               <div class="modal-footer">
@@ -76,7 +76,7 @@
             </div>
           </div>
         </div>
-        <table class="table table-bordered table-responsive-md table-striped text-center"  *ngIf='listvergi && listvergi.length'>
+        <table class="table table table-sm table-responsive-md table-striped text-center"  *ngIf='listvergi && listvergi.length'>
           <thead>            
             <tr>   
               <th *ngFor="let head of headElements; let i = index" 
@@ -94,9 +94,9 @@
             <tr>
              <!--   <td class="pt-3-half" contenteditable="true">{{ p.navid }}</td>-->
               <!-- <td class="pt-3-half" contenteditable="true">{{ p.genId }}</td> -->
-              <td class="pt-3-half" contenteditable="true">{{ p.vergikodu }}</td>
-              <td class="pt-3-half" contenteditable="true">{{ p.vergikodununadi}}</td>    
-              <td class="pt-3-half" contenteditable="true">{{ p.vahidadi}}</td>
+              <td class="pt-3-half" contenteditable="true">{{ p.Vergikodu }}</td>
+              <td class="pt-3-half" contenteditable="true">{{ p.Vergikodununadi}}</td>    
+              <td class="pt-3-half" contenteditable="true">{{ p.Vahidadi}}</td>
              <!--  <td class="pt-3-half" contenteditable="true">{{ p.firma_email}}</td>  
              <td class="pt-3-half" contenteditable="true">{{ p.voen}}</td>  -->
             <!--  <td class="pt-3-half">

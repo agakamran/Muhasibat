@@ -52,7 +52,7 @@
                          <select [(ngModel)]="nav.nrol"  name="_rol" formControlName="nrol" (change)="selrol($event.target.value)"                       
                               class="browser-default custom-select" >
                                 <option >Choose page</option>                                    
-                          <option *ngFor="let o of _role" [value]="o.name" >{{o.name}}</option>                                 
+                          <option *ngFor="let o of _role" [value]="o.Name" >{{o.Name}}</option>                                 
                         </select>
                     </div>
                     <div class="col-sm-4">

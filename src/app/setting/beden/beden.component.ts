@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { flatMap } from 'rxjs/operators';
-import { NotificationService } from 'src/helpers/notification.service';
 import { Lang } from 'src/models/_carts';
 import { beden, gender, _categoriy } from 'src/models/_settings';
 import { SettingsService } from 'src/services/settings.service';
+import { NotificationService } from 'src/util/notification.service';
 @Component({
   selector: 'app-beden',
   templateUrl: './beden.component.html',
@@ -24,7 +24,7 @@ export class BedenComponent implements OnInit {
   _page: _categoriy[];_cate:any; catgo: string; _pid:'';
   
   constructor( private _caSer: SettingsService,
-    private notificationService: NotificationService) {
+    private noti: NotificationService) {
     this.bed.bedenId="";
   }
 
@@ -219,13 +219,13 @@ _bedsize()
        //this._yenile(); 
        this._addbed(); 
        this._cline();   
-       this.notificationService.success('::Submitted successfully');                
+       this.noti.success('::Submitted successfully');                
                      
     }   
   } 
   ondel()
   {
-        this.notificationService.warn('!Deleted successfully');     
+        this.noti.warn('!Deleted successfully');     
         this._caSer._delbeden(this.bed).subscribe();  
        // this._yenile();
   } 

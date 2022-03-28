@@ -1,5 +1,5 @@
 <div class="card">
-    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">{{title}}</h3>
+    <h6 class="card-header text-center font-weight-bold text-uppercase py-4">{{title}}</h6>
     <div class="card-body">
       <div id="table" class="table-editable">
         <div class="row">
@@ -7,32 +7,153 @@
             <div class="md-form">  
                 <form [formGroup]="qaimeForm" class="normal-form">
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">Bash tarixi
-                      <input [(ngModel)]="emel.emeltarixi" formControlName="emeltarixi" mdbInput type="datetime-local" class="form-control" >
-                    </div>                    
                     <div class="col-md-4">
+                      <input type="text" [(ngModel)]="searchText" formControlName="searchText" class="form-control" id="search" mdbInput />
+                      <label for="search">Search</label>
+                    </div>
+                    <div class="col-md-3">
+                      <input [(ngModel)]="emel.Emeltarixi" formControlName="Emeltarixi" class="form-control"  mdbInput type="datetime-local" >
+                    </div>                    
+                    <div class="col-md-2">
                       <button type="button" mdbBtn color="primary" class="btn btn-success btn-rounded btn-sm my-0"
-                      (click)="_getqaime()" [disabled]="!qaimeForm.valid">Get <i class="fas float-right fa-2x" aria-hidden="true"></i></button>
+                      (click)="_getqaime()"  >Get <i class="fas float-right fa-2x" aria-hidden="true"></i></button>
+                      <!-- [disabled]="!qaimeForm.valid" -->
+                    </div>
+                    <div class="col-md-3"></div>
+                  </div>
+                </form>                               
+            </div>
+            <!-- ----------------------------- -->
+            <div class="modal fade" mdbModal #qaimedet="mdbModal" tabindex="-1" role="dialog" aria-labelledby="qaimedet" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="qaimedet">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="qaimedet.hide()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div id="table" class="table-editable">
+                      <div class="row">
+                        <div class="col-md-12 mx-auto">
+                          <div class="md-form">
+                            <div class="row">
+                              <div class="col-md-4">
+                    
+                              </div>
+                              <div class="col-md-4">
+                    
+                              </div>
+                              <div class="col-md-4"></div>
+                            </div>
+                            <div class="row">
+                              <!-- <div class="col-md-4">
+                                <a class='btn btn-default' (click)='onBack()'>
+                                  <i class="fas float-right fa-2x" aria-hidden="true"></i> Back
+                                </a>
+                              </div> -->
+                              <div class="col-md-6">Serya:{{ seryal }}</div>
+                              <div class="col-md-2"></div>
+                              <div class="col-md-4"></div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                    
+                              <div class="col-md-10">
+                                Qaimənin növü: {{_qrup}}
+                              </div>
+                              <div class="col-md-2"></div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                    
+                              <div class="col-md-10">
+                                Təqdim edən: {{ _fir }}
+                              </div>
+                              <div class="col-md-2"></div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                              <div class="col-md-10">
+                                Alıcı: {{ _alici }}
+                              </div>
+                              <div class="col-md-2"></div>
+                            </div>
+                            <hr>
+                          </div>
+                        </div>
+                      </div>
+                      <span class="table-add float-right mb-3 mr-2">
+                      </span>
+                      <table class="table table-sm table-responsive-md text-center"
+                        *ngIf='listqaime && listqaime.length'>
+                        <thead>
+                          <tr>
+                            <th *ngFor="let head of headElements1; let i = index" aria-controls="tableSortExample" scope="col"
+                              [mdbTableSort]="elements" [sortBy]="headElements1[i]">{{ head | titlecase}}
+                              <mdb-icon fas icon="sort"></mdb-icon>
+                            </th>
+                            <!-- <th class="text-center">Actions</th>              -->
+                          </tr>
+                        </thead>
+                        <tbody *ngFor='let p of listqaimedet; let i = index'>
+                          <tr>
+                            <td class="pt-3-half" contenteditable="true" style="width: 20px;">{{ i + 1 }}</td>                           
+                            <td class="pt-3-half text-left" contenteditable="true" style="width: 400px;">{{ p.Maladi}}</td>
+                            <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.Miqdar}}</td>
+                            <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.Alishqiy}}</td>
+                            <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.cemi}}</td>
+                            <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.Edv}}</td>
+                            <td class="pt-3-half" contenteditable="true" style="width: 40px;">{{ p.yekunmeb}}</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td class="pt-3-half" contenteditable="true"></td>
+                            <td class="pt-3-half text-left" contenteditable="true">Yekunu</td>
+                            <td class="pt-3-half" contenteditable="true"></td>
+                            <td class="pt-3-half" contenteditable="true"></td>                           
+                            <td class="pt-3-half" contenteditable="true">{{ cemi1 | number : '1.2-2'}}</td>
+                            <td class="pt-3-half" contenteditable="true">{{ edv1 | number : '1.2-2'}}</td>
+                            <td class="pt-3-half" contenteditable="true">{{ yekunmeb1 | number : '1.2-2'}}</td>
+                          </tr>
+                        </tfoot>
+                      </table>
                     </div>
                   </div>
-                </form> 
-                 <div class="row">    
-                  <div class="col-md-4"></div>                
-                    <div class="col-md-4">
-                        <input  type="text" [(ngModel)]="searchText"  class="form-control" id="search" mdbInput />
-                        <label for="search">Search</label>
-                     </div>
-                    <div class="col-md-4"></div>  
-                  </div>               
+                  <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="qaimedet.hide()">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button> -->
+                  </div>
+                </div>
+              </div>
             </div>
+            <!-- --------------------------- -->
+             
+             <!-- <div mdbModal #qaimedet="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" 
+              style="padding-right: 13px;" aria-modal="true" >
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="qaimedet.hide()">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                   
+                   
+
+                  </div>                
+                </div>
+              </div>
+            </div> -->
+            <!-- ------- -->
           </div>
         </div>
-        <span class="table-add float-right mb-3 mr-2">
-          
+
+        <span class="table-add float-right mb-3 mr-2">          
           </span> 
-           <table class="table table-bordered table-responsive-md table-striped text-center"  *ngIf='listqaime && listqaime.length'>
-            <thead>            
+           <table class="table table-sm table-responsive-md table-striped text-center"  *ngIf='listqaime && listqaime.length'>
+            <thead>                          
               <tr>   
                 <th *ngFor="let head of headElements; let i = index" 
                   aria-controls="tableSortExample" scope="col" [mdbTableSort]="elements"
@@ -47,17 +168,16 @@
                 <td class="pt-3-half text-left" contenteditable="true" style="width: 20px;">{{ i+1 }}</td>             
                 <!-- <td class="pt-3-half" contenteditable="true">{{ p.qrupname }}</td> -->
                 <td class="pt-3-half" contenteditable="true" style="width: 60px;">
-                  <a [routerLink]="['/emeliyyat/qaimedet/', p.pmasId]">
-                    {{ p.kimden_voen}}
-                   </a>
+                  <!-- <a [routerLink]="['/emeliyyat/qaimedet/', p.pmasId]">{{ p.Kimden_voen}}</a> -->
+                  <a (click)="qaimedet.show()" style="color:rgb(228, 26, 144)" (click)="_qaimedet(p)">{{ p.Kimden_voen}}</a>
                 </td>  
-                <td class="pt-3-half text-left" contenteditable="true" style="width: 400px;">{{ p.firma}}</td>     
-                <td class="pt-3-half" contenteditable="true" style="width: 150px;">{{ p.serial}}</td>
-                <td class="pt-3-half" contenteditable="true" style="width: 80px;">{{ p.kimden_sum}}</td>   
+                <td class="pt-3-half text-left" contenteditable="true" style="width: 400px;">{{ p.Firma}}</td>     
+                <td class="pt-3-half" contenteditable="true" style="width: 150px;">{{ p.Serial}}</td>
+                <td class="pt-3-half" contenteditable="true" style="width: 80px;">{{ p.Kimden_sum}}</td>   
                 <td class="pt-3-half" contenteditable="true" style="width: 80px;">{{ p.edv}}</td> 
                 <td class="pt-3-half" contenteditable="true" style="width: 80px;">{{ p.yekunmeb}}</td>
-                <td class="pt-3-half" contenteditable="true" style="width: 80px;">{{ p.pay  }}</td>  
-                <td class="pt-3-half" contenteditable="true" style="width: 100px;">{{ p.emeltarixi}}</td>               
+                <td class="pt-3-half" contenteditable="true" style="width: 80px;">{{ p.Pay  }}</td>  
+                <td class="pt-3-half" contenteditable="true" style="width: 100px;">{{ p.Emeltarixi}}</td>               
                 </tr>       
             </tbody>
             <tfoot >
@@ -66,9 +186,9 @@
                 <td class="pt-3-half text-left" contenteditable="true">Yekunu</td>   
                 <td class="pt-3-half" contenteditable="true"></td>    
                 <td class="pt-3-half" contenteditable="true"></td> 
-                <td class="pt-3-half" contenteditable="true">{{ cemi1 | number : '1.2-2'}}</td>
-                <td class="pt-3-half" contenteditable="true">{{ edv1 | number : '1.2-2'}}</td>   
-                <td class="pt-3-half" contenteditable="true">{{ yekunmeb1 | number : '1.2-2'}}</td>  
+                <td class="pt-3-half" contenteditable="true">{{ cemi | number : '1.2-2'}}</td>
+                <td class="pt-3-half" contenteditable="true">{{ edv | number : '1.2-2'}}</td>   
+                <td class="pt-3-half" contenteditable="true">{{ yekunmeb | number : '1.2-2'}}</td>  
               </tr>   
           </tfoot>
           </table> 

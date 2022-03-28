@@ -1,14 +1,14 @@
 export class qrup
 {
-    qId:string;
-    qrupname:string;
-    dhesId:string;
-    khesId:string;       
+    QId:string;
+    Qrupname:string;
+    DhesId:string;
+    KhesId:string;       
 }
 export class tipleri
 {
-    tipId:string;
-    tipName:string;       
+    TipId:string;
+    TipName:string;       
 }
 export class bolme
 {
@@ -17,29 +17,29 @@ export class bolme
 } 
 export class anbar
 {
-    anbId:string;
-    anbarname:string;       
+    AnbId:string;
+    Anbarname:string;       
 }
 export class madde
 {
-    mId:string;
-    maddeName:string;       
+    MId:string;
+    MaddeName:string;       
 } 
 export class aktivi
 {
-    activId:string;
-    activName:string;  
-    description:string;  
+    ActivId:string;
+    ActivName:string;  
+    Description:string;  
 }  
 export class hesab
 {
-     hesId:string;
-     hesnom:string;
-     hesname:string;
-     bId:string;
-     mId:string;
-     tipId:string;
-     activId:string;
+     HesId:string;
+     Hesnom:string;
+     Hesname:string;
+     BId:string;
+     MId:string;
+     TipId:string;
+     ActivId:string;
 }  
 export class hesb
 {
@@ -52,51 +52,51 @@ export class hesb
 }  
 export class shirket
 {        
-    shId :string;        
-    bankadi:string;       
-    bankvoen:string;        
-    swift:string;        
-    muxbirhesab:string;
-    bankkodu:string;
-    aznhesab:string;        
-    shiricrachi :string;
-    shirvoen :string;
-    cavabdehshexs:string;
-    email:string;
-    unvan:string;
-    userId:string;
-    shirpercent:number;
+    ShId :string;        
+    Bankadi:string;       
+    Bankvoen:string;        
+    Swift:string;        
+    Muxbirhesab:string;
+    Bankkodu:string;
+    Aznhesab:string;        
+    Shiricrachi :string;
+    Shirvoen :string;
+    Cavabdehshexs:string;
+    Email:string;
+    Unvan:string;
+    UserId:string;
+    Shirpercent:number;
 }   
 export class mushteri
 { 
-     mushId:string;     
-     firma:string;
-     voen:string;
-     muqavilenom:string;
-     muqaviletar?:Date;
-     valyuta:string;
-     odemesherti:string;
-     temsilchi:string;
+     MushId:string;     
+     Firma:string;
+     Voen:string;
+     Muqavilenom:string;
+     Muqaviletar?:Date;
+     Valyuta:string;
+     Odemesherti:string;
+     Temsilchi:string;
 }
 export class vahid
 {        
-    vId:string;  
-    vahidadi:string;
+    VId:string;  
+    Vahidadi:string;
 }  
 export class valyuta
 {        
-    valId:string;  
-    valname:string;
-    valnominal:number;
-    tarix?:Date;
+    ValId:string;  
+    Valname:string;
+    Valnominal:number;
+    Tarix?:Date;
 } 
 export class vergi
 {
-    vergiId:string;
-    vergikodu:string;    
-    vergikodununadi:string;
-    vId:string;
-    edv_tar?:Date;
+    VergiId:string;
+    Vergikodu:string;    
+    Vergikodununadi:string;
+    VId:string;
+    Edv_tar?:Date;
     STATE:string;
 }
 export class fealsah{
@@ -109,7 +109,7 @@ export class parcha{  id :string; name:string; }
 export class Productmaster {
      PmasId:string;
      UserId:string;
-     kimden_voen:string;
+     Kimden_voen:string;
      serial:string;
      MushId :string;
      Vo :string;
@@ -121,31 +121,32 @@ export class Productmaster {
      Kurs:number;
      Kimden_sum:number;
      Pay:boolean = false;
-     emeltarixi?:Date;
+     Emeltarixi?:Date;
      
     
 }
 export class emel
 {
-    emdetId:string;  //EmdetId
-    userid:string;
-    qid:string;      //QId  
-    aId:string;       //AId
-    dhesId:string;    //DhesId
-    khesId:string;    //KhesId
-    mushId:string;     //MushId
-    vergiId:string;  //VergiId
-    vId:string;        // VId  
-    miqdar:number;     //Miqdar
-    submiqdar:number;     //Submiqdar
-    vahidqiymeti_alish:number;    //Vahidqiymeti_alish
-    vahidqiymeti_satish:number;   //Vahidqiymeti_satish
-    edv:string;      //Edv    
-    edvye_celbedilen:number;   //Edvye_celbedilen
-    edvye_celbedilmeyen:number;  //Edvye_celbedilmeyen
-    emeltarixi:string;      //Emeltarixi
-    valId:string;   //ValId 
-    qeyd:string;      //Qeyd
-    kurs:number;
-    vergikodu?:string;
+    EmdetId:string;  //EmdetId
+    Userid:string;
+    Qid:string;      //QId  
+    AId:string;       //AId
+    DhesId:string;    //DhesId
+    KhesId:string;    //KhesId
+    MushId:string;     //MushId
+    VergiId:string;  //VergiId
+    VId:string;        // VId  
+    
+    Miqdar:number;     //Miqdar
+    Submiqdar:number;     //Submiqdar
+    Vahidqiymeti_alish:number;    //Vahidqiymeti_alish
+    Vahidqiymeti_satish:number;   //Vahidqiymeti_satish
+    Edv:string;      //Edv    
+    Edvye_celbedilen:number;   //Edvye_celbedilen
+    Edvye_celbedilmeyen:number;  //Edvye_celbedilmeyen
+    Emeltarixi:string;      //Emeltarixi
+    ValId:string;   //ValId 
+    Qeyd:string;      //Qeyd
+    Kurs:number;
+    Vergikodu?:string;
 }

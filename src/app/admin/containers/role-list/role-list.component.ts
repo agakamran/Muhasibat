@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 import { getIsAdmin } from 'src/app/auth/store/auth.selectors';
 import { MenuItem, NavbarRole } from 'src/models/_menu';
 import { NavbarService } from 'src/services/navbar.service';
-import { NotificationService } from '../../../../helpers/notification.service';
+import { NotificationService } from 'src/util/notification.service';
 
 
 @Component({
@@ -64,7 +64,7 @@ export class RoleListComponent implements OnInit {
   // })
     this.store.select(getIsAdmin).subscribe(k=>{
       if(k) 
-      {// console.log(k)
+      { //console.log(k)
         this._kamService._getrole().subscribe(list=>
          { //console.log(list)
                this.listrole=list;
@@ -81,17 +81,17 @@ export class RoleListComponent implements OnInit {
     }
     _ToDelete(ToDel:any){  this.ToDelete .push( ToDel);  } 
     _editrole(_id:any)
-    {
-      if(_id.id!='') 
+    {     
+      if(_id.Id!='') 
       {
-        this.id=_id.id;
-        this.name=_id.name;
-      //console.log(this.id+'pppp')  
-      this._kamService._getUser(_id.id).subscribe(list =>
-      {             
-        // console.log(list) 
-          this.usrol = list;       
-      } , error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
+        this.id=_id.Id;
+        this.name=_id.Name;
+       // console.log(_id.Id)
+        this._kamService._getUser(_id.Id).subscribe(list =>
+        {             
+            console.log(list) 
+            this.usrol = list;       
+        } , error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
       }      
     }  
     onedit() {
@@ -118,14 +118,15 @@ export class RoleListComponent implements OnInit {
     _delrole(_id:any) {              
         if(_id.id!='') 
         {
-          this.id=_id.id;
-          this.name=_id.name;  
+          this.id=_id.Id;
+          this.name=_id.Name;  
         }         
     } 
     //---------Edit Permishin---------------------
     _editnav(_id:any) {
-      this.id=_id.id;
-      this.name=_id.name; 
+      //console.log(this.nnrol)
+      this.id=_id.Id;
+      this.name=_id.Name; 
       for (var i = 0; i < this.listnav.length; i++)  {this.listnav[i].isChecked=false }
       this._caSer._allnrol(_id.name).subscribe(list=>
       { 

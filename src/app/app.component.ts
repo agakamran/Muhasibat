@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { AppState } from './reducers';
 import { User } from 'src/models/_users';
 import { MenuItem } from 'src/models/_menu';
-import { getIsAdmin, getIsLoading, getIsLoggedIn, getUser } from './auth/store/auth.selectors';
-import { getMenuData } from './views/store/menus.selectors';
+import { AppState } from './reducers';
+import { Store } from '@ngrx/store';
 import * as fromAuth from './auth/store/auth.actions';
+import { getMenuData } from './views/store/menus.selectors';
+import { getIsAdmin, getIsLoading, getIsLoggedIn, getUser } from './auth/store/auth.selectors';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -24,19 +24,21 @@ export class AppComponent implements OnInit {
   isLoading$: Observable<boolean>;
   isAdmin$: Observable<boolean>;
   menudata$: Observable<MenuItem[]> 
+  private currentUrl = '';
   private specialPages: any[] = [
-    // '/pages/login',
-    // '/pages/register',
+    '/pages/login',
+    '/pages/register',
     '/pages/lock',
     '/pages/pricing',
     '/pages/single-post',
     '/pages/post-listing'
   ];
 
-  private currentUrl = '';
+  
 
-  constructor(private store: Store<AppState>, private router: Router, private location: Location ) {
-
+  constructor(private store: Store<AppState>, private router: Router,
+    private location: Location )
+  {
     this.router.events.subscribe((route:any) => {
       this.currentUrl = route.url;
       this.specialPage = this.specialPages.indexOf(this.currentUrl) !== -1;
@@ -45,8 +47,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   // console.log('111111111')
-    this.user$ = this.store.select(getUser);    
+     this.user$ = this.store.select(getUser);    
     this.isLoggedIn$ = this.store.select(getIsLoggedIn);
     this.isLoading$ = this.store.select(getIsLoading);    
     this.isAdmin$ = this.store.select(getIsAdmin);
@@ -65,10 +66,11 @@ export class AppComponent implements OnInit {
     // })
     //console.log(this.st.getToken())
     //console.log(this.st.getrole())
- }
- onLogout(user: User) {
-    this.store.dispatch(new fromAuth.LogoutRequested( { user }));
- }
-
-  goBack(): void {  this.location.back(); }
+  }
+  onLogout(user: User) {
+    this.store.dispatch(new fromAuth.LogoutRequested({ user }));
+  }
+  goBack(): void {
+    this.location.back();
+  }
 }

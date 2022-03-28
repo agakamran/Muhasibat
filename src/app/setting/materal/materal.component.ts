@@ -3,7 +3,7 @@ import { _materal } from 'src/models/_settings';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Lang } from 'src/models/_carts';
 import { SettingsService } from 'src/services/settings.service';
-import { NotificationService } from 'src/helpers/notification.service';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-materal',
@@ -19,7 +19,7 @@ export class MateralComponent implements OnInit {
   _mat: _materal[];  _pid:'';
   
   constructor( private _caSer: SettingsService,
-     private notificationService: NotificationService) {
+     private noti: NotificationService) {
      this.mat.matId="";
    }
 
@@ -85,13 +85,13 @@ langu(lan:any){  this._lan=lan; }
        //this._yenile(); 
        this._addmat(); 
        this._cline();   
-       this.notificationService.success('::Submitted successfully');                
+       this.noti.success('::Submitted successfully');                
                      
     }   
   } 
   ondel()
   {
-        this.notificationService.warn('!Deleted successfully');     
+        this.noti.warn('!Deleted successfully');     
         this._caSer._delitemmateral(this.mat).subscribe();  
        // this._yenile();
   } 

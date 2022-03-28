@@ -18,7 +18,7 @@ export const reducers: ActionReducerMap<AppState> = {
   admin: fromAdmin.adminReducer
 };
 export function clearState(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
-  return function(state: AppState | undefined, action: Action): AppState {
+  return function (state: AppState | undefined, action: Action): AppState {
     if (action.type === '[Auth] LOGOUT completed') {
       state = undefined;
     }

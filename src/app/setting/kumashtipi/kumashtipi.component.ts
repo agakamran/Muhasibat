@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { NotificationService } from 'src/helpers/notification.service';
 import { SettingsService } from 'src/services/settings.service';
 import { kumashtipi } from 'src/models/_settings';
 import { Lang } from 'src/models/_carts';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-kumashtipi',
@@ -19,7 +19,7 @@ export class KumashtipiComponent implements OnInit {
   _kum: kumashtipi[];  _pid:'';
   
   constructor( private _caSer: SettingsService,
-     private notificationService: NotificationService) {
+     private noti: NotificationService) {
      this.kum.kumashId="";
    }
 
@@ -78,12 +78,12 @@ langu(lan:any){  this._lan=lan; }
        //this._yenile(); 
        this._addkum(); 
        this._cline();   
-       this.notificationService.success('::Submitted successfully');             
+       this.noti.success('::Submitted successfully');             
     }   
   } 
   ondel()
   {
-        this.notificationService.warn('!Deleted successfully');     
+        this.noti.warn('!Deleted successfully');     
         this._caSer._delkumashtipi(this.kum).subscribe();  
        // this._yenile();
   } 

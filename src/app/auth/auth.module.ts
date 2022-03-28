@@ -9,15 +9,15 @@ import { RouterModule } from '@angular/router';
 import * as actions from '././store/auth.actions';
 import { RegisterComponent } from './component/register/register.component';
 import { LoginComponent } from './component/login/login.component';
-import { MDBmaterialModule } from 'src/mdbmaterial/mdbmaterial.module';
 import { AuthService } from 'src/services/auth.service';
 import { AppState } from 'src/app/reducers';
+import { MdbModule } from '../imports/mdb.module';
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,    
-    MDBmaterialModule,   
+    MdbModule,   
     RouterModule,    
     StoreModule.forFeature('auth', fromAuth.authReducer),
     EffectsModule.forFeature([AuthEffects]),    

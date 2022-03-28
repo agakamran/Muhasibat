@@ -7,12 +7,12 @@ import { flatMap} from 'rxjs/operators';
 import { MenuItem } from 'src/models/_menu';
 import { SettingsService } from 'src/services/settings.service';
 //import { AuthService } from 'src/services/auth.service';
-import { NotificationService } from 'src/helpers/notification.service';
 import { NavbarService } from 'src/services/navbar.service';
 import { aktivi, hesab, madde, mushteri, parcha, qrup, shirket, tipleri, vahid,  vergi } from 'src/models/_muhasibat';
 import { AyarlarService } from 'src/services/ayarlar.service';
 //import { forkJoin, interval } from 'rxjs';
 import { _ACTION_TYPE_UNIQUENESS_CHECK } from '@ngrx/store/src/tokens';
+import { NotificationService } from 'src/util/notification.service';
 //import { areAllEquivalent } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-hazirla',

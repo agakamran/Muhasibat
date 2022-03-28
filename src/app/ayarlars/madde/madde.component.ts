@@ -1,10 +1,10 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NotificationService } from 'src/helpers/notification.service';
 import { madde } from 'src/models/_muhasibat';
 import { Lang } from 'src/models/_carts';
 import { AyarlarService } from 'src/services/ayarlar.service';
 import { MdbTableDirective } from 'angular-bootstrap-md';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-madde',
@@ -25,14 +25,14 @@ export class MaddeComponent implements OnInit {
   previous: string;
   @HostListener('input') oninput() {  this.searchItems();  }
   //---------------------
-  constructor( private _caSer: AyarlarService,private notificationService: NotificationService) {
-     this.madde.mId="";
+  constructor( private _caSer: AyarlarService,private noti: NotificationService) {
+     this.madde.MId="";
    }
 
    ngOnInit(): void {
     this.maddeForm = new FormGroup({  
-       maddeId: new FormControl(''),   
-       maddeName: new FormControl('', [Validators.required,Validators.maxLength(50)]),
+       MId: new FormControl(''),   
+       MaddeName: new FormControl('', [Validators.required,Validators.maxLength(50)]),
        description: new FormControl('')
     });  
      
@@ -40,6 +40,7 @@ export class MaddeComponent implements OnInit {
       {         
            //this.listmadde=list; 
            this.elements= list; 
+          // console.log(list)
             this.mdbTable.setDataSource(this.elements);
         this.previous = this.mdbTable.getDataSource();                      
       }, error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
@@ -47,7 +48,7 @@ export class MaddeComponent implements OnInit {
 }
 searchItems() {
   const prev = this.mdbTable.getDataSource();
-  console.log(this.searchText) ; 
+  //console.log(this.searchText) ; 
   if (!this.searchText) {
       this.mdbTable.setDataSource(this.previous);
       this.elements = this.mdbTable.getDataSource();
@@ -63,21 +64,21 @@ searchItems() {
 langu(lan:any){  this._lan=lan; }
   _addmadde()
   {
-    this.madde.mId='';   
-    this.madde.maddeName='';  
+    this.madde.MId='';   
+    this.madde.MaddeName='';  
    // this.madde.description='';      
   }
   _cline(){ 
     this.maddeForm = new FormGroup({         
-      mId: new FormControl(''),
-      maddeName: new FormControl(''),
+      MId: new FormControl(''),
+      MaddeName: new FormControl(''),
       //description: new FormControl('')
       });
      
    }
    _editmadde(ca:madde){       
-       this.madde.mId = ca.mId;
-       this.madde.maddeName = ca.maddeName;
+       this.madde.MId = ca.MId;
+       this.madde.MaddeName = ca.MaddeName;
        //this.madde.description = ca.description;
      // console.log(ca)       
      }
@@ -86,20 +87,20 @@ langu(lan:any){  this._lan=lan; }
     if(this.maddeForm.valid)  
     {
        var p={
-        mId:this.madde.mId  ,
-        maddeName:this.maddeForm.value.maddeName,
+        MId:this.madde.MId  ,
+        MaddeName:this.maddeForm.value.MaddeName,
        // description:this.maddeForm.value.description
       }
       //  console.log(p)
        this._caSer._posmadde(p).subscribe();        
        this._addmadde(); 
        this._cline();   
-       this.notificationService.success('::Submitted successfully');                 
+       this.noti.success('::Submitted successfully');                 
     }   
   } 
   ondel()
   {
-        this.notificationService.warn('!Deleted successfully');     
+        this.noti.warn('!Deleted successfully');     
         this._caSer._delmadde(this.madde).subscribe();         
   } 
 

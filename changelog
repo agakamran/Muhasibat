@@ -1,3 +1,112 @@
+13.0.0
+
+In version 13.0.0 we added support for Angular 13 and Font Awesome 6. Check what changed below:
+
+**Breaking changes:**
+
+* Added support for Angular 13, this Angular version is now required,
+* Checkbox - changed id input name to checkboxId,
+* Checkbox - styles will be loaded with other core global styles. This will allow you to use checkbox not only as mdb-checkboxcomponent, but also as a standard HTML element with material styles. The mdb-checkbox offers more features but cancause someperformance problems after adding many elements in one application view.
+
+**Dependencies:**
+
+* Updated Font Awesome to v6.0.0.
+
+**Fixes:**
+
+* Added type coercion for boolean and number inputs to resolve problems with inputs types,
+* Select - resolved problem with option type.
+
+12.2.0
+In version 12.2.0 we updated Bootstrap to v4.6.1 and added some fixes and new features for the existing components. Check what changed below:
+
+**Dependencies:**
+
+* Updated Bootstrap styles to version 4.6.1
+
+**Fixes:**
+
+* Sidenav - resolved problem with error when [side]="'right'" input is used,
+* Sidenav - resolved problem with short animation on component load, the component should be now displayed in its default state for specific breakpoint without visible transition on initialization,
+* Carousel - resolved problem with emitting activeSlideChange multiple times,
+* File upload plugin - query string will be now correctly removed from [defaultFile] url.
+
+**New features:**
+
+* Select - added new inputFocus and inputBlur events that will be emitted on select input focus/blur.
+
+12.1.0
+In version 12.1.0 we added some fixes and new features for the existing components. Check what changed below:
+
+**Fixes:**
+
+* Datepicker - markWeekends option will no longer mark dates that are hidden in a specific view,
+* Tooltip - resolved problem with component reopening when delay option is used,
+* Calendar plugin - resolved problems with reponsiveness,
+* Calendar plugin - resolved problem with view updates on startDate input changes.
+
+**New features:**
+
+* Calendar plugin - added new unique classes for toolbar container and elements inside the toolbar.
+* Calendar plugin - added new viewChanged output
+
+12.0.0
+In version 12.0.0 we added support for Angular 12. This update introduces breaking changes, check what changed below:
+
+**Breaking changes:**
+
+* MDB Angular 12 requires Angular v12,
+
+**Fixes:**
+
+* Carousel - resolved problem with gap between thumbnail bar and image,
+* Autocomplete - resolved problem with type of option value input,
+* Timepicker - resolved problem with setting default value using Angular form controls,
+* Datepicker - resolved problem with display in inline mode when container has overlay: hidden styles,
+* Datepicker - focus on input with openOnFocus option will no longer remove body scroll,
+* Stepper - added possibility to jump to any step if previous steps are completed,
+* Lightbox - resolved problem with background scrolling when image is opened,
+* Multi-range - resolved problem with component styles in Firefox browser,
+* Spinner - removed unused selector to avoid naming collisions with other libraries.
+
+**New features:**
+
+* Table - input maxHeight will also accept values with different units (for example 80%).
+
+11.1.0
+In version 11.1.0 we added some fixes and new features for the existing components. Check what changed below:
+
+**Fixes:**
+
+* Popover - component will not be displayed if no content is provided,
+* Datepicker - resolved problem with label active state and opening component on label click (inline mode),
+* Datepicker - component in modal mode will not open on input click if openOnFocus input is set to false,
+* Collapse - resolved problem with animation, component will not be toggled if animation is not finished,
+* Autocomplete - resolved problem with input keydown listener in Firefox browser when appendToBody option is enabled,
+* Stepper - resolved problem with HTML template updates on step input change,
+* Calendar plugin - added the CalendarView type to the exports list.
+
+**New features:**
+
+* Popover - added new [popoverDisabled] input that allow to disable component,
+* Navbar - added new (shown) and (hidden) outputs,
+* Sidenav - added new (shown) and (hidden) outputs.
+
+11.0.0
+In version 11.0.0 we added support for Angular 11. This update introduces breaking changes, check what changed below:
+
+**Breaking changes:**
+
+* MDB Angular 11 requires Angular v11,
+
+**Fixes:**
+
+* Select 2 - resolved problem with using false values as option values,
+* Autocomplete - resolved problem with disabled state in reactive forms,
+* Autocomplete - resolved problem with closing component dropdown on document click,
+* Range - resolved problem with thumb animations,
+* Multi-range - resolved problem with component styles in Firefox browser.
+
 10.1.1
 In version 10.1.1 we added some new features and fixes for the existing components, check what changed below:
 
@@ -68,16 +177,6 @@ In version 9.4.0 we added some new features and fixes for the existing component
 
 * Datepicker - added new inputIcon and inlineInputIcon options, which allow to show and hide toggle icons for specific display mode,
 * Autocomplete - added new dropdownPosition input, which allow to specify the dropdown position (below, above, auto). Default position is set to 'auto'.
-
-9.3.1
-In version 9.3.1 we added some fixes for the existing components, check what changed below:
-
-**Fixes:**
-
-* Sidenav - resolved problem with SSR in Angular Universal,
-* Stepper - resolved problem with adding steps dynamically,
-* Multiselect- resolved problem with setting default value,
-* Select 2 - resolved problem with label position update when setting default value.
 
 9.3.0
 In version 9.3.0 we added some fixes and a new version of Select component, check what changed below:
@@ -172,11 +271,11 @@ In version 8.10.0 we added some bug fixes and new features for the existing comp
 
 **Fixes:**
 
-* Carousel - selectSlide method will work correctly even if animation type is not specified,
-* Datepicker - resolved problem with setting disabled state in reactive forms (modal version),
-* Textarea - resolved problem with auto resize for default value,
-* Select/Multiselect - resolved problem with background color of highlighted option in colorful select,
-* Select/Multiselect - resolved problem with position of value text in outline mode.
+*Carousel - selectSlide method will work correctly even if animation type is not specified,
+*Datepicker - resolved problem with setting disabled state in reactive forms (modal version),
+*Textarea - resolved problem with auto resize for default value,
+*Select/Multiselect - resolved problem with background color of highlighted option in colorful select,
+*Select/Multiselect - resolved problem with position of value text in outline mode.
 
 **New features:**
 
@@ -387,7 +486,7 @@ In version 8.3.0 we added some fixes, new features and updated code in documenta
 * Toast - resolved problem with maxOpened option,
 * Carousel - resolved problem with displaying first slide when OnPush strategy is used in parent component,
 * Accordion - resolved problem with aria-expanded value,
-* Select - resolve problem with highlightColor and highlightTextColor options,
+* Select - resolved problem with highlightColor and highlightTextColor options,
 * Autocompleter - dropdown will no longer be closed on input click.
 
 **New Features:**

@@ -5,8 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgmCoreModule } from '@agm/core';
-import { CalendarModule,  } from 'angular-calendar';
+
+import { CalendarModule, DateAdapter,  } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { SharedModule } from './shared/shared.module';
+
 import { FooterComponent } from './main-layout/footer/footer.component';
 import { BasicTableComponent } from './tables/basic-table/basic-table.component';
 import { ModalsComponent } from './modals/modals.component';
@@ -16,13 +19,12 @@ import { StatsCard2Component } from './dashboards/common/stats-card2/stats-card2
 import { Dashboard1Component } from './dashboards/dashboard1/dashboard1.component';
 import { Profile1Component } from './profile/profile1/profile1.component';
 import { HelpComponent } from './help/help.component';
-import { ErrorModule } from './errors/error.module';
 import { NavigationModule } from './main-layout/navigation/navigation.module';
+import { ErrorModule } from './errors/error.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { MenusEffects } from './store/menus.effects';
 import * as fromMenus from './store/Menus.reducer';
-
 
 @NgModule({
   imports: [
@@ -30,15 +32,18 @@ import * as fromMenus from './store/Menus.reducer';
     RouterModule,
     FormsModule,
     BrowserModule,
-    BrowserAnimationsModule,    
+    BrowserAnimationsModule,
+    SharedModule,
     AgmCoreModule.forRoot({
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en#key
       apiKey: ''
     }),
-    CalendarModule.forRoot(),
+    CalendarModule.forRoot({provide: DateAdapter, useFactory: adapterFactory, }),
+    //CalendarModule.forRoot(),
     StoreModule.forFeature('menus', fromMenus.menusReducer),
     EffectsModule.forFeature([MenusEffects])
-    ],
+
+  ],
   declarations: [
     FooterComponent,
     BasicTableComponent,
@@ -57,9 +62,9 @@ import * as fromMenus from './store/Menus.reducer';
     ModalsComponent,
     Map1Component,
     StatsCardComponent,
-    StatsCard2Component,    
+    StatsCard2Component,
     Dashboard1Component,
-    NavigationModule,    
+    NavigationModule,
     SharedModule,
     ErrorModule,
   ],

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { flatMap } from 'rxjs/operators';
-import { NotificationService } from 'src/helpers/notification.service';
 import { Lang } from 'src/models/_carts';
 import { gender, _categoriy } from 'src/models/_settings';
 import { SettingsService } from 'src/services/settings.service';
+import { NotificationService } from 'src/util/notification.service';
 
 @Component({
   selector: 'app-categoriya',
@@ -22,7 +22,7 @@ export class CategoriyaComponent implements OnInit {
   cat:_categoriy=new _categoriy();
   _catt: any[]; _cat:any; _catname: string;
   _gender: gender[];_gen:any; gendername: string;
-  constructor(private _caSer: SettingsService, private notificationService: NotificationService, private router:Router) {
+  constructor(private _caSer: SettingsService, private noti: NotificationService, private router:Router) {
     this.cat.catId="";
    }
    ngOnInit(): void {
@@ -116,7 +116,7 @@ export class CategoriyaComponent implements OnInit {
        this._addcat(); 
        this._cline();  
        this._yenile(); 
-       this.notificationService.success('::Submitted successfully');                
+       this.noti.success('::Submitted successfully');                
                      
     }   
   } 
@@ -125,7 +125,7 @@ export class CategoriyaComponent implements OnInit {
    // console.log(this.cat)
         this._caSer._delcategoriy(this.cat).subscribe();
         this._yenile();    
-        this.notificationService.warn('!Deleted successfully'); 
+        this.noti.warn('!Deleted successfully'); 
       
   } 
    /*_category()

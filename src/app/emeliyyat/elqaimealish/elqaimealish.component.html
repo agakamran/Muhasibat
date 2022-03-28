@@ -60,9 +60,9 @@
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-6"> Növlər:  
-                      <select [(ngModel)]="emel.qId" formControlName="qId" (change)="selqrup($event.target.value)"                       
+                      <select [(ngModel)]="emel.qId" formControlName="QId" (change)="selqrup($event.target.value)"                       
                       class="browser-default custom-select" >                                                     
-                        <option *ngFor="let o of listqrup" [value]="o.qId" >{{ o.qrupname }}</option>                                 
+                        <option *ngFor="let o of listqrup" [value]="o.QId" >{{ o.Qrupname }}</option>                                 
                      </select>
                     </div>
                     <div class="col-md-1">
@@ -73,13 +73,13 @@
                   <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-2">Anbarlar:                                  
-                      <select [(ngModel)]="emel.anbId" formControlName="anbId" (change)="selanbar($event.target.value)"                       
+                      <select [(ngModel)]="emel.AnbId" formControlName="AnbId" (change)="selanbar($event.target.value)"                       
                       class="browser-default custom-select" >                                                    
-                        <option *ngFor="let o of listanbar" [value]="o.anbId" >{{ o.anbarname }}</option>                                                   
+                        <option *ngFor="let o of listanbar" [value]="o.AnbId" >{{ o.Anbarname }}</option>                                                   
                      </select>                           
                     </div>
                     <div class="col-md-3">Əməliyyatın tarixi:
-                      <input [(ngModel)]="emel.emeltarixi" formControlName="emeltarixi" placeholder="2022-02-19 14:34:11"  mdbInput type="datetime-local" class="form-control" >                
+                      <input [(ngModel)]="emel.Emeltarixi" formControlName="Emeltarixi" placeholder="2022-02-19 14:34:11"  mdbInput type="datetime-local" class="form-control" >                
                    </div>
                     <div class="col-md-2">Seriya:EBAR №:968918
                       <input [(ngModel)]="emel.Serial" formControlName="Serial" placeholder="EBAR №:968918" mdbInput type="text" class="form-control"> 

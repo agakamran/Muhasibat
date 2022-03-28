@@ -21,11 +21,11 @@
                   <div class="row">
                     <div class="col-sm-12">
                       <label for="activName" class=""><i class="fas fa-tag prefix grey-text"></i>activin adi</label>
-                    <input type="text" [(ngModel)]="activ.activName" name="activName" placeholder="activName yazin" class="form-control" formControlName="activName" mdbInput>   
+                    <input type="text" [(ngModel)]="activ.ActivName" name="activName" placeholder="activName yazin" class="form-control" formControlName="ActivName" mdbInput>   
                     </div>  
                     <div class="col-sm-12">
                         <label for="description" class=""><i class="fas fa-tag prefix grey-text"></i>Description</label>
-                      <input type="text" [(ngModel)]="activ.description" name="description" placeholder="description yazin" class="form-control" formControlName="description" mdbInput>   
+                      <input type="text" [(ngModel)]="activ.Description" name="description" placeholder="description yazin" class="form-control" formControlName="Description" mdbInput>   
                     </div>                 
                   </div>        
                            
@@ -46,7 +46,7 @@
                   <button type="button" class="close pull-right" aria-label="Close" (click)="delactiv.hide()">
                     <span aria-hidden="true">×</span>
                   </button>
-                  <h4 class="modal-title w-150" id="myModalLabel"><span>Del {{ activ.activName }}</span></h4>
+                  <h4 class="modal-title w-150" id="myModalLabel"><span>Del {{ activ.ActivName }}</span></h4>
                 </div>
                 <form  class="normal-form">           
                 <div class="modal-footer">
@@ -75,8 +75,8 @@
               <tr>
                <!--   <td class="pt-3-half" contenteditable="true">{{ p.navid }}</td>-->
                 <!-- <td class="pt-3-half" contenteditable="true">{{ p.genId }}</td> -->
-                <td class="pt-3-half" contenteditable="true">{{ p.activName }}</td>
-                <td class="pt-3-half" contenteditable="true">{{ p.description}}</td>    
+                <td class="pt-3-half" contenteditable="true">{{ p.ActivName }}</td>
+                <td class="pt-3-half" contenteditable="true">{{ p.Description}}</td>    
                <!-- <td class="pt-3-half" contenteditable="true">{{ p.firma_unvan}}</td>
                 <td class="pt-3-half" contenteditable="true">{{ p.firma_email}}</td>  
                 <td class="pt-3-half" contenteditable="true">{{ p.voen}}</td>  -->

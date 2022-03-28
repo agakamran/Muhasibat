@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ChangePassword } from 'src/models/_users';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
-import { NotificationService } from 'src/helpers/notification.service';
 import { AuthService } from 'src/services/auth.service';
+import { NotificationService } from 'src/util/notification.service';
 
 
 @Component({

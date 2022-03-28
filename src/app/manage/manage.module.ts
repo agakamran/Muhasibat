@@ -20,7 +20,7 @@ import { FirmaComponent } from './firma/firma.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ProfileModule } from './profile/profile.module';
-import { MDBmaterialModule } from 'src/mdbmaterial/mdbmaterial.module';
+import { MdbModule } from '../imports/mdb.module';
 
 
 
@@ -33,7 +33,7 @@ import { MDBmaterialModule } from 'src/mdbmaterial/mdbmaterial.module';
   imports: [
     CommonModule,
     ManageRoutingModule,
-    MDBmaterialModule,
+    MdbModule,
     HttpClientModule,
     ReactiveFormsModule,   
     FormsModule,
