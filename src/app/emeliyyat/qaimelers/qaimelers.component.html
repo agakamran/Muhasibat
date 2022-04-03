@@ -171,13 +171,13 @@
                   <!-- <a [routerLink]="['/emeliyyat/qaimedet/', p.pmasId]">{{ p.Kimden_voen}}</a> -->
                   <a (click)="qaimedet.show()" style="color:rgb(228, 26, 144)" (click)="_qaimedet(p)">{{ p.Kimden_voen}}</a>
                 </td>  
-                <td class="pt-3-half text-left" contenteditable="true" style="width: 400px;">{{ p.Firma}}</td>     
+                <td class="pt-3-half text-left" contenteditable="true" style="width: 360px;">{{ p.Firma}}</td>     
                 <td class="pt-3-half" contenteditable="true" style="width: 150px;">{{ p.Serial}}</td>
                 <td class="pt-3-half" contenteditable="true" style="width: 80px;">{{ p.Kimden_sum}}</td>   
                 <td class="pt-3-half" contenteditable="true" style="width: 80px;">{{ p.edv}}</td> 
                 <td class="pt-3-half" contenteditable="true" style="width: 80px;">{{ p.yekunmeb}}</td>
                 <td class="pt-3-half" contenteditable="true" style="width: 80px;">{{ p.Pay  }}</td>  
-                <td class="pt-3-half" contenteditable="true" style="width: 100px;">{{ p.Emeltarixi}}</td>               
+                <td class="pt-3-half" contenteditable="true" style="width: 80px;">{{ p.Emeltarixi | date: 'dd-MM-yyyy' }}</td>               
                 </tr>       
             </tbody>
             <tfoot >
