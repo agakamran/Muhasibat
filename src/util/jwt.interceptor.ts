@@ -16,13 +16,13 @@ export class JwtInterceptor implements HttpInterceptor {
      }                                               
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {       
 
-        if(request.url.includes('postfile'))//||request.url.includes('delitemsphoto')
+        if(request.url.includes('uplodeAvatar'))//||request.url.includes('delitemsphoto')
         {
             //console.log('aaaaaa')
             request = request.clone({setHeaders : { }})
         }
         else { 
-            //console.log('bbbbbb')
+          //  console.log('bbbbbb')
             request = request.clone({setHeaders : { 'Content-Type': 'application/json','Access-Control-Allow-Methods': '*'  }}) 
         }
         if (this.currentUser) 

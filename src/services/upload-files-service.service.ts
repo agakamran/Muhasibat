@@ -35,8 +35,9 @@ export class UploadFilesService {
    // alert('Images/profile/'+file.name)
         const fd: FormData = new FormData();   
         fd.append('file', file);  
-       // fd.append('yol', 'Images/profile/'+file.name);         
-        const req = new HttpRequest('POST', `${this.pathAPI}uplodeAvatar`, fd);
+      //  fd.append('yol', 'Images/profile/'+file.name);
+       console.log(`${environment.apiUrl}Account/uplodeAvatar`)         
+        const req = new HttpRequest('POST', `${environment.apiUrl}Account/uplodeAvatar`, fd);
         console.log(req) 
         return this.http.request(req);  
   }

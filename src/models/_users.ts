@@ -14,7 +14,7 @@ export interface User {
     uid: string;
     displayName: string;
     email: string;    
-    providerId: string;
+    //providerId: string;
     isEmailConfirmed?:boolean;
     phoneNumber?:string;
     photoUrl?: string;

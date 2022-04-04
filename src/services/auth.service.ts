@@ -135,11 +135,12 @@ export class AuthService {
          
           return updatedUser;
         } else {
-          // return user;
+           return user;
         }}),
       flatMap((updatedUser : IndexViewModel) => {
          this.notif.success('::Submitted'); 
-         console.log(updatedUser)
+        // console.log('XXX')
+        // console.log(updatedUser)
         return from(this.http.post(this.pathAPI +'profil',updatedUser))
           .pipe( catchError((err) =>
            {

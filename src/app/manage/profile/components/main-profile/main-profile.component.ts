@@ -49,7 +49,6 @@ export class MainProfileComponent implements OnInit {
   selectedFiles: File ;
   _selectFiles(event: any){
     this.selectedFiles = event.target.files[0] as File;  
-    this._photoUrl='Images/profile/'+this.selectedFiles.name;
-   
+    this._photoUrl='Images/profile/'+this.selectedFiles.name;   
   }
 }

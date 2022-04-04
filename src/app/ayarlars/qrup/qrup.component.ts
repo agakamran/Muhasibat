@@ -56,8 +56,8 @@ selkred(kred:any){ this.khesId=kred;
   {
     this.qrup.QId='';   
     this.qrup.Qrupname='';  
-    this.qrup.DhesId='';  
-    this.qrup.KhesId='';     
+    this.qrup.dhesId='';  
+    this.qrup.khesId='';     
   }
   _cline(){ 
     this.qrupForm = new FormGroup({  
@@ -69,19 +69,18 @@ selkred(kred:any){ this.khesId=kred;
       });     
    }
    _editqrup(ca: qrup){ 
-    
-      this.qrup.QId = ca.QId;
-      this.qrup.Qrupname = ca.Qrupname;    
-      this._debit = this.listhesab.find(kam=>kam.Hesnom ===  ca.DhesId)!.HesId;
-      this._kredit = this.listhesab.find(kam=>kam.Hesnom  === ca.KhesId)!.HesId; 
-
+   // console.log(ca);   
      //console.log(this._debit);
     // console.log(this._kredit);  
-
-      this.qrup.DhesId=this._debit
+      this.qrup.QId = ca.QId;
+      this.qrup.Qrupname = ca.Qrupname;      
+      this._debit = this.listhesab.find(kam=>kam.Hesnom ===  ca.dhesId)!.HesId;
+     this._kredit = this.listhesab.find(kam=>kam.Hesnom  === ca.khesId)!.HesId; 
+      this.qrup.dhesId=this._debit
       this.seldebit(this._debit) 
-      this.qrup.KhesId=this._kredit
-      this.selkred(this._kredit)  
+      this.qrup.khesId=this._kredit
+      this.selkred(this._kredit) 
+
      }
  onadd()
   { 
@@ -90,11 +89,11 @@ selkred(kred:any){ this.khesId=kred;
        var p={
         QId:this.qrup.QId  ,
         Qrupname:this.qrupForm.value.Qrupname.toString(),
-        DhesId:this.dhesId.toString(),
-        KhesId:this.khesId.toString()
+        dhesId:this.dhesId.toString(),
+        khesId:this.khesId.toString()
       //  description:this.qrupForm.value.description
       }
-      //  console.log(p)
+        console.log(p)
        this._caSer._posqrup(p).subscribe();        
        this._addqrup(); 
        this._cline();   

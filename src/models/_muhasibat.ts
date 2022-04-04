@@ -2,8 +2,8 @@ export class qrup
 {
     QId:string;
     Qrupname:string;
-    DhesId:string;
-    KhesId:string;       
+    dhesId:string;
+    khesId:string;       
 }
 export class tipleri
 {
