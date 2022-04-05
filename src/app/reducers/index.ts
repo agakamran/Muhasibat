@@ -8,14 +8,18 @@ import { AdminState } from '../admin/store/admin.state';
 import { AuthState } from '../auth/store/auth.state';
 import * as fromAuth from '../auth/store/auth.reducer';
 import * as fromAdmin from '../admin/store/admin.reducer';
+import { ShirketsState } from '../manage/shirket/store/shirkets.state';
+import * as fromShirket from '../manage/shirket/store/shirkets.reducer';
 export interface AppState {
   auth: AuthState;
   admin: AdminState;
+  shirket:ShirketsState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
   auth: fromAuth.authReducer,
-  admin: fromAdmin.adminReducer
+  admin: fromAdmin.adminReducer,
+  shirket: fromShirket.shirketsReducer
 };
 export function clearState(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
   return function (state: AppState | undefined, action: Action): AppState {

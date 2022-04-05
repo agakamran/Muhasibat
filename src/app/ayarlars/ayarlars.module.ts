@@ -6,7 +6,6 @@ import { AyarListComponent } from './ayar-list/ayar-list.component';
 import { HesabComponent } from './hesab/hesab.component';
 import { AktivlerComponent } from './aktivler/aktivler.component';
 import { MushteriComponent } from './mushteri/mushteri.component';
-import { ShirketComponent } from './shirket/shirket.component';
 import { VergikodComponent } from './vergikod/vergikod.component';
 import { VahidComponent } from './vahid/vahid.component';
 import { ValyutaComponent } from './valyuta/valyuta.component';
@@ -22,7 +21,7 @@ import { MdbModule } from '../imports/mdb.module';
 
 @NgModule({
   declarations: [AyarListComponent, HesabComponent, AktivlerComponent,
-     MushteriComponent, ShirketComponent, VergikodComponent, VahidComponent,
+     MushteriComponent,  VergikodComponent, VahidComponent,
       ValyutaComponent, TiplerComponent, BolmeComponent, MaddeComponent, AnbarComponent, QrupComponent],
   imports: [
     CommonModule,

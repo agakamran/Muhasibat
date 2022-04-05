@@ -8,7 +8,7 @@ import { HesabComponent } from './hesab/hesab.component';
 import { MaddeComponent } from './madde/madde.component';
 import { MushteriComponent } from './mushteri/mushteri.component';
 import { QrupComponent } from './qrup/qrup.component';
-import { ShirketComponent } from './shirket/shirket.component';
+
 import { TiplerComponent } from './tipler/tipler.component';
 import { VahidComponent } from './vahid/vahid.component';
 import { ValyutaComponent } from './valyuta/valyuta.component';
@@ -21,7 +21,7 @@ const routes: Routes = [
        { path: 'hesablar', component: HesabComponent },
         { path: 'aktivler', component: AktivlerComponent },   
         { path: 'mushderiler', component: MushteriComponent },
-        { path: 'shirketimiz', component: ShirketComponent },        
+        // { path: 'shirketimiz', component: ShirketComponent },        
         { path: 'vergikod', component: VergikodComponent },
         { path: 'vahidler', component: VahidComponent }, 
         { path: 'valyuta', component: ValyutaComponent },

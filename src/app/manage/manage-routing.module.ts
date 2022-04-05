@@ -14,14 +14,16 @@ import { ProfileModule } from './profile/profile.module';
 import { CustomersModule } from './customers/customers.module';
 import { ProjectsModule } from './projects/projects.module';
 import { ChartsDataModule } from './charts/charts.module';
+import { ShirketComponent } from './shirket/shirket.component';
 
 const routes: Routes = [ 
   { 
       path:'',component:ManageListComponent,
      children: [
+       { path: 'shirketimiz', component: ShirketComponent },  
      // { path: 'profil', component: ProfilComponent},
       { path: 'ChangePassword', component: ChangePasswordComponent},
-      { path: 'additem', component: AdditemComponent},
+       { path: 'additem', component: AdditemComponent},
       { path: 'firma', component: FirmaComponent},
      // { path: 'uplod', component: UploadFilesComponent},
       { path: 'netice', component: NeticeComponent},
@@ -29,7 +31,7 @@ const routes: Routes = [
       { path: 'TwoFactorAuthentication', component: TwoFactorAuthenticationComponent},
      // { path: 'EnableAuthenticator', component: EnableAuthenticatorComponent},
       { path: 'mykabinet', component: MykabComponent},         
-      { path: '', component: AdditemComponent}   ,
+       { path: '', component: FirmaComponent}   ,
        { path: 'projects', loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule) , canActivate: [AuthGuard]},
        { path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule), canActivate: [AuthGuard]},
        { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule), canActivate: [AuthGuard] },
