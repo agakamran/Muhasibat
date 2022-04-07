@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions,  Effect,  ofType } from '@ngrx/effects';
+import { Actions,  createEffect,   ofType } from '@ngrx/effects';
 import { Router } from '@angular/router';
 import {defer, Observable, of } from 'rxjs';
 import { map, switchMap, catchError, tap, take } from 'rxjs/operators';
@@ -18,8 +18,9 @@ export class AuthEffects {
       private authService: AuthService, //private gravatarService: GravatarService,
        ) {}
  
-  @Effect()
-  loginAction$ = this.actions$.pipe(
+  
+  loginAction$ = createEffect(() =>
+   this.actions$.pipe(
     ofType(auth.AuthActionTypes.LOGIN_REQUESTED),
     map((action: auth.LoginRequested) => action.payload),
     switchMap(payload => this.authService.signInWithEmailAndPassword(payload).pipe(
@@ -45,9 +46,10 @@ export class AuthEffects {
         catchError(error => of(new auth.AuthError({ error })))
       )
     )
-  );
-  @Effect()
-  loginSuccess$ = this.actions$.pipe(
+  ));
+ 
+  loginSuccess$ =createEffect(()=>
+   this.actions$.pipe(
     ofType(auth.AuthActionTypes.LOGIN_SUCCESS),
     map( (action: auth.SaveUser) => action.payload),
     switchMap( (payload: any) => {
@@ -56,16 +58,22 @@ export class AuthEffects {
           new auth.CheckUserRole( {uid: payload.user.uid })
         ];
     })
-  );
-  @Effect({ dispatch: false })//bazadan aldigimizi saxlayiriq
-  saveAuthDataToLocalStorage$ =this.actions$.pipe(
+  ));
+
+ // @Effect({ dispatch: false })//bazadan aldigimizi saxlayiriq
+  saveAuthDataToLocalStorage$ =createEffect(()=>
+  this.actions$.pipe(
     ofType(auth.AuthActionTypes.LOGIN_SUCCESS),
     tap((p : auth.LoginSuccess) => {  
       localStorage.setItem('authData', JSON.stringify(p.payload.user));
-    }));
+    })),{
+    dispatch: false
+    }
+    );
 
-  @Effect() 
-    extractLoginData$ = this.actions$.pipe(
+ // @Effect() 
+    extractLoginData$ = createEffect(()=>
+    this.actions$.pipe(
       ofType(auth.AuthActionTypes.LOGIN_INIT_AUTH, auth.AuthActionTypes.LOGIN_EXTRACT_AUTH),
       map(() => {
         const authDataString = localStorage.getItem('authData');
@@ -95,10 +103,11 @@ export class AuthEffects {
 
         return new auth.LoginSuccess({ user });
       })
-    );
+    ));
    
-  @Effect()
-  registerAction$ = this.actions$.pipe(
+ // @Effect()
+  registerAction$ =createEffect(()=>
+   this.actions$.pipe(
     ofType(auth.AuthActionTypes.REGISTER_REQUESTED),
     map((action: auth.RegisterRequested) => action.payload),
     switchMap(payload =>
@@ -130,9 +139,10 @@ export class AuthEffects {
         catchError(error => of(new auth.AuthError({ error })))
       )
     )
-  );
-  @Effect()
-  logoutAction$ = this.actions$.pipe(
+  ));
+ // @Effect()
+  logoutAction$ =createEffect(()=>
+   this.actions$.pipe(
     ofType(auth.AuthActionTypes.LOGOUT_REQUESTED),
     map( (action: auth.LogoutRequested) => action.payload),
    // switchMap(() => this.authService.logout()
@@ -146,10 +156,11 @@ export class AuthEffects {
         )
       )
     )
-  );
+  ));
   
-  @Effect()
-  getUser$ = this.actions$.pipe(
+ // @Effect()
+  getUser$ =createEffect(()=>
+   this.actions$.pipe(
     ofType(auth.AuthActionTypes.GET_USER),
     switchMap(() => this.authService.getAuthState()
       .pipe(
@@ -173,9 +184,10 @@ export class AuthEffects {
         catchError(error => of(new auth.AuthError({ error })))
       )
     )
-  );
-  @Effect()
-  checkUserRole$ = this.actions$.pipe(
+  ));
+ // @Effect()
+  checkUserRole$ =createEffect(()=>
+   this.actions$.pipe(
     ofType(auth.AuthActionTypes.CHECK_USER_ROLE),
     map( (action: auth.CheckUserRole) => action.payload),
     switchMap( (payload: any) => this.authService.checkUserRole(payload.uid)
@@ -186,17 +198,21 @@ export class AuthEffects {
         catchError( (error: any) => of(new auth.AuthError({ error })))
       )
     )
-  );
-  @Effect()
-  init$: Observable<any> = defer(() => {
+  ));
+ // @Effect()
+  init$: Observable<any> =createEffect(()=>
+   defer(() => {
     return of(new auth.GetUser());
-  });
-  @Effect({ dispatch: false })
-  updateOnlineStatus$ = this.actions$.pipe(
+  }));
+ // @Effect({ dispatch: false })
+  updateOnlineStatus$ = createEffect(()=>
+   this.actions$.pipe(
     ofType(auth.AuthActionTypes.UPDATE_ONLINE_STATUS),
     map( (action: auth.UpdateOnlineStatus) => action.payload),
     switchMap( (payload: any) => this.authService.updateOnlineStatus(payload.uid, payload.status))
-  );
+    ), 
+    { dispatch: false }
+    );
  
   
 
@@ -207,8 +223,9 @@ export class AuthEffects {
   //   switchMap( (payload: any) => this.authService.saveUser(payload.user))
   // );  
 
-  @Effect()
-  updateProfile$ = this.actions$.pipe(
+ // @Effect()
+  updateProfile$ =createEffect(()=>
+   this.actions$.pipe(
     ofType(auth.AuthActionTypes.UPDATE_PROFILE),
     map((action: auth.UpdateProfile) => action.payload),
     switchMap((payload: any) =>
@@ -230,7 +247,7 @@ export class AuthEffects {
         catchError( (error) => of(new auth.AuthError(error)))
       )
     )
-  );
+  ));
  
 
   // @Effect()

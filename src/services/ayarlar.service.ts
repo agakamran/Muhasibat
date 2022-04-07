@@ -233,11 +233,10 @@ export class AyarlarService {
   //   return of((datshirket as any).default)   
   //  }
   _getshirket(): Observable<any>{      
-    //const body=JSON.stringify(pra);
-   // console.log('uuuuu')
-   // console.log(body.toString())   
-    return this.http.get<any>(this.pathAPI +'_getshirket')
+     
+    return this.http.get<shirket>(this.pathAPI +'_getshirket')
     .pipe(map((data)=>{
+     // console.log(data)
       return data;
     }),
       catchError((err) => {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions,   Effect,  ofType } from '@ngrx/effects';
+import { Actions,   createEffect,   ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError,  map, switchMap } from 'rxjs/operators';
 import { NavbarService } from 'src/services/navbar.service';
@@ -29,8 +29,9 @@ export class MenusEffects {
     //     ))
     //   ))
     // ));
-  @Effect()
-  menuAction$ = this.actions$.pipe(
+ // @Effect()
+  menuAction$ = createEffect(() =>
+   this.actions$.pipe(
     ofType<menu.initMenu>(menu.MenusActionTypes.INIT),
     map( (action: menu.initMenu) => action),    
     // withLatestFrom(      
@@ -48,7 +49,7 @@ export class MenusEffects {
       catchError(error => of(new menu.MenuError({ error })))
     )
   )
-);
+));
 
 }
 

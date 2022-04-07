@@ -4,21 +4,29 @@ import { shirket } from 'src/models/_muhasibat';
 import { Lang } from 'src/models/_carts';
 import { AyarlarService } from 'src/services/ayarlar.service';
 import { NotificationService } from 'src/util/notification.service';
-
+import { Observable } from 'rxjs/internal/Observable';
+import { AppState } from 'src/app/reducers';
+import { select, Store } from '@ngrx/store';
+import { getAllshirketLoaded, getShirkets } from './store/shirkets.selectors';
+import { map } from 'rxjs';
+import * as fromShirkets from './store/shirkets.actions';
 @Component({
   selector: 'app-shirket',
   templateUrl: './shirket.component.html',
   styleUrls: ['./shirket.component.scss']
 })
 export class ShirketComponent implements OnInit {
-
+  shirkets$: Observable<shirket[] | null>;
+  loading$: Observable<boolean>;
+  //======================
   shirketForm: FormGroup; 
   listshirket:shirket[] = [];
   filteredshirket: shirket[];
   shirket:shirket=new shirket(); 
   _lang:Lang[]=[{lid: '1', lname: 'Az'},{lid: '2', lname: 'En'},{lid: '3', lname: 'Ru'} ];  _lan='';
   _shirket: shirket[];  _pid:'';  
-  constructor( private _caSer: AyarlarService,private noti: NotificationService) {
+
+  constructor(private store: Store<AppState>, private _caSer: AyarlarService,private noti: NotificationService) {
      this.shirket.ShId="";
    }
 
@@ -39,7 +47,21 @@ export class ShirketComponent implements OnInit {
        UserId: new FormControl(''),
        Shirpercent: new FormControl(0),
     });  
+    //========================
+     //this.store$.dispatch(new actions.initMenu());
+     this.loading$ = this.store.select(getAllshirketLoaded);
     
+     this.shirkets$ = this.store.pipe(
+       select(getShirkets),
+       map((shirkets: shirket[]) => {
+        // console.log('SSSS')
+         // if (this.user && !projects) {
+            this.store.dispatch(new fromShirkets.ShirketsQuery());
+         // }
+         return shirkets;
+       })
+     );
+    //=======================
       this._caSer._getshirket().subscribe(list=>
       {         
            this.listshirket=list; 

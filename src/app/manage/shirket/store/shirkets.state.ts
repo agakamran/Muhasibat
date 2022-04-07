@@ -1,12 +1,14 @@
 import { shirket } from "src/models/_muhasibat";
+
 export interface ShirketsState {
     shirkets: shirket[] | null;
-    isLoading: boolean;
+    loading: boolean;
     error: any;
 }
 
 export const shirketsInitialState: ShirketsState = {
-    shirkets: [],
-    isLoading: true,
+    shirkets: null,
+    loading: false,
     error: null
-};
+
+}

@@ -41,7 +41,7 @@ import * as fromShirkets from './shirket/store/shirkets.reducer';
     FormsModule,
     RouterModule,
     ProfileModule,
-    StoreModule.forFeature('shirkets', fromShirkets.shirketsReducer),
+    StoreModule.forFeature('shirket', fromShirkets.shirketsReducer),
     EffectsModule.forFeature([ShirketsEffects])
     ],
   schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ]

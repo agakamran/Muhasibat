@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MDBModalService, MDBModalRef } from 'angular-bootstrap-md';
 import { Project } from '../models/project.model';
-import { AppState } from '../../reducers/index';
 import { Store, select } from '@ngrx/store';
 import * as fromProjects from './../store/projects.actions';
 import { Observable } from 'rxjs';
@@ -9,7 +8,7 @@ import { getProjects, getAllLoaded } from '../store/projects.selectors';
 import { take, map } from 'rxjs/operators';
 import { ConfirmModalComponent } from '../../shared/components/confirm-modal/confirm-modal.component';
 import { ProjectModalComponent } from '../../shared/components/project-modal/project-modal.component';
-//import { AngularFireAuth } from '@angular/fire/auth';
+import { AppState } from 'src/app/reducers';
 
 @Component({
   selector: 'app-projects',
@@ -33,9 +32,9 @@ export class ProjectsComponent implements OnInit {
     this.projects$ = this.store.pipe(
       select(getProjects),
       map( (projects: Project[]) => {
-      //  if (this.user && !projects) {
-        //  this.store.dispatch(new fromProjects.ProjectsQuery());
-       // }
+        // if (this.user && !projects) {
+        //   this.store.dispatch(new fromProjects.ProjectsQuery());
+        // }
         return projects;
       })
     );
@@ -76,7 +75,6 @@ export class ProjectsComponent implements OnInit {
       }
     });
   }
-
   onProjectDelete(project: Project) {
     this.openConfirmModal(project);
   }

@@ -9,17 +9,21 @@ import { shirket } from "src/models/_muhasibat";
 
 @Injectable()
 export class ShirketsEffects {
-    constructor( private actions$: Actions,private _caSer: AyarlarService )
-     { }
+    constructor( private actions$: Actions,private _caSer: AyarlarService ) { }
+
 
     query$ = createEffect(() =>
      this.actions$.pipe(
         ofType(ShirketActionTypes.SHITKETS_QUERY),
       //  withLatestFrom(this.store.pipe(select(getUser))),
+      
         switchMap(([,]: any) => this._caSer._getshirket()//shirket shirket.ShId
-            .pipe(
-                map((data: any) => {
+            .pipe(  map((data: any) => {
+                   
                     const shirketsData: shirket[] = data.map((res: any) => {
+                        // console.log(shirketsData)
+                        // console.log('res')
+                        // console.log(res)
                         const key = res.payload.key;
                         const _shirket: shirket = res.payload.val();
                         return {
@@ -48,7 +52,35 @@ export class ShirketsEffects {
             )
         ),
     ));
+    // loginAction$ = createEffect(() =>
+    //     this.actions$.pipe(
+    //         ofType(ShirketActionTypes.SHITKETS_QUERY),
 
+    //         map((action: auth.LoginRequested) => action.payload),
+    //         switchMap(payload => this.authService.signInWithEmailAndPassword(payload).pipe(
+    //             map((res: any) => {
+    //                 const user = {
+    //                     uid: res.uid,
+    //                     displayName: res.displayName,
+    //                     email: res.email,
+    //                     providerId: res.providerId,
+    //                     phoneNumber: res.phoneNumber,
+    //                     isEmailConfirmed: res.isEmailConfirmed,
+    //                     photoUrl: res.photoUrl,
+    //                     storpercent: res.percent,
+    //                     token: res.token
+    //                 };
+    //                 // console.log(user)
+    //                 if (user != undefined) {
+    //                     this.noti.success('::Təbriklər');
+    //                 }
+    //                 return new auth.LoginSuccess({ user });
+    //             }),
+    //             tap(() => this.router.navigateByUrl('')),
+    //             catchError(error => of(new auth.AuthError({ error })))
+    //         )
+    //         )
+    //     ));
    // @Effect({ dispatch: false })
     added$ = createEffect(() =>
      this.actions$.pipe(
