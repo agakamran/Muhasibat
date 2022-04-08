@@ -62,12 +62,12 @@ export class ShirketComponent implements OnInit {
        })
      );
     //=======================
-      this._caSer._getshirket().subscribe(list=>
-      {         
-           this.listshirket=list; 
-           this.filteredshirket= this.listshirket; 
-          // console.log(this.listshirket)                        
-      }, error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
+      // this._caSer._getshirket('').subscribe(list=>
+      // {         
+      //      this.listshirket=list; 
+      //      this.filteredshirket= this.listshirket; 
+      //     // console.log(this.listshirket)                        
+      // }, error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
        
 }
 //get TipId() { return this.tipForm.get('TipId'); }

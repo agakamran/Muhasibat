@@ -15,12 +15,15 @@ import { CustomersModule } from './customers/customers.module';
 import { ProjectsModule } from './projects/projects.module';
 import { ChartsDataModule } from './charts/charts.module';
 import { ShirketComponent } from './shirket/shirket.component';
+import { ProductsComponent } from './product/container/products/products.component';
+
 
 const routes: Routes = [ 
   { 
       path:'',component:ManageListComponent,
      children: [
        { path: 'shirketimiz', component: ShirketComponent },  
+       { path: 'product', component: ProductsComponent},
      // { path: 'profil', component: ProfilComponent},
       { path: 'ChangePassword', component: ChangePasswordComponent},
        { path: 'additem', component: AdditemComponent},

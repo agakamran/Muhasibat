@@ -17,7 +17,7 @@ export class ShirketsEffects {
         ofType(ShirketActionTypes.SHITKETS_QUERY),
       //  withLatestFrom(this.store.pipe(select(getUser))),
       
-        switchMap(([,]: any) => this._caSer._getshirket()//shirket shirket.ShId
+        switchMap(([,]: any) => this._caSer._getshirket('')//shirket shirket.ShId
             .pipe(  map((data: any) => {
                    
                     const shirketsData: shirket[] = data.map((res: any) => {

@@ -165,7 +165,7 @@ export class HazirlaComponent implements OnInit {
           // })
         }, error => console.error(error + 'Siz sistemə daxil olmalısınız!'));
            //---------------shirket----
-        this._ayar._getshirket().subscribe(p=>
+        this._ayar._getshirket('').subscribe(p=>
           { 
               this.listshirket =p; 
             //  console.log(p)

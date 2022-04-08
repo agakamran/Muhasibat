@@ -232,9 +232,9 @@ export class AyarlarService {
   //  // console.log('XXX')   
   //   return of((datshirket as any).default)   
   //  }
-  _getshirket(): Observable<any>{      
+  _getshirket(id:any): Observable<any>{      
      
-    return this.http.get<shirket>(this.pathAPI +'_getshirket')
+    return this.http.get<shirket>(this.pathAPI +'_getshirket/?id='+id)
     .pipe(map((data)=>{
      // console.log(data)
       return data;

@@ -11,7 +11,7 @@ export enum ShirketActionTypes {
 }
 
 export class ShirketsQuery implements Action {
-  
+      
   readonly type = ShirketActionTypes.SHITKETS_QUERY;
 }
 
