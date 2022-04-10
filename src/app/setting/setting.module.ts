@@ -21,7 +21,7 @@ import { QelipComponent } from './qelip/qelip.component';
 import { QoltipiComponent } from './qoltipi/qoltipi.component';
 import { YakaComponent } from './yaka/yaka.component';
 import { HazirlaComponent } from './hazirla/hazirla.component';
-import { MdbModule } from '../imports/mdb.module';
+import { MdbModule } from 'src/imports/mdb.module';
 
 
 @NgModule({

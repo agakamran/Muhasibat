@@ -25,7 +25,7 @@ import { AxtarishComponent } from './axtarish/axtarish.component';
 
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
-import { MdbModule } from '../imports/mdb.module';
+import { MdbModule } from 'src/imports/mdb.module';
 
 @NgModule({
   declarations: [AlishComponent, SatishComponent,

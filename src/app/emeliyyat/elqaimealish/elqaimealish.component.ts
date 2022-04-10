@@ -54,7 +54,7 @@ export class ElqaimealishComponent implements OnInit {
     //  }, error => console.error(error + 'Siz sistemə daxil olmalısınız!'));
      this._kaSer._getqrup().subscribe(list=> {
       this.listqrup=list; 
-       console.log(this.listqrup)                        
+      // console.log(this.listqrup)                        
      }, error => console.error(error + 'Siz sistemə daxil olmalısınız!'));
     // this._kaSer._gethesab().subscribe(list=> {         
     //           this.listhesab=list; 
@@ -62,7 +62,7 @@ export class ElqaimealishComponent implements OnInit {
     //  }, error => console.error(error + 'Siz sistemə daxil olmalısınız!'));
     this._kaSer._getanbar().subscribe(list=> {         
       this.listanbar=list; 
-      console.log(this.listanbar)                        
+     // console.log(this.listanbar)                        
      }, error => console.error(error + 'Siz sistemə daxil olmalısınız!'));
   }
   // selacti(act:any){  this._actname=act; 

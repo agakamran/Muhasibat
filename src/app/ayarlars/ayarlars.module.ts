@@ -17,7 +17,7 @@ import { BolmeComponent } from './bolme/bolme.component';
 import { MaddeComponent } from './madde/madde.component';
 import { AnbarComponent } from './anbar/anbar.component';
 import { QrupComponent } from './qrup/qrup.component';
-import { MdbModule } from '../imports/mdb.module';
+import { MdbModule } from 'src/imports/mdb.module';
 
 @NgModule({
   declarations: [AyarListComponent, HesabComponent, AktivlerComponent,

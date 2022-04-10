@@ -19,7 +19,7 @@ const routes: Route[] = [
   { path: 'maps', children: [{ path: 'map1', component: Map1Component },] },
   { path: 'modals', component: ModalsComponent },
   
-  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard] },
+   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard] },
   { path: 'test', loadChildren: () => import('./test/test.module').then(m => m.TestModule) },
   { path: 'ayarlars', loadChildren: () => import('./ayarlars/ayarlars.module').then(m => m.AyarlarsModule) },
   { path: 'emeliyyat', loadChildren: () => import('./emeliyyat/emeliyyat.module').then(m => m.EmeliyyatModule) },

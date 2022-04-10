@@ -15,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ProfileModule } from './profile/profile.module';
-import { MdbModule } from '../imports/mdb.module';
+import { MdbModule } from 'src/imports/mdb.module';
 import { ShirketComponent } from './shirket/shirket.component';
 import { StoreModule } from '@ngrx/store';
 import { ShirketsEffects } from './shirket/store/shirkets.effects';
@@ -45,9 +45,9 @@ import * as fromProduct from '../manage/product/store/product.reducer';
     FormsModule,
     RouterModule,
     ProfileModule,
-    StoreModule.forFeature('shirket', fromShirkets.shirketsReducer),    
-    EffectsModule.forFeature([ShirketsEffects]),
-    
+    //StoreModule.forFeature(fromShirkets.shirketsFeatureKey, fromShirkets.reducer), 
+    StoreModule.forFeature('shirket', fromShirkets.shirketsReducer),   
+    EffectsModule.forFeature([ShirketsEffects]),    
     ProductsModule,
     StoreModule.forFeature(fromProduct.productsFeatureKey, fromProduct.reducer),
     EffectsModule.forFeature([ProductEffects]),

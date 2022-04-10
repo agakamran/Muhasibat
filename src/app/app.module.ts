@@ -11,10 +11,11 @@ import { metaReducers, reducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { MaterialModule } from './imports/material.module';
+import { MaterialModule } from 'src/imports/material.module';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import { authInterceptorProviders } from 'src/util/jwt.interceptor';
+import { HttpClientModule } from '@angular/common/http';
 
 // import { ProductsModule } from './products/products.module';
 // import { ManageModule } from './manage/manage.module';
@@ -36,6 +37,7 @@ import { authInterceptorProviders } from 'src/util/jwt.interceptor';
     FormsModule,
     ViewsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AdminModule,
     AuthModule,
     // ProductsModule,

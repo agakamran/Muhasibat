@@ -13,7 +13,7 @@ import { UserComponent } from './components/user/user.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { RoleListComponent } from './containers/role-list/role-list.component';
 import { NavbarComponent } from './containers/navbar/navbar.component';
-import { MdbModule } from '../imports/mdb.module';
+import { MdbModule } from 'src/imports/mdb.module';
 
 // import { CartListComponent } from './containers/cart-list/cart-list.component';
 // import { AddPageComponent } from './containers/add-page/add-page.component';

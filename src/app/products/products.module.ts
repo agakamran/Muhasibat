@@ -14,8 +14,8 @@ import { Prodlist1Component } from './prodlist1/prodlist1.component';
 import { Prodone1Component } from './prodone1/prodone1.component';
 import { Checkout1Component } from './checkout1/checkout1.component';
 import { ShopingCart1Component } from './shoping-cart1/shoping-cart1.component';
-import { MdbModule } from '../imports/mdb.module';
-import { MaterialModule } from '../imports/material.module';
+import { MdbModule } from 'src/imports/mdb.module';
+import { MaterialModule } from 'src/imports/material.module';
 
 
 @NgModule({

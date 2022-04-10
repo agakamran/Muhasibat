@@ -16,9 +16,9 @@ export class JwtInterceptor implements HttpInterceptor {
      }                                               
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {       
 
-        if(request.url.includes('uplodeAvatar'))//||request.url.includes('delitemsphoto')
+      if (request.url.includes('uplodeAvatar') || request.url.includes('postfile'))//||request.url.includes('postfile')
         {
-            //console.log('aaaaaa')
+           // console.log('aaaaaa')
             request = request.clone({setHeaders : { }})
         }
         else { 

@@ -5,11 +5,17 @@ import { Lang } from 'src/models/_carts';
 import { AyarlarService } from 'src/services/ayarlar.service';
 import { NotificationService } from 'src/util/notification.service';
 import { Observable } from 'rxjs/internal/Observable';
-import { AppState } from 'src/app/reducers';
-import { select, Store } from '@ngrx/store';
-import { getAllshirketLoaded, getShirkets } from './store/shirkets.selectors';
-import { map } from 'rxjs';
+import * as fromStore from './store/shirkets.reducer';
 import * as fromShirkets from './store/shirkets.actions';
+import { select, Store } from '@ngrx/store';
+import {  getShirkets} from './store/shirkets.selectors';
+import { map, Subscription } from 'rxjs';
+
+//import * as fromActions from './store/shirkets.actions';
+
+//import * as fromSelector from './store/shirkets.selectors';
+
+
 @Component({
   selector: 'app-shirket',
   templateUrl: './shirket.component.html',
@@ -17,7 +23,9 @@ import * as fromShirkets from './store/shirkets.actions';
 })
 export class ShirketComponent implements OnInit {
   shirkets$: Observable<shirket[] | null>;
-  loading$: Observable<boolean>;
+  isLoading$: Observable<boolean>;
+  error$: Observable<string | null>;
+  shirsSub: Subscription;
   //======================
   shirketForm: FormGroup; 
   listshirket:shirket[] = [];
@@ -26,7 +34,7 @@ export class ShirketComponent implements OnInit {
   _lang:Lang[]=[{lid: '1', lname: 'Az'},{lid: '2', lname: 'En'},{lid: '3', lname: 'Ru'} ];  _lan='';
   _shirket: shirket[];  _pid:'';  
 
-  constructor(private store: Store<AppState>, private _caSer: AyarlarService,private noti: NotificationService) {
+  constructor(private store: Store<fromStore.ShirketsState>, private _caSer: AyarlarService,private noti: NotificationService) {
      this.shirket.ShId="";
    }
 
@@ -47,31 +55,37 @@ export class ShirketComponent implements OnInit {
        UserId: new FormControl(''),
        Shirpercent: new FormControl(0),
     });  
-    //========================
-     //this.store$.dispatch(new actions.initMenu());
-     this.loading$ = this.store.select(getAllshirketLoaded);
-    
-     this.shirkets$ = this.store.pipe(
-       select(getShirkets),
-       map((shirkets: shirket[]) => {
-        // console.log('SSSS')
-         // if (this.user && !projects) {
-            this.store.dispatch(new fromShirkets.ShirketsQuery());
-         // }
-         return shirkets;
-       })
-     );
-    //=======================
-      // this._caSer._getshirket('').subscribe(list=>
-      // {         
+     // this._caSer._getshirket('').subscribe(list=>
+     // {         
       //      this.listshirket=list; 
       //      this.filteredshirket= this.listshirket; 
       //     // console.log(this.listshirket)                        
       // }, error => console.error(error + 'Siz sistemə daxil olmalısınız!')); 
+    //========================
+    //  this.store.dispatch(fromActions.requestLoadShirkets());
+    //  this.shirkets$ = this.store.select(fromSelector.shirkets);
+    //  this.isLoading$ = this.store.select(fromSelector.isLoading);
+    //  this.error$ = this.store.select(fromSelector.error);
+     
+    // this.store.select(state => state).subscribe(data => {
+    //   console.log('data', data);
+    // });
+    //=======================
+     this.shirkets$ = this.store.pipe(
+       select(getShirkets),
+       map((shirkets: shirket[]) => {
+          if (!shirkets) {
+           this.store.dispatch(new fromShirkets.ShirketsQuery());
+         }
+         console.log(shirkets)
+         return shirkets;
+       })
+     );
+  
+     
        
 }
-//get TipId() { return this.tipForm.get('TipId'); }
-//get TipName() { return this.tipForm.get('TipName'); }
+
 langu(lan:any){  this._lan=lan; }
   _addshirket()
   {

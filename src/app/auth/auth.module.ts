@@ -11,7 +11,7 @@ import { RegisterComponent } from './component/register/register.component';
 import { LoginComponent } from './component/login/login.component';
 import { AuthService } from 'src/services/auth.service';
 import { AppState } from 'src/app/reducers';
-import { MdbModule } from '../imports/mdb.module';
+import { MdbModule } from 'src/imports/mdb.module';
 @NgModule({
   imports: [
     CommonModule,

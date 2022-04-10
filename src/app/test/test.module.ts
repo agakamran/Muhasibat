@@ -8,8 +8,8 @@ import { T2Component } from './t2/t2.component';
 import { SearchTableComponent } from './search-table/search-table.component';
 import { NestedSortComponent } from './nested-sort/nested-sort.component';
 import { FormsModule } from '@angular/forms';
-import { MdbModule } from '../imports/mdb.module';
-import { MaterialModule } from '../imports/material.module';
+import { MdbModule } from 'src/imports/mdb.module';
+import { MaterialModule } from 'src/imports/material.module';
 //import { CountryService } from './tabserch/country.service';
 
 
