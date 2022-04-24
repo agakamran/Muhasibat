@@ -5,10 +5,10 @@ import { Lang } from 'src/models/_carts';
 import { AyarlarService } from 'src/services/ayarlar.service';
 import { NotificationService } from 'src/util/notification.service';
 import { Observable } from 'rxjs/internal/Observable';
-import * as fromStore from './store/shirkets.reducer';
+import * as fromStore from './store/shirkets.state';
 import * as fromShirkets from './store/shirkets.actions';
 import { select, Store } from '@ngrx/store';
-import {  getShirkets} from './store/shirkets.selectors';
+import {  getAllLoaded, getShirkets} from './store/shirkets.selectors';
 import { map, Subscription } from 'rxjs';
 
 //import * as fromActions from './store/shirkets.actions';
@@ -37,7 +37,7 @@ export class ShirketComponent implements OnInit {
   constructor(private store: Store<fromStore.ShirketsState>, private _caSer: AyarlarService,private noti: NotificationService) {
      this.shirket.ShId="";
    }
-
+   //https://massivepixel.io/blog/angular-state-management/
    ngOnInit(): void {
     this.shirketForm = new FormGroup({  
        ShId: new FormControl(''),   
@@ -71,16 +71,28 @@ export class ShirketComponent implements OnInit {
     //   console.log('data', data);
     // });
     //=======================
-     this.shirkets$ = this.store.pipe(
+     //this.store$.dispatch(new actions.initMenu());
+     //this.store.dispatch(new fromShirkets.ShirketsQuery());
+     this.isLoading$ = this.store.select(getAllLoaded);
+     this.store.pipe(
        select(getShirkets),
        map((shirkets: shirket[]) => {
-          if (!shirkets) {
+         if (!shirkets) {
+           // console.log('shirkets')
            this.store.dispatch(new fromShirkets.ShirketsQuery());
+          // console.log(shirkets)
          }
-         console.log(shirkets)
          return shirkets;
        })
-     );
+     ).subscribe();
+
+     this.store.select(getShirkets).subscribe(k => {
+       
+       console.log(k) 
+       //console.log('211')
+      // this._childmenu = this._menu.filter(g => !g.nisparent && g.pid != null);
+       //console.log('111') ;
+     })
   
      
        

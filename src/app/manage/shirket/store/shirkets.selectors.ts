@@ -1,20 +1,22 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { ShirketsState } from './shirkets.reducer';
+import { ShirketsState } from './shirkets.state';
+
 
 export const getShirketsState = createFeatureSelector<ShirketsState>('shirket');
+
 export const getShirkets = createSelector(
     getShirketsState,
-    _shirk => _shirk.shirkets
+    shirkets => shirkets.shirkets
 );
 
-export const getIsLoading = createSelector(
+export const getAllLoaded = createSelector(
     getShirketsState,
-    _shirk => _shirk.isLoading
+    shirkets => shirkets.isLoading
 );
 
 export const getError = createSelector(
     getShirketsState,
-    _shirk => _shirk.error
+    shirkets => shirkets.error
 );
 // const shirketsSelector = createFeatureSelector<fromStore.ShirketState>(fromStore.shirketsFeatureKey);
 

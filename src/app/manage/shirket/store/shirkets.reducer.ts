@@ -1,37 +1,24 @@
-import { shirket } from "src/models/_muhasibat";
+
 import { ShirketActionTypes, ShirketsActions } from "./shirkets.actions";
-
-
-
-export interface ShirketsState {
-    shirkets: shirket[] | null;
-    isLoading: boolean;
-    error: any;
-}
-
-export const shirketsInitialState: ShirketsState = {
-    shirkets: null,
-    isLoading: true,
-    error: null
-};
+import { shirketsInitialState, ShirketsState } from "./shirkets.state";
 
 export function shirketsReducer(state = shirketsInitialState, action: ShirketsActions): ShirketsState {
     switch (action.type) {
 
-        case ShirketActionTypes.SHITKET_QUERY: {
+        case ShirketActionTypes.SHIRTKETS_QUERY: {
             return Object.assign({}, state, {
                 isLoading: false,
             });
         }
 
-        case ShirketActionTypes.SHITKET_LOADED: {
+        case ShirketActionTypes.SHIRTKETS_LOADED: {
             return Object.assign({}, state, {
-                shirkdata: action.payload.shirkdata,
+                shirket: action.payload.shirkets,
                 isLoading: false,
             });
         }
 
-        case ShirketActionTypes.SHITKET_ERROR: {
+        case ShirketActionTypes.SHIRTKETS_ERROR: {
             return Object.assign({}, state, {
                 isLoading: false,
                 error: action.payload.error

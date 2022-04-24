@@ -1,49 +1,45 @@
-
 import { Action } from "@ngrx/store";
 import { shirket } from "src/models/_muhasibat";
 
-
-
 export enum ShirketActionTypes {
-  SHITKET_QUERY =  '[Shirket] Query',    //qaytar
-  SHITKET_LOADED = '[Shirket] Fetched', //yuklendi
-  SHITKET_ADDED =  '[Shirket] Added',    //elave et
-  SHITKET_EDITED = '[Shirket] Edited',  //yenile
-  SHITKET_DELETED ='[Shirket] Deleted', //sil
-  SHITKET_ERROR =  '[Shirket] Error'    
-  
+  SHIRTKETS_QUERY = '[Shirkets] Shirkets query',
+  SHIRTKETS_LOADED = '[Shirkets] Shirkets loaded',
+  SHIRTKET_ADDED = '[Shirket] Shirket added',
+  SHIRTKET_EDITED = '[Shirkets] Shirket edited',
+  SHIRTKET_DELETED = '[Shirkets] Shirket deleted',
+  SHIRTKETS_ERROR = '[Shirkets] Shirkets error'
 }
 
-export class ShirketsQuery implements Action {     
-
-  readonly type = ShirketActionTypes.SHITKET_QUERY;
+export class ShirketsQuery implements Action {
+  readonly type = ShirketActionTypes.SHIRTKETS_QUERY;
 }
 
 export class ShirketsLoaded implements Action {
-  readonly type = ShirketActionTypes.SHITKET_LOADED;
-  constructor(public payload: { shirkdata: shirket[] }) { }
+  readonly type = ShirketActionTypes.SHIRTKETS_LOADED;
+
+  constructor(public payload: { shirkets: shirket[] }) { }
 }
 
-export class ShirketsAdded implements Action {
-  readonly type = ShirketActionTypes.SHITKET_ADDED;
+export class ShirketAdded implements Action {
+  readonly type = ShirketActionTypes.SHIRTKET_ADDED;
 
-  constructor(public payload: { shirkets: shirket }) { }
+  constructor(public payload: { shirket: shirket }) { }
 }
 
-export class ShirketsEdited implements Action {
-  readonly type = ShirketActionTypes.SHITKET_EDITED;
+export class ShirketEdited implements Action {
+  readonly type = ShirketActionTypes.SHIRTKET_EDITED;
 
-  constructor(public payload: { shirkets: shirket }) { }
+  constructor(public payload: { shirket: shirket }) { }
 }
 
-export class ShirketsDeleted implements Action {
-  readonly type = ShirketActionTypes.SHITKET_DELETED;
+export class ShirketDeleted implements Action {
+  readonly type = ShirketActionTypes.SHIRTKET_DELETED;
 
-  constructor(public payload: { shirkets: shirket }) { }
+  constructor(public payload: { shirket: shirket }) { }
 }
 
 export class ShirketsError implements Action {
-  readonly type = ShirketActionTypes.SHITKET_ERROR;
+  readonly type = ShirketActionTypes.SHIRTKETS_ERROR;
 
   constructor(public payload: { error: any }) { }
 }
@@ -51,11 +47,10 @@ export class ShirketsError implements Action {
 export type ShirketsActions =
   | ShirketsQuery
   | ShirketsLoaded
-  | ShirketsAdded
-  | ShirketsEdited
-  | ShirketsDeleted
-  | ShirketsError;
-
+  | ShirketAdded
+  | ShirketEdited
+  | ShirketDeleted
+  | ShirketsError ;
 /*
 export const requestLoadShirkets = createAction(
  '[Shirket/API] Request Load Shirkets'

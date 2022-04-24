@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { Actions,  createEffect, ofType } from "@ngrx/effects";
 import { select, Store } from "@ngrx/store";
 import { catchError, map, of, switchMap, withLatestFrom } from "rxjs";
 import { AppState } from "src/app/reducers";
@@ -19,67 +19,80 @@ export class ShirketsEffects {
         private _caSer: AyarlarService,
         private store: Store<AppState>) { }
 
-
-    // query$ =createEffect(()=>
-    //  this.actions$.pipe(
-    //     ofType(ProjectsActionTypes.PROJECTS_QUERY),
-    //     withLatestFrom(this.store.pipe(select(getUser))),
-    //     switchMap(([, user]: any) => {
-    //         return this.projectsService.get(user.uid)
-    //             .pipe(
-    //                 map((data: any) => {
-    //                     const projectsData: Project[] = data.map((res: any) => {
-    //                         const key = res.payload.key;
-    //                         const project: Project = res.payload.val();
-    //                         return {
-    //                             key: key || null,
-    //                             title: project.title || null,
-    //                             description: project.description || null,
-    //                             photoUrl: project.photoUrl || null
-    //                         };
-    //                     });
-    //                     return (new fromProjects.ProjectsLoaded({ projects: projectsData }));
-    //                 }),
-    //                 catchError(error => of(new fromProjects.ProjectsError({ error })))
-    //             );
-    //     }),
-    // ));
+    
     query$ = createEffect(() =>
-      this.actions$.pipe(
-        ofType(ShirketActionTypes.SHITKET_QUERY),
+     this.actions$.pipe(
+         ofType<fromshirkets.ShirketsQuery>(ShirketActionTypes.SHIRTKETS_QUERY),
         withLatestFrom(this.store.pipe(select(getShirketsState))),
-        switchMap(([, shir]: any) => this._caSer._getshirket(shir.SId)
-            .pipe(
-                map((data: any) => {
-                    const Data: shirket[] = data.map((res: any) => {
-                        const key = res.payload.key;
-                        const _shirket: shirket = res.payload.val();
-                        return {
-                            key: key,
-                            ShId: _shirket.ShId,
-                            Aznhesab: _shirket.Aznhesab,
-                            Bankadi: _shirket.Bankadi,
-                            Bankkodu: _shirket.Bankkodu,
-                            Bankvoen: _shirket.Bankvoen,
-                            Cavabdehshexs: _shirket.Cavabdehshexs,
-                            Email: _shirket.Email,
-                            Muxbirhesab: _shirket.Muxbirhesab,
-                            Shiricrachi: _shirket.Shiricrachi,
-                            Shirpercent: _shirket.Shirpercent,
-                            Shirvoen: _shirket.Shirvoen,
-                            Swift: _shirket.Swift,
-                            Unvan: _shirket.Unvan,
-                            UserId: _shirket.UserId
-                        };
-                    });
-                    return (new fromshirkets.ShirketsLoaded({ shirkdata: Data }));
-                }),
-                catchError(error => {
-                    return of(new fromshirkets.ShirketsError({ error }));
-                })
-            )
-        ),
+        switchMap(([, user]: any) => {
+            return this._caSer._getshirket(user.uid)
+                .pipe(
+                    map((data: any) => {
+                        const shirsData: shirket[] = data.map((res: any) => {
+                            const key = res.payload.key;
+                            const _shirket: shirket = res.payload.val();
+                            return {
+                                    key: key || null,
+                                    ShId: _shirket.ShId,
+                                    Aznhesab: _shirket.Aznhesab,
+                                    Bankadi: _shirket.Bankadi,
+                                    Bankkodu: _shirket.Bankkodu,
+                                    Bankvoen: _shirket.Bankvoen,
+                                    Cavabdehshexs: _shirket.Cavabdehshexs,
+                                    Email: _shirket.Email,
+                                    Muxbirhesab: _shirket.Muxbirhesab,
+                                    Shiricrachi: _shirket.Shiricrachi,
+                                    Shirpercent: _shirket.Shirpercent,
+                                    Shirvoen: _shirket.Shirvoen,
+                                    Swift: _shirket.Swift,
+                                    Unvan: _shirket.Unvan,
+                                    UserId: _shirket.UserId
+                            };
+                        });
+                        return (new fromshirkets.ShirketsLoaded({ shirkets: shirsData }));
+                    }),
+                    catchError(error => of(new fromshirkets.ShirketsError({ error })))
+                );
+        }),
     ));
+    
+    // query$ = createEffect(() =>
+    //   this.actions$.pipe(
+    //     ofType(ShirketActionTypes.SHIRTKETS_QUERY),
+    //     withLatestFrom(this.store.pipe(select(getShirketsState))),
+    //     switchMap(([, shir]: any) => this._caSer._getshirket(shir.SId)
+    //         .pipe(
+    //             map((data: any) => {
+    //                 const shirketData: shirket[] = data.map((res: any) => {
+    //                     const key = res.payload.key;
+    //                     const _shirket: shirket = res.payload.val();
+    //                     return {
+    //                         key: key,
+    //                         ShId: _shirket.ShId,
+    //                         Aznhesab: _shirket.Aznhesab,
+    //                         Bankadi: _shirket.Bankadi,
+    //                         Bankkodu: _shirket.Bankkodu,
+    //                         Bankvoen: _shirket.Bankvoen,
+    //                         Cavabdehshexs: _shirket.Cavabdehshexs,
+    //                         Email: _shirket.Email,
+    //                         Muxbirhesab: _shirket.Muxbirhesab,
+    //                         Shiricrachi: _shirket.Shiricrachi,
+    //                         Shirpercent: _shirket.Shirpercent,
+    //                         Shirvoen: _shirket.Shirvoen,
+    //                         Swift: _shirket.Swift,
+    //                         Unvan: _shirket.Unvan,
+    //                         UserId: _shirket.UserId
+    //                     };
+    //                 });
+                 
+    //                 return (new fromshirkets.ShirketsLoaded({ shirkets: shirketData }));
+    //             }),
+    //             catchError(error => {
+    //                 return of(new fromshirkets.ShirketsError({ error }));
+    //             })
+    //         )
+    //     ),
+    // ));
 
 
     // loadShirkets$ = createEffect(() =>

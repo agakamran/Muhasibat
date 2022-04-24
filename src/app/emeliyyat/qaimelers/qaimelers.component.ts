@@ -50,6 +50,7 @@ export class QaimelersComponent implements OnInit {
         this.elements= this.listqaime; 
      
      //  console.log(this.listqaime)
+        this.cemi =0; this.edv =0; this.yekunmeb=0;
        this.listqaime.forEach(el => {      
         //-------------footer-----------
 
@@ -69,6 +70,7 @@ export class QaimelersComponent implements OnInit {
     this._caSer._getqaimedetal(p.PmasId).subscribe(list => {
       this.listqaimedet = list;
      // console.log(this.listqaimedet)
+      this.cemi1 = 0; this.edv1 = 0; this.yekunmeb1 = 0;
       this.listqaimedet.forEach(el => {
         this.seryal = el.Serial.toString();
         this.seryal += '   ' + el.Emeltarixi.toString();
